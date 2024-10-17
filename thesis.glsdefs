@@ -1,12 +1,12 @@
 \glsdefs@newdocentry{abs}%
 {%
-name={abs},%
-sort={abs},%
+name={Eric Horacsek},%
+sort={Eric Horacsek},%
 type={main},%
-first={abs},%
-firstplural={abss},%
-text={abs},%
-plural={abss},%
+first={Eric Horacsek},%
+firstplural={Eric Horacseks},%
+text={Eric Horacsek},%
+plural={Eric Horacseks},%
 description={Absolute operation},%
 descriptionplural={Absolute operation},%
 symbol={\relax },%
