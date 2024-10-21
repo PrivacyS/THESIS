@@ -1,7 +1,7 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\nonumberline Affidavit}{I}{section*.3}%
 \contentsline {section}{\nonumberline Acknowledgments}{II}{section*.5}%
-\contentsline {section}{\nonumberline Abstract}{III}{section*.7}%
+\contentsline {section}{\nonumberline Abstrakt}{III}{section*.7}%
 \contentsline {section}{\nonumberline Confidentiality clause}{IV}{section*.9}%
 \contentsline {section}{\nonumberline List of figures}{VI}{section*.10}%
 \contentsline {section}{\nonumberline List of tables}{VII}{section*.11}%
