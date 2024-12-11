@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,26 +19,13 @@ Andy Field.
 \newblock SAGE Publications Ltd, 3 edition.
 \newblock ISBN 978-84787-906-6.
 
-\bibitem[Gold et~al.(2013)Gold, Damböck, Lorenz, and Bengler]{gold}
-Christian Gold, Daniel Damböck, Lutz Lorenz, and Klaus Bengler.
-\newblock "take over!" how long does it take to get the driver back into the
-  loop?
-\newblock In \emph{Proceedings of the Human Factors and Eergonomics Society
-  57th Annual Meeting}, pages 1938--1942, 2013.
-\newblock \doi{10.1177/1541931213571433}.
-\newblock URL \url{https://mediatum.ub.tum.de/doc/1308108/1308108.pdf}.
-
-\bibitem[Riener et~al.(2013)Riener, Ferscha, Bachmair, Hagm\"{u}ller, Lemme,
-  Muttenthaler, P\"{u}hringer, Rogner, Tappe, and Weger]{riener}
-A.~Riener, A.~Ferscha, F.~Bachmair, P.~Hagm\"{u}ller, A.~Lemme,
-  D.~Muttenthaler, D.~P\"{u}hringer, H.~Rogner, A.~Tappe, and F.~Weger.
-\newblock Standardization of the in-car gesture interaction space.
-\newblock In \emph{Proceedings of the 5th International Conference on
-  Automotive User Interfaces and Interactive Vehicular Applications},
-  AutomotiveUI '13, pages 14--21, New York, NY, USA, 2013. ACM.
-\newblock ISBN 978-1-4503-2478-6.
-\newblock \doi{10.1145/2516540.2516544}.
-\newblock URL \url{http://doi.acm.org/10.1145/2516540.2516544}.
+\bibitem[Kusuma et~al.(2023)Kusuma, Rifani, and Sugiantoro]{fwComparison}
+Mandahadi Kusuma, Ahmad~Haris Rifani, and Bambang Sugiantoro.
+\newblock Comparison analysis of jetpack compose and flutter in android-based
+  application development using technical domain.
+\newblock In \emph{2023 Eighth International Conference on Informatics and
+  Computing (ICIC)}, pages 3--5, 2023.
+\newblock \doi{10.1109/ICIC60109.2023.10381987}.
 
 \bibitem[Wintersberger et~al.(2017)Wintersberger, Green, and
   Riener]{wintersberger}
