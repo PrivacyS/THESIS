@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -26,16 +26,5 @@ Mandahadi Kusuma, Ahmad~Haris Rifani, and Bambang Sugiantoro.
 \newblock In \emph{2023 Eighth International Conference on Informatics and
   Computing (ICIC)}, pages 3--5, 2023.
 \newblock \doi{10.1109/ICIC60109.2023.10381987}.
-
-\bibitem[Wintersberger et~al.(2017)Wintersberger, Green, and
-  Riener]{wintersberger}
-Philipp Wintersberger, Paul Green, and Andreas Riener.
-\newblock Am i driving or are you or are we both? a taxonomy for handover and
-  handbach in automated driving.
-\newblock In \emph{Proceedings of the Ninth International Driving Symposium on
-  Human Factors in Driver Assessment, Training and Vehicle Design}, Driving
-  Assessment Conference. University of Iowa, June 2017.
-\newblock URL
-  \url{http://drivingassessment.uiowa.edu/sites/default/files/DA2017/papers/51.pdf}.
 
 \end{thebibliography}
