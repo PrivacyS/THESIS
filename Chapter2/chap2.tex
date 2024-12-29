@@ -55,11 +55,11 @@
 \end{center}
 \end{table}
 	
-\subsection{Android architecture}
+\subsection{Android architecture}\label{sec:architecture}
 {\large 
 	To program a platform-specific application, it can be important to understand the basic architecture of the platform, especially when dealing with taks regarding memory or Bluetooth. This section will give a brief insight into the structure of the Android construction. Tasks discussed later in this thesis may reference this chapter to convey a better understanding.
 	
-	The core of the Android Platform is a Linux based kernel. On top of Android's Kernel are four more stack layers, such as the Hardware Abstraction Layer, Native Libraries/Android Runtime, Java API Framework and the uppermost layer,  the System App layer. (also see: Figure \ref{fig:androidOverview}). Going into detail for each stack layer is not necessary for this work, consequently only essential layers like the Java API Framework will be considered in more depth. 
+	The core of the Android Platform is a Linux based kernel. On top of Android's Kernel are four more stack layers, such as the Hardware Abstraction Layer, Native Libraries/Android Runtime, Java API Framework and the uppermost layer,  the System App layer. (also see: Figure \ref{fig:androidOverview}). Going into detail for each stack layer is not necessary for this work, consequently only essential layers like the Java API Framework will be considered in more depth. A short introduction into each layer is given by table \ref{tab:stackLayersTable} and figure \ref{fig:androidOverview} .
 	
 	
 	\begin{table}[h!]
@@ -69,19 +69,21 @@
 			\begin{tabular}{l|l} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 				\textbf{Layer} & \textbf{Functionality} \\
 				\hline
-				System App's& \makecell[l]{This layer is a collection of preinstalled applications. \\ Apps contained in this collection, have the same status \\ at system level as third-party apps(system settings is the only exception).\\ Giving the user freedom for design.  }\\
+				System App's (Application Layer)& \makecell[l]{This layer is a collection of preinstalled applications. \\ Apps contained in this collection, have the same status \\ at system level as third-party apps(system settings is\\ the only exception). Giving the user freedom for design.  }\\
 				\hline
-				Java API Framework & 33 \\
+				Java API Framework (Framework Layer)& \makecell[l]{Enables acces to all features of the Android OS, such as \\resource manager  and view system.}  \\
 				\hline
-				Native Libraries& 5.15.1 \\
+				Native Libraries& \makecell[l]{System components such as ART and HAL \\are written in C/C++, those functionalities can be used \\ via API's} \\
 				\hline
-				Android Runtime& 30\\
+				Android Runtime (ART)& \makecell[l]{Every running application is an instance of ART. \\ ART operates on the same layer as Native Libraries}\\
+				\hline
+				Hardware Abstraction Layer (HAL) & \makecell[l]{Provides interfaces to the Java API Framework,\\ hence addresing hardware components\\ like Camera or Bluetooth module is possible.} \\
+				\hline
+				Linux Kernel & \makecell[l]{Foundation of the OS. Administrates system resources, \\ and communicates with hardware.}
 			\end{tabular}
 		\end{center}
 	\end{table}
-	
-	
-	
+	 A layered archtitecture like the Android OS, ensures modularity, maintainability and security. Each layer is designed with a specific responsibility, and communicates primarly with adjacent layers. Applications interact with the Framework layer via the Android SDK (bridge between Application Layer and Framework Layer ), which provides access to core system services. The Framework, in turn, relies on the Native Libraries and Runtime layers for functionalities like graphics rendering, media playback, and app execution. Hardware communication is abstracted through the Hardware Abstraction Layer (HAL), which interfaces with the Linux Kernel. This structured separation of concerns enhances the system's flexibility, allowing independent evolution and optimization of each layer.
 	
 	\begin{center}
 		\includegraphics[scale = 0.2]{/Users/eric/Downloads/android-stack_2x.png}
@@ -89,6 +91,24 @@
 		\label{fig:androidOverview} 
 	\end{center}
 }
+	\subsubsection{Java Framework API (Framework Layer)}
+	{\large 
+			As already mentioned in \ref{sec:architecture}, the Android Java Framework API is a collection of libraries and tools provided by Android to simplify the development of mobile applications. Built on top of Java, it enables developers to create apps with pre-built components, utilities, and services that interact with the Android operating system. The framework abstracts the complexity of low-level operations and provides high-level APIs for features such as UI design, data storage, networking, and hardware access. 
+			
+			To provide an impression, Figure 2 shows a code excerpt in which the Java API was implicitly used by androidx.  To keep this chapter manageable, it can be simplified  said that androidx is a superset of the Java API Framework.
+			
+			\begin{center}
+				\includegraphics[scale = 0.3]{/Users/eric/Downloads/APIexample.jpg}
+				\captionof{figure}{Android Java API example with androidx}
+				\label{fig:codeExampleAPI} 
+			\end{center}
+			
+			Figure \ref{fig:codeExampleAPI} provids a glimpse of the capabilities of the androidx library. Showing how to draw an image with the Painter class and utilizing the resource manager mentioned in table \ref{tab:stackLayersTable}.
+		
+			To beginn its elementary to import the Painter class aswell as the painterResource class. As shown in 1. and 2. in  Figure \ref{fig:codeExampleAPI}. Then at 3. a Painter object is created, at 4. the Painter object is definied by the painterResource function. The painterResource function gets an id as an argument, to query the file from the res/drawable folder. The res folder contains all additional app resources (files, images, etc.). Finally we can draw the Image by passing the object from 3. to an Image function.
+			
+	}
+
 }
 
 
