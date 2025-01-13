@@ -1,8 +1,47 @@
 % Kapitel 8 - Diskussion
 \section{Functional Requirements}
 {\large 
-	Requirement engineering is essential at the beginning of every project. Formulating and documenting precisely defined requirements is a cornerstone in the course of realization. In this way, mundane mistakes can be avoided and the vision of the final product is clear. 
+	Requirement engineering is essential at the beginning of every project. Formulating and documenting precisely defined requirements is a cornerstone in the course of realization. In this way, mundane mistakes can be avoided and the vision of the final product is clear. Thus this chapter will explain all functional requirements of the finshed product.
+	
+	
+	
+	
+}
+\subsection{Drawing ECG-Data in realtime}
+{\large
+	To realize a realtime drawing, one has to consider multiple concerns.
+	\begin{itemize}
+		\item The sample rate of the microcontroller (1)
+		\item Consume and process incoming data at once (2)
+		\item Datahandling and Drawing must happen in parallel (3)
+		\item Sharing data ressources between two entitys (4)
+	\end{itemize}
+	After gaining a concicse overview over the issues, its now import to view and solve every issue isolated and subsequently combine each solved problem with the other. It is important to mention that some issues may create restrictions for other issues. Therefore, it is essential to implement one task at a time and connect them all afterward.
+	
+	We now look at our problems in a rather theoretically way, to facilitate the implementation in the end. 
+	
+	{\textbf{\underline{(1) Handle The Sample rate of the microcontroller}}
+	
+	The microcontroller is producing 125 samples per second. 
+	Hence we have a \\sample rate of: $f(t)= 125 \times t $ $\widehat{=}$   $125 Hz$ 
+	
+
+	
+	\textbf{\underline{(2)Consume and process incoming data at the same time}}
+	
+	
+	
 	
 }
 
 
+\subsection{24-Hour recording}
+
+\subsection{Connection via Bluetooth Low Energy }
+{\large
+	The application is required to establish and maintain a reliable Bluetooth Low Energy (BLE) connection with the hardware to enable real-time data acquisition. BLE was chosen for its low power consumption and the ability to continuously transfer or receive data. 
+	
+	
+	
+	
+}

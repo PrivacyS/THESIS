@@ -19,6 +19,9 @@
 \contentsline {subsection}{\numberline {2.2}Android architecture}{3}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Java Framework API (Framework Layer)}{5}{subsubsection.2.2.1}%
 \contentsline {section}{\numberline {3}Functional Requirements}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Drawing ECG-Data in realtime}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}24-Hour recording}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Connection via Bluetooth Low Energy}{7}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Conclusion}{8}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Outlook}{8}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Einschränkungen}{8}{subsection.4.2}%
