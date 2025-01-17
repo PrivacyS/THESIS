@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  15 JAN 2025 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  16 JAN 2025 14:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1035,10 +1035,104 @@ Package tocbasic Info: setting babel extension for `nls' on input line 188.
 
 Package nomencl Info: Writing nomenclature file thesis.nlo on input line 119.
 
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tabularray/tabularray.sty
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-02-20 L3 programming layer (loader) 
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count382
 \l__pdf_internal_box=\box68
+))
+Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
+\l__tblr_a_int=\count383
+\l__tblr_c_int=\count384
+\l__tblr_r_int=\count385
+\l__tblr_d_dim=\dimen257
+\l__tblr_h_dim=\dimen258
+\l__tblr_o_dim=\dimen259
+\l__tblr_p_dim=\dimen260
+\l__tblr_q_dim=\dimen261
+\l__tblr_r_dim=\dimen262
+\l__tblr_s_dim=\dimen263
+\l__tblr_t_dim=\dimen264
+\l__tblr_v_dim=\dimen265
+\l__tblr_w_dim=\dimen266
+\l__tblr_a_box=\box69
+\l__tblr_b_box=\box70
+\l__tblr_c_box=\box71
+\l__tblr_d_box=\box72
+\g__tblr_table_count_int=\count386
+\c@colnum=\count387
+\c@rowcount=\count388
+\c@colcount=\count389
+\abovesep=\dimen267
+\belowsep=\dimen268
+\leftsep=\dimen269
+\rightsep=\dimen270
+\g_tblr_level_int=\count390
+\g__tblr_data_row_key_count_int=\count391
+\g__tblr_data_column_key_count_int=\count392
+\g__tblr_data_cell_key_count_int=\count393
+\g__tblr_array_int=\count394
+\l__tblr_key_count_int=\count395
+\l__tblr_key_quotient_int=\count396
+\l__tblr_key_quotient_two_int=\count397
+\l__tblr_key_remainder_int=\count398
+\g__tblr_data_str_value_count_int=\count399
+\rulewidth=\dimen271
+\l__tblr_strut_dp_dim=\dimen272
+\l__tblr_strut_ht_dim=\dimen273
+\g__tblr_cell_wd_dim=\dimen274
+\g__tblr_cell_ht_dim=\dimen275
+\g__tblr_cell_head_dim=\dimen276
+\g__tblr_cell_foot_dim=\dimen277
+\l__column_target_dim=\dimen278
+\l__tblr_caption_box=\box73
+\l__tblr_caption_left_box=\box74
+\l__tblr_row_head_box=\box75
+\l__tblr_row_foot_box=\box76
+\l__tblr_row_head_foot_dim=\dimen279
+\tablewidth=\dimen280
+\l__tblr_table_firsthead_box=\box77
+\l__tblr_table_middlehead_box=\box78
+\l__tblr_table_lasthead_box=\box79
+\l__tblr_table_firstfoot_box=\box80
+\l__tblr_table_middlefoot_box=\box81
+\l__tblr_table_lastfoot_box=\box82
+\l__tblr_remain_height_dim=\dimen281
+\l__tblr_long_from_int=\count400
+\l__tblr_long_to_int=\count401
+\l__tblr_curr_i_int=\count402
+\l__tblr_prev_i_int=\count403
+\l__tblr_table_page_int=\count404
+\l__tblr_table_head_box=\box83
+\l__tblr_table_foot_box=\box84
+\l__tblr_table_head_foot_dim=\dimen282
+\l__tblr_table_head_body_foot_dim=\dimen283
+\l__tblr_table_box=\box85
+\l__tblr_table_hlines_box=\box86
+\l__tblr_hline_box=\box87
+\l__tblr_row_box=\box88
+\l__tblr_col_o_wd_dim=\dimen284
+\l__tblr_col_b_wd_dim=\dimen285
+\l__tblr_hline_leftskip_dim=\dimen286
+\l__tblr_hline_rightskip_dim=\dimen287
+\l__tblr_row_ht_dim=\dimen288
+\l__tblr_row_dp_dim=\dimen289
+\l__tblr_row_abovesep_dim=\dimen290
+\l__tblr_row_belowsep_dim=\dimen291
+\l__tblr_row_vlines_box=\box89
+\l__tblr_vline_box=\box90
+\l__tblr_cell_box=\box91
+\l__row_upper_dim=\dimen292
+\l__row_lower_dim=\dimen293
+\l__row_vpace_dim=\dimen294
+\l__tblr_vline_aboveskip_dim=\dimen295
+\l__tblr_vline_belowskip_dim=\dimen296
+\l__tblr_cell_wd_dim=\dimen297
+\l__tblr_cell_ht_dim=\dimen298
+\l__tblr_diag_box=\box92
 )
 
 LaTeX Warning: Unused global option(s):
@@ -1079,16 +1173,16 @@ Package scrbase Info: activating english \indexname on input line 144.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count383
-\scratchdimen=\dimen257
-\scratchbox=\box69
-\nofMPsegments=\count384
-\nofMParguments=\count385
+\scratchcounter=\count405
+\scratchdimen=\dimen299
+\scratchbox=\box93
+\nofMPsegments=\count406
+\nofMParguments=\count407
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count386
-\MPscratchDim=\dimen258
-\MPnumerator=\count387
-\makeMPintoPDFobject=\count388
+\MPscratchCnt=\count408
+\MPscratchDim=\dimen300
+\MPnumerator=\count409
+\makeMPintoPDFobject=\count410
 \everyMPtoPDFconversion=\toks47
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1165,7 +1259,7 @@ Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
-\BKM@id=\count389
+\BKM@id=\count411
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
@@ -1180,9 +1274,16 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 (./thesis.glsdefs)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/ninecolors/ninecolors.sty
+Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2024-02-18 L3 Experimental document command parser
+))
 \openout2 = `titlepage.aux'.
 
- (./titlepage.tex
+
+(./titlepage.tex
 
 Package geometry Warning: Over-specification in `h'-direction.
     `width' (454.10269pt) is ignored.
@@ -1387,7 +1488,7 @@ Overfull \hbox (33.7432pt too wide) in paragraph at lines 69--84
  [] 
  []
 
-</Users/eric/Downloads/android-stack_2x.png, id=170, 1389.19pt x 2045.6425pt>
+</Users/eric/Downloads/android-stack_2x.png, id=172, 1389.19pt x 2045.6425pt>
 File: /Users/eric/Downloads/android-stack_2x.png Graphic file (type png)
 <use /Users/eric/Downloads/android-stack_2x.png>
 Package pdftex.def Info: /Users/eric/Downloads/android-stack_2x.png  used on in
@@ -1406,7 +1507,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 90.
 
 [4]
-</Users/eric/Downloads/APIexample.jpg, id=177, 1651.16875pt x 1062.97125pt>
+</Users/eric/Downloads/APIexample.jpg, id=179, 1651.16875pt x 1062.97125pt>
 File: /Users/eric/Downloads/APIexample.jpg Graphic file (type jpg)
 <use /Users/eric/Downloads/APIexample.jpg>
 Package pdftex.def Info: /Users/eric/Downloads/APIexample.jpg  used on input li
@@ -1439,30 +1540,66 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 8.
 
 [6 </Users/eric/Downloads/APIexample.jpg>] (./Chapter8/chap8.tex
-Underfull \hbox (badness 10000) in paragraph at lines 24--29
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--29
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--46
 
  []
 
 [7{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}])
+}]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 33.
+input line 78.
 
-[8] (./Chapter9/chap9.tex
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-
+[8]) (./Chapter9/chap9.tex
+Overfull \hbox (10.99077pt too wide) in paragraph at lines 30--31
+|[][]
  []
 
-) [9]) (./thesis.bbl)
+
+Overfull \hbox (22.6652pt too wide) in paragraph at lines 33--34
+|[][]
+ []
+
+
+Overfull \hbox (7.43129pt too wide) in paragraph at lines 37--38
+|[][]
+ []
+
+
+Overfull \hbox (10.63188pt too wide) in paragraph at lines 41--42
+|[][]
+ []
+
+[9]
+</Users/eric/Downloads/InformationFlow.drawio.png, id=209, 603.25375pt x 573.14
+125pt>
+File: /Users/eric/Downloads/InformationFlow.drawio.png Graphic file (type png)
+<use /Users/eric/Downloads/InformationFlow.drawio.png>
+Package pdftex.def Info: /Users/eric/Downloads/InformationFlow.drawio.png  used
+ on input line 53.
+(pdftex.def)             Requested size: 301.62613pt x 286.56992pt.
+)
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 37.
+
+[10 </Users/eric/Downloads/InformationFlow.drawio.png>]) (./thesis.bbl)
 pdfTeX warning (ext4): destination with the same identifier (name{page.VI}) has
  been already used, duplicate ignored
 <to be read again> 
@@ -1486,13 +1623,13 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 ### simple group (level 1) entered at line 11 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 26382 strings out of 474116
- 508750 string characters out of 5743682
+ 28661 strings out of 474116
+ 565920 string characters out of 5743682
  1942187 words of memory out of 5000000
- 48193 multiletter control sequences out of 15000+600000
- 582908 words of font info for 83 fonts, out of 8000000 for 9000
+ 50459 multiletter control sequences out of 15000+600000
+ 583249 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,20n,107p,10922b,1039s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,20n,107p,10922b,1041s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
@@ -1529,10 +1666,10 @@ f-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2024/texmf-dist
 /fonts/type1/public/cm-super/sfxc1440.pfb>
-Output written on thesis.pdf (19 pages, 1155736 bytes).
+Output written on thesis.pdf (20 pages, 1172235 bytes).
 PDF statistics:
- 404 PDF objects out of 1000 (max. 8388607)
- 335 compressed objects within 4 object streams
- 72 named destinations out of 1000 (max. 500000)
- 232 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 237 words of extra memory for PDF output out of 10000 (max. 10000000)
 

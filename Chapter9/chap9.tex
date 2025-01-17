@@ -1,27 +1,56 @@
-% Kapitel 9 - Fazit
-\section{Conclusion}
-Diese Arbeit befasste sich grundsätzlich mit der Frage, welche Anforderungen an ... gestellt werden.
-Der Lösungsvorschlag war...
-Benutzerstudien haben gezeigt, dass es einen signifikanten Unterschied... gibt. Diese Ergebnisse motivieren, um ...
 
-\subsection{Outlook} 
-In dieser Arbeit haben wir uns mit ... beschäftigt. Durch zwei Benutzerstudien wurde festgestellt, dass sich die Aufteilung und Positionierung der Informationen innerhalb der Anzeige der beiden Gruppen aufgrund bla bla ändert. Das entwickelte Konzept ist zwar bla bla, müsste aber für eine Wiederholung der Studien bla bla zur Erhebung quantitativer Daten wie folgt angepasst werden:
+\section{Implementation}
+{\large
+	The first part of this chapter provides an overview of the connection between each entity, and the tasks of the given entitys. Aswell as an close look into the implementation of the functional requirements, by analysing code snippets of the final product. While the second part will explain every necessity to assemble all parts together for a working product.  
+	
+}
+\subsection{Definiton of Entitys}{
+\begin{flushleft}
+		\begin{table}[h!]
+			\centering
+		\begin{center}
+			\caption{Entiys area of responsibility}
+			\label{tab:entiysDefinition}
+			\centering
+			\begin{tabular}{l| p{0.4\textwidth}} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\textbf{Layer} & \textbf{Functionality} \\
+				\hline
+				
+				
+				BLEViewModel & 	\begin{itemize}
+					\item Communication with the microcontroller
+					\item Receives datastream
+					\item Sends instructions to microcontroller
+				\end{itemize}\\
+				\hline
+				GraphEcgWidget & \makecell[l]{Draws the ECG data in realtime,\\ and displays Beats per minute}  \\
+				\hline
+				Storewrapper& \makecell[l]{Converts data from microcontroller\\ into drawble data } \\
+				\hline
+				BPM& \makecell[l]{Calculates the current Beats Per Minute}\\
+				\hline
+				VitalMonitorWidet & \makecell[l]{Plots up to 24 Hour long  recoreded ECG \\data and the BPM of the plotted Intervall. \\
+				Provides zooming functionality.} \\
+				\hline
+				StorageHandler & \makecell[l]{Allows usage of the OS filechooser,\\ to select files.}\\
+				\hline
+				MainView & \makecell[l]{Collection of visble elements (Widgets),\\ to provide reusability}\\
+				\hline 
+				MainActivity& \makecell[l]{
+					Visible to user, contains the complete\\ User Interface. Takes and processes user\\ inputs.
+				}\\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{table}
 
-\begin{itemize}
-\item xxx
-\item yyy
-\item xzz
-\end{itemize}
-
-Des Weiteren wurde festgestellt, dass bla bla. Auch das müssten zukünftige Varianten besser berücksichtigen, z.\,B., indem sie bla bla. Für Studien sollte zudem eine neutrale(re) Umgebung gewählt werden. Somit sollte sichergestellt werden können, dass beispielsweise ein möglicher Bias der Marke des Fahrzeugs sich nicht auf das HMI-Konzept auswirkt...
-
-\subsection{Einschränkungen}
-Hinsichtlich Einschränkungen, die eine breite Anwendung der Ergebnisse verhindern, sind zwei getrennte Bereiche zu betrachten. Zum einen die Evaluation, welche sich nur auf den ersten Teil der Arbeit bezieht, zum anderen das ausgearbeitete Konzept für die Anzeige, das auf dem ersten Teil der Arbeit aufbaut. \\ [-2.5em]
-
-\paragraph{Evaluation} 
-Bla bla.
-
-\paragraph{Konzept}
-Bla bla. Das wurde etwa in beschrieben...
-
-%\input{chap9x} %chap9_futurework_limitations}
+\end{flushleft}
+}
+\subsection{Inter-Entity Communication Overview }
+{\large
+	The following diagramm shows the Information flow between all entitys. The unidirectional arrow means that, information is flowing oneside. An informationexchange between two entitys is represented by an bidirectional arrow.
+	 
+	\includegraphics[scale = 0.5]{/Users/eric/Downloads/InformationFlow.drawio.png}
+	
+	
+}
