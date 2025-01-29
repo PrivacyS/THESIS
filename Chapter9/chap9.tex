@@ -5,44 +5,39 @@
 	
 }
 \subsection{Definiton of Entitys}
-
-\begin{table}[h!]
-		\centering
+adasdasdsd
+\begin{table*}[!htpb]
 	\begin{center}
 		\caption{Entiys area of responsibility}
 		\label{tab:entiysDefinition}
-		\centering
-		\begin{tabular}{l| p{0.4\textwidth}} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+		\begin{tabular}{l|l} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 			\textbf{Layer} & \textbf{Functionality} \\
-			\hline
+			\hline & \\[-1.5ex]
 			BLEViewModel & \makecell[l]{
-			
-					- Communication with the microcontroller\\
-					-  Receives datastream\\
-					-  Sends instructions to microcontroller\\
-			
+				- Communication with the microcontroller\\-  Receives datastream\\-  Sends instructions to microcontroller\\
 			}\\
-			\hline
+			\hline & \\[-1.5ex]
 			GraphEcgWidget & \makecell[l]{Draws the ECG data in realtime,\\ and displays Beats per minute}  \\
-			\hline
+			\hline& \\[-1.5ex]
 			Storewrapper& \makecell[l]{Converts data from microcontroller\\ into drawble data } \\
-			\hline
+			\hline& \\[-1.5ex]
 			BPM& \makecell[l]{Calculates the current Beats Per Minute}\\
-			\hline
+			\hline& \\[-1.5ex]
 			VitalMonitorWidet & \makecell[l]{Plots up to 24 Hour long  recoreded ECG \\data and the BPM of the plotted Intervall. \\
-			Provides zooming functionality.} \\
-			\hline
+				Provides zooming functionality.} \\
+			\hline& \\[-1.5ex]
 			StorageHandler & \makecell[l]{Allows usage of the OS filechooser,\\ to select files.}\\
-			\hline
+			\hline& \\[-1.5ex]
 			MainView & \makecell[l]{Collection of visble elements (Widgets),\\ to provide reusability}\\
-			\hline 
+			\hline & \\[-1.5ex]
 			MainActivity& \makecell[l]{
 				Visible to user, contains the complete\\ User Interface. Takes and processes user\\ inputs.
 			}\\
 			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
+			\end{tabular}
+		\end{center}
+	\end{table*}
+
 
 \subsection{Inter-Entity Communication Overview }
 {\large
