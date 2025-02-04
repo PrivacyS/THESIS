@@ -13,11 +13,12 @@ S.J. Clarke.
   Delivering Their Promise?}, page 7/1, 1995.
 \newblock \doi{10.1049/ic:19950387}.
 
-\bibitem[Field()]{field}
-Andy Field.
-\newblock \emph{Discovering Statistics Using SPSS}.
-\newblock SAGE Publications Ltd, 3 edition.
-\newblock ISBN 978-84787-906-6.
+\bibitem[Dian et~al.(2018)Dian, Yousefi, and Lim]{BLEStack}
+F.~John Dian, Amirhossein Yousefi, and Sungjoon Lim.
+\newblock A practical study on bluetooth low energy (ble) throughput.
+\newblock In \emph{2018 IEEE 9th Annual Information Technology, Electronics and
+  Mobile Communication Conference (IEMCON)}, page 768, 2018.
+\newblock \doi{10.1109/IEMCON.2018.8614763}.
 
 \bibitem[Kusuma et~al.(2023)Kusuma, Rifani, and Sugiantoro]{fwComparison}
 Mandahadi Kusuma, Ahmad~Haris Rifani, and Bambang Sugiantoro.

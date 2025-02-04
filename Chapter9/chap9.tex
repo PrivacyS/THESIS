@@ -1,15 +1,14 @@
 
-\section{Implementation}
+\section{Implementation} 
 {\large
-	The first part of this chapter provides an overview of the information flow between each entity, and the tasks of the given entitys. Aswell as an close look into the implementation of the functional requirements, by analysing code snippets of the final product. While the second part will explain every necessity to assemble all parts together for a working product.  
+	The first part of this chapter provides an overview of the information flow between each entity, and the tasks of the given entitys. Aswell as an close look into the implementation of the functional requirements, by analysing code snippets, aswell as explaining the usage of the final product. While the second part will explain every necessity to assemble all parts together for a working product.  
 	
 }
-\subsection{Definiton of Entitys}
-adasdasdsd
+\subsection{Definiton of Entitys} \label{entityDef}
 \begin{table*}[!htpb]
 	\begin{center}
 		\caption{Entiys area of responsibility}
-		\label{tab:entiysDefinition}
+		\label{tab:entitysDefinition}
 		\begin{tabular}{l|l} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 			\textbf{Layer} & \textbf{Functionality} \\
 			\hline & \\[-1.5ex]
@@ -37,15 +36,87 @@ adasdasdsd
 			\end{tabular}
 		\end{center}
 	\end{table*}
+{\large
+	
 
+}
 
 \subsection{Inter-Entity Communication Overview }
 {\large
 	The following diagramm shows the Information flow between all entitys. The unidirectional arrow means that, information is flowing oneside. An informationexchange between two entitys is represented by an bidirectional arrow.
 	
-	\includegraphics[scale = 0.5]{/Users/eric/Downloads/InformationFlow.drawio.png}
+	\begin{center}
+	\includegraphics[scale = 0.70]{/Users/eric/Downloads/InformationFlow.drawio-3.png}
+	\label{fig:informationFlowDiag}
+	\captionof{figure}{Informationflow Diagramm}
+	\end{center}
 	
-	
+	As already stated in \ref{entityDef} the BLEViewModel entity, serves as an interface between controller and app. Therfore every entity that needs to evaluate recorded data, is dependent on this Instance. Two of the entities listed in \ref{entityDef} are affected. To be more precise, it is the StoreWrapper that makes the data drawable (1) and forwards the data to the GraphECGWidget (4).
+	The BPM instance that calculates the beat frequency (2), (which is  then displayed by the GraphECGWidget (5)).
+	Informationflow (6), in contrast to (5), is bidirectional. This is necessary because  the recorded data needs to be read, by the StorageHandler from a local file (7), before being sent to the Storewrapper (6). After the data has been mapped by the Storewrapper, it is sent back to the VitalMonitorWidget (6).
+	MainView integrates both the GraphECGWidget (8) and the VitalMonitorWidget (9) as components and manages their visibility.
+	However, the range of tasks of the BLEViewModel is not limited to exchanging data, but also extends to scanning and connecting with other devices in the vicinity, as well as integrating and managing a 24-hour ECG recording. These functionalities are utilized by the MainView and the MainActivity. As already mentioned in table \ref{tab:entitysDefinition}, MainView serves solely to construct components of functionalities that are later utilized by MainActivity, such as buttons enabling users to start a 24-hour ECG recording (10). The MainActivity entity acts as a bridge between the microcontroller and the user, allowing device scanning, initiating recordings, establishing connections, and displaying ECG information (11).
 }
+\paragraph{(Usage and) Logic}\mbox{}\\
+{\large  The following subsections explore the logical implementation and functionality of individual entities, using code snippets and application screenshots for illustration. Each subsection is divided into a section covering the implementation and another focusing on the application's usage, with both sections referring to corresponding screenshots. Framework specific code fragments will be explaing in the course of relevant section. }
+
+\subsection{BLEViewModel }
+{\large 
+Before presenting the implementation of the BLE component, it is essential to establish a fundamental theoretical understanding of BLE.
+This section offers a comprehensive explanation of the Bluetooth Low Energy, shedding light on its core principles, while exploring the architecture of the BLE stack. 
+}
+
+\subsubsection{BLE Stack}
+{\large
+	The BLE protocol stack consists of three main layers: the Controller, the Host, and the Application. The Controller encompasses the Physical Layer and the Link Layer, while the Host manages higher-level functionalities such as the Logical Link Control and Adaptation Protocol (L2CAP), the Attribute Protocol (ATT), the Generic Attribute Profile (GATT), the Security Manager (SM), and the Generic Access Profile (GAP). Communication between the Host and the Controller follows the standardized Host Controller Interface (HCI). At the top of the stack, the Application layer enables program execution. \cite{BLEStack}
+	
+	\begin{center}
+		\includegraphics[scale = 0.90]{/Users/eric/Downloads/bluetooth_le_stack.png}
+		\label{fig:BLEStack}
+		\captionof{figure}{BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+	\end{center}
+	
+	\paragraph{Application Layer}\mbox{}\\
+	The application layer serves as the direct user interface, defining profiles that enable interoperability between various applications.
+	
+	\paragraph{Host Layer}\mbox{}\\
+	Includes the host-sided HCI aswell as L2CAP, ATT, GATT, SMP and GAP. 
+	
+	\paragraph{Generic Acces Profile (GAP)}\mbox{}\\
+	Manages the connection setup aswell as security, interfaces directly with profiles and services of the Application Layer.
+	
+	\paragraph{Security Manager Protocol (SMP)} \mbox{}\\
+	Provides multiple security algorithms for encrypting and decrypting data packets, making the connection secure.
+	
+	\paragraph{Generic Attribute Profile (GATT)}\mbox{}\\
+	Defines services and characteristics provided by the GATT Server. The GATT Server in this case is the microcontroller, which holds the definitions of services and characteristics. These can be requested by the GATT Client (in this case the application).
+	Services organize data into logical entities and contain specific data units known as characteristics. Each service can include one or more characteristics and is uniquely identified by a numeric UUID. This UUID can be either 16-bit for officially adopted BLE services or 128-bit for custom services. Whereas the Characteristic is the lowest level concept in GATT transactions, which defines data. Services aswell as Characterics are main interactions points to work with when working with the BLE periphery, thus it is important to understand these terminologies.
+	
+	\paragraph{ Attribute Protocol (ATT)}\mbox{}\\
+	The ATT enables the exchange of attributes (characteristics). Attributes are are composed of four components, the type (128-bit UUID), an handle (16-bit indentifier) to reference attributes, rights of the attribute(reading, writing), and the value of the attribute. The following figure gives a good overview of the structure of the attributes.
+	
+	\begin{center}
+	\includegraphics[scale = 0.90]{/Users/eric/Downloads/ble_att_representation.png}
+	\label{fig:ATTstructure}
+	\captionof{figure}{Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+	\end{center}
+	
+	\paragraph{Logical Link Control and Adaption Layer Protocol (L2CAP)}\mbox{}\\
+	Works as an interface betwenn the HCI and the upper modules of the Host layer, by multiplexing data packets to the corresponding protocols. Also fragments and reassembles large packets.
+	
+	\paragraph{Host-Side Host-Controller-Interface (HCI) }\mbox{}\\
+	Generally said the HCI is the inteface between the host and the controller. The HCI establishes commands and events for packet data transmission and reception. When sending data, it processes raw information into packets, enabling communication between the host and the controller.
+	
+	\paragraph{Controller-Side Host-Controller-Interface (HCI) }\mbox{}\\
+	As mentioned in the last paragraph, the HCI is the interface between the host and the controller. However, analogous to the host side, the data received from the controller is extracted and forwarded to the host.
+	
+	\paragraph{Controller Layer}\mbox{}\\
+	
+	\paragraph{Link Layer (LL)}\mbox{}\\
+	The LL functions similarly to the medium access control (MAC) layer in the OSI model. In Bluetooth, it directly interacts with the Bluetooth LE PHY and controls the radio’s link state, determining whether a device operates as a Central, Peripheral, Advertiser, or Scanner.
+	
+	\paragraph{Bluetooth LE PHY}\mbox{}\\
+	 
+	
 
 

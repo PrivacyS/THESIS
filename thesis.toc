@@ -25,5 +25,20 @@
 \contentsline {section}{\numberline {4}Implementation}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Definiton of Entitys}{9}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Inter-Entity Communication Overview}{10}{subsection.4.2}%
-\contentsline {section}{\nonumberline Literature references}{VI}{section*.21}%
+\contentsline {paragraph}{\nonumberline (Usage and) Logic}{11}{paragraph*.21}%
+\contentsline {subsection}{\numberline {4.3}BLEViewModel}{11}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}BLE Stack}{11}{subsubsection.4.3.1}%
+\contentsline {paragraph}{\nonumberline Application Layer}{12}{paragraph*.23}%
+\contentsline {paragraph}{\nonumberline Host Layer}{12}{paragraph*.25}%
+\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{12}{paragraph*.27}%
+\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{13}{paragraph*.29}%
+\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{13}{paragraph*.31}%
+\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{13}{paragraph*.33}%
+\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{13}{paragraph*.35}%
+\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{14}{paragraph*.37}%
+\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{14}{paragraph*.39}%
+\contentsline {paragraph}{\nonumberline Controller Layer}{14}{paragraph*.41}%
+\contentsline {paragraph}{\nonumberline Link Layer (LL)}{14}{paragraph*.43}%
+\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{14}{paragraph*.45}%
+\contentsline {section}{\nonumberline Literature references}{VI}{section*.47}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  29 JAN 2025 17:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  4 FEB 2025 19:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1429,7 +1429,19 @@ input line 192.
 
 
 
-] (./thesis.lof)
+] (./thesis.lof
+Overfull \hbox (27.51727pt too wide) in paragraph at lines 5--5
+ [][] [][][]\T1/cmr/m/n/10 BLE pro-to-col stack (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-protocol-stack.html)[][] [][]  
+ []
+
+
+Overfull \hbox (29.32349pt too wide) in paragraph at lines 6--6
+ [][] [][][]\T1/cmr/m/n/10 Attribute Struc-ture (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-protocol-stack.html)[][] [][]  
+ []
+
+)
 \tf@lof=\write9
 \openout9 = `thesis.lof'.
 
@@ -1488,7 +1500,7 @@ Overfull \hbox (33.7432pt too wide) in paragraph at lines 69--84
  [] 
  []
 
-</Users/eric/Downloads/android-stack_2x.png, id=172, 1389.19pt x 2045.6425pt>
+</Users/eric/Downloads/android-stack_2x.png, id=182, 1389.19pt x 2045.6425pt>
 File: /Users/eric/Downloads/android-stack_2x.png Graphic file (type png)
 <use /Users/eric/Downloads/android-stack_2x.png>
 Package pdftex.def Info: /Users/eric/Downloads/android-stack_2x.png  used on in
@@ -1507,7 +1519,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 90.
 
 [4]
-</Users/eric/Downloads/APIexample.jpg, id=179, 1651.16875pt x 1062.97125pt>
+</Users/eric/Downloads/APIexample.jpg, id=189, 1651.16875pt x 1062.97125pt>
 File: /Users/eric/Downloads/APIexample.jpg Graphic file (type jpg)
 <use /Users/eric/Downloads/APIexample.jpg>
 Package pdftex.def Info: /Users/eric/Downloads/APIexample.jpg  used on input li
@@ -1574,13 +1586,108 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 79.
 
 [8]) (./Chapter9/chap9.tex [9]
-</Users/eric/Downloads/InformationFlow.drawio.png, id=208, 603.25375pt x 573.14
-125pt>
-File: /Users/eric/Downloads/InformationFlow.drawio.png Graphic file (type png)
-<use /Users/eric/Downloads/InformationFlow.drawio.png>
-Package pdftex.def Info: /Users/eric/Downloads/InformationFlow.drawio.png  used
- on input line 46.
-(pdftex.def)             Requested size: 301.62613pt x 286.56992pt.
+</Users/eric/Downloads/InformationFlow.drawio-3.png, id=218, 723.70375pt x 593.
+21625pt>
+File: /Users/eric/Downloads/InformationFlow.drawio-3.png Graphic file (type png
+)
+<use /Users/eric/Downloads/InformationFlow.drawio-3.png>
+Package pdftex.def Info: /Users/eric/Downloads/InformationFlow.drawio-3.png  us
+ed on input line 49.
+(pdftex.def)             Requested size: 506.58917pt x 415.24854pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 51.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (51.34506pt too wide) in paragraph at lines 49--51
+ [] 
+ []
+
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 60.
+
+[10 </Users/eric/Downloads/InformationFlow.drawio-3.png>]
+</Users/eric/Downloads/bluetooth_le_stack.png, id=231, 493.845pt x 412.54124pt>
+
+File: /Users/eric/Downloads/bluetooth_le_stack.png Graphic file (type png)
+<use /Users/eric/Downloads/bluetooth_le_stack.png>
+Package pdftex.def Info: /Users/eric/Downloads/bluetooth_le_stack.png  used on 
+input line 74.
+(pdftex.def)             Requested size: 444.45638pt x 371.28369pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 76.
+See the caption package documentation for explanation.
+
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 76.
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+[][][]|[]\T1/cmr/m/n/10.95 BLE pro-to-col stack (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-
+ []
+
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 91.
+
+[12 </Users/eric/Downloads/bluetooth_le_stack.png>]
+</Users/eric/Downloads/ble_att_representation.png, id=250, 534.49687pt x 78.292
+5pt>
+File: /Users/eric/Downloads/ble_att_representation.png Graphic file (type png)
+<use /Users/eric/Downloads/ble_att_representation.png>
+Package pdftex.def Info: /Users/eric/Downloads/ble_att_representation.png  used
+ on input line 99.
+(pdftex.def)             Requested size: 481.04274pt x 70.46259pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 101.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (25.79863pt too wide) in paragraph at lines 99--101
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[][][]|[]\T1/cmr/m/n/10.95 Attribute Struc-ture (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-
+ []
+
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 109.
+
+[13 </Users/eric/Downloads/ble_att_representation.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
 )
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
@@ -1589,7 +1696,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 37.
 
-[10 </Users/eric/Downloads/InformationFlow.drawio.png>]) (./thesis.bbl)
+[14]) (./thesis.bbl)
 pdfTeX warning (ext4): destination with the same identifier (name{page.VI}) has
  been already used, duplicate ignored
 <to be read again> 
@@ -1608,15 +1715,16 @@ L3 programming layer <2024-02-20>
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  )
-(\end occurred inside a group at level 1)
+(\end occurred inside a group at level 2)
 
+### simple group (level 2) entered at line 70 ({)
 ### simple group (level 1) entered at line 11 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 28659 strings out of 474116
- 565889 string characters out of 5743682
+ 28728 strings out of 474116
+ 567547 string characters out of 5743682
  1942187 words of memory out of 5000000
- 50458 multiletter control sequences out of 15000+600000
+ 50492 multiletter control sequences out of 15000+600000
  582908 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,20n,107p,10922b,1041s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1656,10 +1764,10 @@ f-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2024/texmf-dist
 /fonts/type1/public/cm-super/sfxc1440.pfb>
-Output written on thesis.pdf (20 pages, 1171324 bytes).
+Output written on thesis.pdf (24 pages, 1205339 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
- 337 compressed objects within 4 object streams
- 70 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 484 PDF objects out of 1000 (max. 8388607)
+ 403 compressed objects within 5 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 263 words of extra memory for PDF output out of 10000 (max. 10000000)
 
