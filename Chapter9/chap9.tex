@@ -1,10 +1,11 @@
 
-\section{Implementation} 
+\section{Realization} 
 {\large
 	The first part of this chapter provides an overview of the information flow between each entity, and the tasks of the given entitys. Aswell as an close look into the implementation of the functional requirements, by analysing code snippets, aswell as explaining the usage of the final product. While the second part will explain every necessity to assemble all parts together for a working product.  
 	
 }
 \subsection{Definiton of Entitys} \label{entityDef}
+{\large  As shown in table \ref{tab:entitysDefinition} each entity has its scope of dutys, making the final code more modular and consequently maintainable.}
 \begin{table*}[!htpb]
 	\begin{center}
 		\caption{Entiys area of responsibility}
@@ -36,6 +37,7 @@
 			\end{tabular}
 		\end{center}
 	\end{table*}
+	\newpage
 {\large
 	
 
@@ -111,12 +113,31 @@ This section offers a comprehensive explanation of the Bluetooth Low Energy, she
 	As mentioned in the last paragraph, the HCI is the interface between the host and the controller. However, analogous to the host side, the data received from the controller is extracted and forwarded to the host.
 	
 	\paragraph{Controller Layer}\mbox{}\\
+	Includes the Bluetooth Le PHY, LL, and controller-side HCI
 	
 	\paragraph{Link Layer (LL)}\mbox{}\\
 	The LL functions similarly to the medium access control (MAC) layer in the OSI model. In Bluetooth, it directly interacts with the Bluetooth LE PHY and controls the radio’s link state, determining whether a device operates as a Central, Peripheral, Advertiser, or Scanner.
 	
 	\paragraph{Bluetooth LE PHY}\mbox{}\\
-	 
-	
+	 The physical layer (BLE PHY) is a 1 Mbps GFSK-based radio with adaptive frequency hopping, operating in the unlicensed 2.4 GHz ISM (industrial, scientific, and medical) band.
+}	
+\subsubsection{Implementation}
+\paragraph{Dependency versions and Library}\mbox{}\\
+{\large Before delving into the implementation, it is essential to note that a library provided by Nordic Semiconductor was employed in the development process.\footnote{\url{https://github.com/NordicSemiconductor/Android-BLE-Library}} The utilized dependency version are shown in the figure below:
+	\begin{center}
+	\includegraphics[scale = 0.90]{/Users/eric/Downloads/NordicSemiconLibVersions.png}
+	\label{fig:NoSemiVersions}
+	\captionof{figure}{Library Versions}
+	\end{center} 
+
+\paragraph{Scanning devices}\mbox{}\\
+First of all we are exploring the \textit{scanning functionality}, to register nearby devices.
+
+\begin{center}
+	\includegraphics[scale = 0.90]{/Users/eric/Downloads/ScanningCodeSnippet.png}
+	\label{fig:ScanningCodeSnipet}
+	\captionof{figure}{Scanning functionality code }
+\end{center} 
 
 
+}

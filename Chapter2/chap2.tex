@@ -86,15 +86,16 @@
 	 A layered archtitecture like the Android OS, ensures modularity, maintainability and security. Each layer is designed with a specific responsibility, and communicates primarly with adjacent layers. Applications interact with the Framework layer via the Android SDK (bridge between Application Layer and Framework Layer ), which provides access to core system services. The Framework, in turn, relies on the Native Libraries and Runtime layers for functionalities like graphics rendering, media playback, and app execution. Hardware communication is abstracted through the Hardware Abstraction Layer (HAL), which interfaces with the Linux Kernel. This structured separation of concerns enhances the system's flexibility, allowing independent evolution and optimization of each layer.
 	
 	\begin{center}
-		\includegraphics[scale = 0.2]{/Users/eric/Downloads/android-stack_2x.png}
+		\includegraphics[scale = 0.3]{/Users/eric/Downloads/android-stack_2x.png}
 		\captionof{figure}{Android Platform architecture}
 		\label{fig:androidOverview} 
 	\end{center}
 }
 	\subsubsection{Java Framework API (Framework Layer)}
 	{\large 
+			\paragraph{Description} \mbox{}\\
 			As already mentioned in \ref{sec:architecture}, the Android Java Framework API is a collection of libraries and tools provided by Android to simplify the development of mobile applications. Built on top of Java, it enables developers to create apps with pre-built components, utilities, and services that interact with the Android operating system. The framework abstracts the complexity of low-level operations and provides high-level APIs for features such as UI design, data storage, networking, and hardware access. 
-			
+			\paragraph{Project example}\mbox{}\\
 			To provide an impression, Figure 2 shows a code excerpt in which the Java API was implicitly used by androidx.  To keep this chapter manageable, it can be simplified  said that androidx is a superset of the Java API Framework.
 			
 			\begin{center}
@@ -113,7 +114,7 @@
 
 
 
-%-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
