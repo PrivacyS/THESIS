@@ -55,15 +55,84 @@
 	
 	As already stated in \ref{entityDef} the BLEViewModel entity, serves as an interface between controller and app. Therfore every entity that needs to evaluate recorded data, is dependent on this Instance. Two of the entities listed in \ref{entityDef} are affected. To be more precise, it is the StoreWrapper that makes the data drawable (1) and forwards the data to the GraphECGWidget (4).
 	The BPM instance that calculates the beat frequency (2), (which is  then displayed by the GraphECGWidget (5)).
-	Informationflow (6), in contrast to (5), is bidirectional. This is necessary because  the recorded data needs to be read, by the StorageHandler from a local file (7), before being sent to the Storewrapper (6). After the data has been mapped by the Storewrapper, it is sent back to the VitalMonitorWidget (6).
+	When comparing Informationflow (4) and (6) both seem very similiar, because both widgets obtain drawable data. However the Informationflow of (6) is bidirectional.  This is necessary because  the recorded data needs to be read, by the StorageHandler from a local file (7), before being sent to the Storewrapper (6). While in (4) the Storewrapper receives data directly from the ECG. After the data has been mapped by the Storewrapper, it is sent back to the VitalMonitorWidget (6).
 	MainView integrates both the GraphECGWidget (8) and the VitalMonitorWidget (9) as components and manages their visibility.
 	However, the range of tasks of the BLEViewModel is not limited to exchanging data, but also extends to scanning and connecting with other devices in the vicinity, as well as integrating and managing a 24-hour ECG recording. These functionalities are utilized by the MainView and the MainActivity. As already mentioned in table \ref{tab:entitysDefinition}, MainView serves solely to construct components of functionalities that are later utilized by MainActivity, such as buttons enabling users to start a 24-hour ECG recording (10). The MainActivity entity acts as a bridge between the microcontroller and the user, allowing device scanning, initiating recordings, establishing connections, and displaying ECG information (11).
+	
+\paragraph{Information Flow and Responsibilities of BLEViewModel}
+
+\begin{itemize}
+	\item \textbf{BLEViewModel as an Interface}  
+	\begin{itemize}
+		\item Acts as an interface between the controller and the app (\ref{entityDef}).  
+		\item Any entity that evaluates recorded data depends on this instance.  
+	\end{itemize}
+	
+	\item \textbf{Entities Dependent on BLEViewModel}  
+	\begin{itemize}
+		\item \textbf{StoreWrapper}  
+		\begin{itemize}
+			\item Makes the data drawable (1).  
+			\item Forwards the data to the \textbf{GraphECGWidget} (4).  
+		\end{itemize}
+		\item \textbf{BPM Instance}  
+		\begin{itemize}
+			\item Calculates the beat frequency (2).  
+			\item The result is displayed by the \textbf{GraphECGWidget} (5).  
+		\end{itemize}
+	\end{itemize}
+	
+	\item \textbf{Comparison of Information Flows (4) and (6)}  
+	\begin{itemize}
+		\item Both provide drawable data to widgets.  
+		\item \textbf{Difference}:  
+		\begin{itemize}
+			\item \textbf{(4) One-way flow} $\rightarrow$ StoreWrapper receives data directly from the ECG.  
+			\item \textbf{(6) Bidirectional flow} $\rightarrow$ Required for reading recorded data from a local file (7) using the \textbf{StorageHandler} before sending it to the StoreWrapper.  
+		\end{itemize}
+		\item Once mapped by the StoreWrapper, the data is sent back to the \textbf{VitalMonitorWidget} (6).  
+	\end{itemize}
+	
+	\item \textbf{MainView Responsibilities}  
+	\begin{itemize}
+		\item Integrates \textbf{GraphECGWidget} (8) and \textbf{VitalMonitorWidget} (9).  
+		\item Manages the visibility of these components.  
+	\end{itemize}
+	
+	\item \textbf{Extended BLEViewModel Responsibilities}  
+	\begin{itemize}
+		\item Beyond data exchange, BLEViewModel also:  
+		\begin{itemize}
+			\item Scans and connects to other nearby devices.  
+			\item Integrates and manages 24-hour ECG recordings.  
+		\end{itemize}
+		\item These functionalities are used by \textbf{MainView} and \textbf{MainActivity}.  
+	\end{itemize}
+	
+	\item \textbf{MainView vs. MainActivity}  
+	\begin{itemize}
+		\item \textbf{MainView}  
+		\begin{itemize}
+			\item Constructs components and functionalities for \textbf{MainActivity}.  
+			\item Provides UI elements, such as buttons for starting a 24-hour ECG recording (10).  
+		\end{itemize}
+		\item \textbf{MainActivity}  
+		\begin{itemize}
+			\item Acts as a bridge between the \textbf{microcontroller} and the \textbf{user}.  
+			\item Handles device scanning, recording initiation, connection establishment, and ECG data display (11).  
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+	
 }
-\paragraph{(Usage and) Logic}\mbox{}\\
-{\large  The following subsections explore the logical implementation and functionality of individual entities, using code snippets and application screenshots for illustration. Each subsection is divided into a section covering the implementation and another focusing on the application's usage, with both sections referring to corresponding screenshots. Framework specific code fragments will be explaing in the course of relevant section. }
+
+
 
 \subsection{BLEViewModel }
 {\large 
+ The following subsections explore the logical implementation and functionality of individual entities, using code snippets and application screenshots for illustration. Each subsection is divided into a section covering the implementation and another focusing on the application's usage, with both sections referring to corresponding screenshots. Framework specific code fragments will be explaing in the course of relevant section.	
+
 Before presenting the implementation of the BLE component, it is essential to establish a fundamental theoretical understanding of BLE.
 This section offers a comprehensive explanation of the Bluetooth Low Energy, shedding light on its core principles, while exploring the architecture of the BLE stack. 
 }
@@ -132,12 +201,40 @@ This section offers a comprehensive explanation of the Bluetooth Low Energy, she
 
 \paragraph{Scanning devices}\mbox{}\\
 First of all we are exploring the \textit{scanning functionality}, to register nearby devices.
+The following code snippet demonstrates the implementation of a BLE scanning method using Jetpack Compose. The \textit{startScan} function initializes the scanning process by setting the \textit{scanState} to \textit{SCANNING} and resetting the list of discovered BLE devices. The scanning operation is performed using \textit{BleScanner}, with results processed by \textit{BleScanResultAggregator}. The detected devices are filtered to include only those with the name \textit{"THI-EKG"} and stored in a MutableState. The scan runs asynchronously within the viewModelScope, and after a delay of 2000 milliseconds, it is terminated by canceling \textit{scanJob} and updating the \textit{scanState} to \textit{DONE}.
+The snippet also contains two annotations above the function definition, which dont add any functionality.
+Nevertheless, a brief explanation follows to avoid confusion and ensure clarification:
 
-\begin{center}
-	\includegraphics[scale = 0.90]{/Users/eric/Downloads/ScanningCodeSnippet.png}
+
+\textbf{\underline{@RequiresApi(Build.VERSION\textunderscore CODES.UPSIDE\textunderscore DOWN\textunderscore CAKE)}}\\  
+This annotation ensures that the \textit{startScan} function is only executed on devices running Android API level \textbf{34 (Android 14, Upside Down Cake)} or higher. If the function is called on a lower API level, the compiler will issue a warning, and runtime execution may fail.  
+
+ \textbf{\underline{@SuppressLint("MissingPermission")  }}\\
+This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code.
+
+
+\begin{figure}[H]
+	\centering
+	\makebox[0pt]{%
+	\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/ScanningCodeSnippet.png}}
 	\label{fig:ScanningCodeSnipet}
 	\captionof{figure}{Scanning functionality code }
-\end{center} 
+\end{figure} 
+
+
 
 
 }
+\paragraph{Refreshing }
+{\large
+\begin{figure}[b]
+	\centering
+	\makebox[0pt]{%
+		\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/RefreshingBLE.png}}
+	\label{fig:RefreshingCodeSnipet}
+	\captionof{figure}{Refresh functionality code }
+	\end{figure}
+ }
+
+
+

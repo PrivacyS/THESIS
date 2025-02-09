@@ -21,29 +21,32 @@
 \contentsline {paragraph}{\nonumberline Description}{6}{paragraph*.20}%
 \contentsline {paragraph}{\nonumberline Project example}{6}{paragraph*.22}%
 \contentsline {section}{\numberline {3}Functional Requirements}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Drawing ECG-Data in realtime}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}24-Hour recording}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Connection via Bluetooth Low Energy}{9}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Realization}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Definiton of Entitys}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {3.1}ECG-Data}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Drawing ECG-Data in realtime}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Calculating current BPM}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}24-Hour recording}{9}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Connection via Bluetooth Low Energy}{9}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Realization}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Definiton of Entitys}{10}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Inter-Entity Communication Overview}{11}{subsection.4.2}%
-\contentsline {paragraph}{\nonumberline (Usage and) Logic}{12}{paragraph*.25}%
-\contentsline {subsection}{\numberline {4.3}BLEViewModel}{12}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}BLE Stack}{12}{subsubsection.4.3.1}%
-\contentsline {paragraph}{\nonumberline Application Layer}{13}{paragraph*.27}%
-\contentsline {paragraph}{\nonumberline Host Layer}{13}{paragraph*.29}%
-\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{13}{paragraph*.31}%
-\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{14}{paragraph*.33}%
-\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{14}{paragraph*.35}%
-\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{14}{paragraph*.37}%
-\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{14}{paragraph*.39}%
-\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{15}{paragraph*.41}%
-\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{15}{paragraph*.43}%
-\contentsline {paragraph}{\nonumberline Controller Layer}{15}{paragraph*.45}%
-\contentsline {paragraph}{\nonumberline Link Layer (LL)}{15}{paragraph*.47}%
-\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{15}{paragraph*.49}%
-\contentsline {subsubsection}{\numberline {4.3.2}Implementation}{15}{subsubsection.4.3.2}%
-\contentsline {paragraph}{\nonumberline Dependency versions and Library}{15}{paragraph*.51}%
-\contentsline {paragraph}{\nonumberline Scanning devices}{16}{paragraph*.53}%
-\contentsline {section}{\nonumberline Literature references}{VI}{section*.55}%
+\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{12}{paragraph*.25}%
+\contentsline {subsection}{\numberline {4.3}BLEViewModel}{13}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}BLE Stack}{14}{subsubsection.4.3.1}%
+\contentsline {paragraph}{\nonumberline Application Layer}{15}{paragraph*.27}%
+\contentsline {paragraph}{\nonumberline Host Layer}{15}{paragraph*.29}%
+\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{15}{paragraph*.31}%
+\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{15}{paragraph*.33}%
+\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{15}{paragraph*.35}%
+\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{15}{paragraph*.37}%
+\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{16}{paragraph*.39}%
+\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{16}{paragraph*.41}%
+\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{16}{paragraph*.43}%
+\contentsline {paragraph}{\nonumberline Controller Layer}{16}{paragraph*.45}%
+\contentsline {paragraph}{\nonumberline Link Layer (LL)}{16}{paragraph*.47}%
+\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{16}{paragraph*.49}%
+\contentsline {subsubsection}{\numberline {4.3.2}Implementation}{17}{subsubsection.4.3.2}%
+\contentsline {paragraph}{\nonumberline Dependency versions and Library}{17}{paragraph*.51}%
+\contentsline {paragraph}{\nonumberline Scanning devices}{17}{paragraph*.53}%
+\contentsline {paragraph}{\nonumberline Refreshing}{18}{figure.caption.57}%
+\contentsline {section}{\nonumberline Literature references}{VI}{section*.59}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
