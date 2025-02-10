@@ -11,8 +11,27 @@
 {\large
 The application receives integer values from the microcontroller, which represent the heartbeat of the person connected to the hardware. These values must be mapped onto the screen to provide a clear and accurate visualization of the heart’s activity.
 A key challenge in this process is ensuring that the visualization adapts to different screen sizes. Since the application may run on devices with varying display dimensions and resolutions, a static mapping approach is insufficient. Instead, a dynamic and scalable algorithm is required to transform the received data into a graphical representation that maintains consistent proportions and readability across all screen sizes.
-To achieve this, the application must implement a flexible coordinate transformation. The incoming data points need to be scaled appropriately based on the available screen width and height while maintaining the correct aspect ratio of the graph. Additionally, the algorithm should support real-time updates to provide an accurate and responsive user experience.
-By designing a generic visualization algorithm, the application ensures compatibility with a wide range of devices.
+To achieve this, the application must implement a flexible coordinate transformation. The incoming data points need to be scaled appropriately based on the available screen width and height while maintaining the correct aspect ratio of the graph. Additionally, the algorithm should support real-time updates to provide an accurate and responsive user experience. The transformation of raw data points must be performed quickly, otherwise, there is a risk of data loss.
+Therefore many parameters are need to be considerd when transforming the data. \mbox{}\\
+\underline{\textbf{Parameters}}\mbox{}\\
+\begin{itemize}
+	\item Screen dimensions (height, width)
+	\item Current min and max value in buffer
+	\item Buffer capacity
+	\item  $\Delta v \quad ,where \; \Delta v =  \max - \min$ (range of values in current Buffer)
+	\item coefficient = $\dfrac{\text{height} - 2 \times \text{shiftH} }{\Delta v}$ (maps raw values to screen height, with margin of shiftH pixels at the top and bottom)
+	\item step = $\frac{width}{bufferCap.}$(Determines horizontal space for each data point)
+\end{itemize}
+\mbox{}\\
+After calculating these paremeters, each of the current values in the buffer will by multiplied by the Scaling coefficient ($\dfrac{\text{height} - 2 \times \text{shiftH} }{\Delta v}$). 
+\mbox{}\\
+Resulting in the follwing Complexity Anylysis: 
+\begin{itemize}
+	\item Data Conversion: O(n) (for n data points)
+	\item Scaling \& Mapping: O(n) for n data points)
+	\item Overall Complexity: O(n) linear (for n data points)
+\end{itemize}
+The resulting linear Complexity of O(n) makes the algorithm efficient for real-time processing. 
 
 
 }
@@ -65,7 +84,7 @@ By designing a generic visualization algorithm, the application ensures compatib
 
 \subsection{Calculating current BPM}
 {\large
-akjfhasdljkfhasdjlkhfajlskhfjklsadhfjklsdjfksa}
+}
 
 
 \subsection{24-Hour recording}

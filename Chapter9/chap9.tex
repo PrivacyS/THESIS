@@ -210,7 +210,7 @@ Nevertheless, a brief explanation follows to avoid confusion and ensure clarific
 This annotation ensures that the \textit{startScan} function is only executed on devices running Android API level \textbf{34 (Android 14, Upside Down Cake)} or higher. If the function is called on a lower API level, the compiler will issue a warning, and runtime execution may fail.  
 
  \textbf{\underline{@SuppressLint("MissingPermission")  }}\\
-This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code.
+This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code. Thus the permissions are check in the Main Acitivity entitiy, this warning can be ignored, and will appear more often. 
 
 
 \begin{figure}[H]
