@@ -19,11 +19,16 @@ Therefore many parameters are need to be considerd when transforming the data. \
 	\item Current min and max value in buffer
 	\item Buffer capacity
 	\item  $\Delta v \quad ,where \; \Delta v =  \max - \min$ (range of values in current Buffer)
+	\\
 	\item coefficient = $\dfrac{\text{height} - 2 \times \text{shiftH} }{\Delta v}$ (maps raw values to screen height, with margin of shiftH pixels at the top and bottom)
+	\\
 	\item step = $\frac{width}{bufferCap.}$(Determines horizontal space for each data point)
 \end{itemize}
 \mbox{}\\
-After calculating these paremeters, each of the current values in the buffer will by multiplied by the Scaling coefficient ($\dfrac{\text{height} - 2 \times \text{shiftH} }{\Delta v}$). 
+After calculating these paremeters, each of the current values in the buffer will by\mbox{}\\
+\\
+ multiplied by the Scaling coefficient ($\dfrac{\text{height} - 2 \times \text{shiftH} }{\Delta v}$). 
+\\
 \mbox{}\\
 Resulting in the follwing Complexity Anylysis: 
 \begin{itemize}
@@ -37,19 +42,19 @@ The resulting linear Complexity of O(n) makes the algorithm efficient for real-t
 }
 \subsection{Drawing ECG-Data in realtime}
 {\large
-	To realize a realtime display of someones hearthrate, it is helpful to split this rather complex functionality into multiple concerns:
+	 Processing real-time electrocardiographic (ECG) data presents multiple challenges that must be addressed to ensure accurate and efficient visualization. It is helpful to split this rather complex functionality into multiple concerns:
 	\begin{itemize}
 		\item The sample rate of the microcontroller (1)
-		\item Consume and process incoming data at once (2)
-		\item Datahandling and Drawing must happen in parallel (3)
+		\item Consume and process incoming data simultaneously (2)
+		\item Datahandling and Drawing in parallel (3)
 	\end{itemize}
-	After gaining a concicse overview over the issues, its now import to view and solve every issue isolated and subsequently combine each solved problem with the other. It is important to mention that some issues may create restrictions for other issues. Therefore, it is essential to implement one task at a time and connect them all afterward.
+	These issues must be viewed and solved isolated, and subsequently combine each solved problem with the other. It is important to mention that some issues may create restrictions for other issues. Therefore, it is essential to implement one task at a time and connect them all afterward.
 	
-	We now look at our problems in a rather theoretically way, to facilitate the implementation in the end. 
+	
 	
 	{\textbf{\underline{(1) Handle The Sample rate of the microcontroller}}
 	
-	The microcontroller sends 10 datapieces every 8 milliseconds (1000ms = 1s). \\
+	The microcontroller sends 10 samples every 8 milliseconds (1000ms = 1s). \\
 	\\
 	$\dfrac{1000}{8}$ = $\dfrac{125}{1}$   $\widehat{=}$   $125 Hz$ \\
 	\\
@@ -61,9 +66,9 @@ The resulting linear Complexity of O(n) makes the algorithm efficient for real-t
 	
 	\textbf{\underline{(2)Consume and process incoming data at the same time}}\\
 	\\
-	To consume and process data at the same time, we split up processing and consuming into two indepent tasks by assigning each task to its own thread, making it possible to operate in paralell.
+	To consume and process data at the same time,  spliting up processing and consuming into two indepent tasks by assigning each task to its own thread, is necessary. Making it possible to operate in paralell.
 	
-	Since both threads  have to access the same ressource at the same time, we have to make use of mutual exclusion. The concept of mutual exclusion will be explained in the later course of this thesis.
+	Since both threads  have to access the same ressource at the same time, we have to make use of mutual exclusion. 
 	
 	
 	
@@ -71,25 +76,23 @@ The resulting linear Complexity of O(n) makes the algorithm efficient for real-t
 	\hfil \break
  	\textbf{\underline{(3)Datahandling and drawing in parallel }}\\
  	\\
- 	Thus the drawing entity has to countiously read data, and the datahandler entity receives a continous data stream, one has to think of a fitting datastructure. 
- 	The data structure must be able to constantly record new data and retain a certain amount of old data. So that a screen-width drawing can be displayed continuously. In addition, it is important that the data structure is not to large, which would lead to visible latencies. 
+ 	Thus the drawing entity has to countiously read data, and the datahandler entity receives a continous data stream.
+ 	The suitable data structure must be able to constantly record new data and retain a certain amount of old data. So that a screen-width drawing can be displayed continuously. In addition, it is important that the data structure is not to large, which would lead to visible latencies. 
  	
  	This led to the Ringbuffer beeing the datastructure of choice.
- 	Ringbuffers are often used when having to process datastreams. Thus the old data gets overwritten by new data, the ringbuffer has a fixed size. Therefore, there is no need to worry about the data structure consuming too much memory.
+ 	Ringbuffers are often used when having to process datastreams. The ringbuffer has a fixed size, thus old data gets overwritten. Therefore, there is no need to worry about the data structure consuming too much memory.
  	
 	
 	
 	
 }
 
-\subsection{Calculating current BPM}
-{\large
-}
+
 
 
 \subsection{24-Hour recording}
 
-The functional requirements of the 24-Hour recording are shown in the list below. All of the listed requirements will be explainend in detail at the Implementation chapter.
+The functional requirements of the 24-Hour recording are shown in the list below. All of the listed requirements will be explainend in detail in chapter \ref{sec:realization}.
 	\begin{itemize}
 		\item Recording mode
 		\item Filechooser conzept, to choose multiple files
@@ -103,14 +106,14 @@ The functional requirements of the 24-Hour recording are shown in the list below
 
 \subsection{Connection via Bluetooth Low Energy }
 {\large
-	The application is required to establish and maintain a reliable Bluetooth Low Energy (BLE) connection with the hardware. A stable connection is essential for continous datatransfer aswell as the 24-Hour recording Mode.  
-	The BLE entity must be able of the following items:
+	The application is required to establish and maintain a reliable Bluetooth Low Energy (BLE) connection with the hardware. A stable connection is essential for continous datatransfer aswell as for the 24-Hour recording Mode.  
+	The BLE entity must be capable of the following items:
 		\begin{itemize}
 		\item Continous datastream
 		\item Communicate with the application
-		\item Sharing current the current mode (realtime, or recording)
+		\item Share current the current mode (realtime, or recording)
 		\item Scan for near devices
-		\item reassamble packages that are to large
+		\item split \& reassamble to large datasets 
 	\end{itemize}
 	
 	

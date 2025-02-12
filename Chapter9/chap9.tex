@@ -1,8 +1,34 @@
 
-\section{Realization} 
+\section{Realization}\label{sec:realization}
 {\large
 	The first part of this chapter provides an overview of the information flow between each entity, and the tasks of the given entitys. Aswell as an close look into the implementation of the functional requirements, by analysing code snippets, aswell as explaining the usage of the final product. While the second part will explain every necessity to assemble all parts together for a working product.  
 	
+}
+\subsection{Selected Technologies}
+{\large
+	"The nature of the application and the required functionality of a software system should influence the choice of methods and tools used during development". \cite{clarke}
+	This ensures that the development process is both efficient and tailored to meet the unique demands of the system. Moreover, aligning tools and methods with the application's requirements can help streamline workflows and reduce potential complexities during implementation. Consequently choosing the right programming language, aswell as IDE is essential to enable efficient development.
+	
+	
+}
+
+\subsubsection{Programming Language and Framework}
+{\large
+	When searching for a suitable programming language to program Android apps, names like Java/Kotlin and Dart often appear. Both languages offer great frameworks, such as Flutter for Dart or Jetpack Compose for Kotlin. One aswell as the other are highly effective because they eliminate the limitations of XML-based UI development, enabling a more streamlined, declarative approach that combines UI and logic in a single language. Thus reduces boilerplate code, and enhances performance aswell as developer productivity. The main differnce between both frameworks lies in ressource manegement. For example Flutter is superior in cpu usage, but Jetpack Compose consumes less memory.\cite{fwComparison} "But since both have their respective advantages and
+	disadvantages, it is impossible to say that one is superior to the other. The choice between Jetpack Compose and Flutter depends on the needs and preferences of the developer. If developers are more familiar with the Kotlin language and want to use new technologies, then Jetpack Compose might be a better choice." \cite{fwComparison} With prior practical experience in Java/Kotlin, Jetpack Compose was chosen as the framework for this work. 
+	
+}
+
+
+
+
+\subsubsection{Development Enviroment}
+{\large 
+	Integrated development Enviroments play a fundamental role in todays application development, providing developer with tools mandatory to debug, refactor and write code.
+	Making programming more efficient and delightful for programmers. When developing Android Apps with state of the art frameworks like Jetpack Compose, Android Studio stands out as the most suitable option as both Jetpack compose and Android Studio are created by Google. Android Studio is the official IDE for Android Development. With IntelliJ as base it inherits powerful code editor and developer tools, combined with Android specific features. Such as Live Edit (updates running app when code is changed) aswell as Interactive Preview which allows to test functionallity between so called Compose components (Compose will be explained in the later course of this work)\footnote{\url{https://developer.android.com/studio/intro}}, et cetera. 
+	
+	The version of Android Studio used for this thesis is \textbf{Ladybug | 2024.2.1}. Which is the latest version as this was written (13.12.2024).\footnote{\url{https://developer.android.com/studio/releases}}
+	Downloading the right version can be crucial for problem-free debuging. As some versions lead to bugs, causing the screen to freeze.\footnote{\url{https://stackoverflow.com/questions/78125635/processing-classes-for-emulated-method-breakpoints-this-popup-comes-and-loadin}}
 }
 \subsection{Definiton of Entitys} \label{entityDef}
 {\large  As shown in table \ref{tab:entitysDefinition} each entity has its scope of dutys, making the final code more modular and consequently maintainable.}
@@ -200,9 +226,8 @@ This section offers a comprehensive explanation of the Bluetooth Low Energy, she
 	\end{center} 
 
 \paragraph{Scanning devices}\mbox{}\\
-First of all we are exploring the \textit{scanning functionality}, to register nearby devices.
-The following code snippet demonstrates the implementation of a BLE scanning method using Jetpack Compose. The \textit{startScan} function initializes the scanning process by setting the \textit{scanState} to \textit{SCANNING} and resetting the list of discovered BLE devices. The scanning operation is performed using \textit{BleScanner}, with results processed by \textit{BleScanResultAggregator}. The detected devices are filtered to include only those with the name \textit{"THI-EKG"} and stored in a MutableState. The scan runs asynchronously within the viewModelScope, and after a delay of 2000 milliseconds, it is terminated by canceling \textit{scanJob} and updating the \textit{scanState} to \textit{DONE}.
-The snippet also contains two annotations above the function definition, which dont add any functionality.
+The following code snippet demonstrates the implementation of a BLE scanning method used to detect nearby devices. The \textit{startScan} function initializes the scanning process by setting the \textit{scanState} to \textit{SCANNING} and resetting the list of discovered BLE devices. The scanning operation is performed using \textit{BleScanner}, with results processed by \textit{BleScanResultAggregator}. The detected devices are filtered to include only those with the name \textit{"THI-EKG"} and stored in a MutableState. The scan runs asynchronously within the viewModelScope, and after a delay of 2000 milliseconds, it is terminated by canceling \textit{scanJob} and updating the \textit{scanState} to \textit{DONE}.
+The snippet also contains two annotations above the function definition, which dont add any functionality, but provide robustnes and readability to the code.
 Nevertheless, a brief explanation follows to avoid confusion and ensure clarification:
 
 
@@ -211,7 +236,7 @@ This annotation ensures that the \textit{startScan} function is only executed on
 
  \textbf{\underline{@SuppressLint("MissingPermission")  }}\\
 This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code. Thus the permissions are check in the Main Acitivity entitiy, this warning can be ignored, and will appear more often. 
-
+\mbox{}\\
 
 \begin{figure}[H]
 	\centering
@@ -225,16 +250,234 @@ This suppresses lint warnings related to missing Bluetooth permissions (such as 
 
 
 }
-\paragraph{Refreshing }
+\paragraph{Refreshing }\mbox{}\\
 {\large
-\begin{figure}[b]
+	Before initiating the BLE scan, the function checks for two critical permissions:
+	\begin{itemize}
+		\item BLUETOOTH\textunderscore SCAN: This permission is required to scan for nearby BLE devices.
+		\item BLUETOOHTH\textunderscore CONNECT: This permission is necessary to establish a connection with discovered BLE devices.
+	\end{itemize}
+	
+	The function uses ActivityCompat.checkSelfPermission to verify whether these permissions have been granted by the user. This step is crucial for ensuring that the application complies with Android's permission model, which mandates explicit user consent for accessing sensitive device features.
+	Conditional Execution:
+	If both permissions (BLUETOOTH\textunderscore SCAN and BLUETOOTH\textunderscore CONNECT) are granted, the function proceeds to call startScan(context).
+	If the permissions are not granted, the function includes a TODO comment, indicating that additional logic is required to handle this scenario. Typically, this would involve prompting the user to grant the necessary permissions through a permission request dialog.
+
+\begin{figure}[H]
 	\centering
 	\makebox[0pt]{%
 		\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/RefreshingBLE.png}}
 	\label{fig:RefreshingCodeSnipet}
 	\captionof{figure}{Refresh functionality code }
-	\end{figure}
+\end{figure}
  }
+\paragraph{Connect}\mbox{}\\
+{\large 
+	The provided BLE implementation is responsible for establishing a connection with a BLE-enabled device, receiving real-time data from specific BLE characteristics, and processing the incoming data to extract and analyze electrocardiographic (ECG) information. The functionality can be divided into the following key components:
+	
+	\underline{\textbf{1. BLE Connection Setup (Line 143-149)}}\mbox{}\\
+	The function connect initializes the connection with a given BLE device. Using ClientBLEGatt.connect, a GATT connection is established, and the discovered services and characteristics are retrieved. The relevant characteristics include:
+	
+	\textit{signalCharacteristic:} Used for receiving real-time electrocardiographic data.\mbox{}\\
+	\textit{appCommunicationCharacteristic:} Used for bidirectional communication with the BLE device.
+	The obtained appCommunicationCharacteristic is stored in the BLEViewModel for further use.
+	
+	\underline{\textbf{2. Receiving and Processing Data from the Signal Characteristic}}\mbox{}\\
+	The signalCharacteristic, continuously provides data in the form of a ByteArray. Each received data packet undergoes the following procedure:
+	
+	The received byte array is first converted into a list of integers. To enable concurrent processing, the data is then transmitted through a channel (channel.send(values)). A coroutine, executed by receiveData(viewModelScope), retrieves the streamed data from the channel and passes it to StoreWrapper.processDataList(datastream). (Since courotines and channels play a central role in this and other implementations, this chapter is followed by a brief introduction to these Kotlin-specific topics.)  The processed data is also added to the BPM.currList buffer for frequency analysis. Once the buffer exceeds 7500 samples, the QRS peak detection algorithm (Pan-Tompkins) is applied to identify heartbeats. The detected peak count is logged for debugging, and to maintain a sliding window approach, the oldest 750 samples are discarded.
+	\\
+	\underline{\textbf{3. Handling Application-Level BLE Communication}}\mbox{}\\
+	Notifications are also enabled for the appCommunicationCharacteristic, which allows bidirectional communication with the BLE device. Each received notification undergoes:
+	
+	Validation using ResponseChecker.check.
+	Packet reconstruction via PacketReassembler.reassemble.
+	Logging of the received data for debugging purposes.\\
+	\\
+	\textbf{\underline{4. Additional Commands}}\mbox{}\\
+	The implementation also includes:
+	
+	Sending an MTU request (requestMtu(512)) to maximize packet size for efficient data transmission.
+	Checking if the application is in live mode or in 24-Hour mode by calling fetchCurrentMode(). Also feteching all recorded ECG's from the microcontroller ListEKGS().}
+	
+	\underline{\textit{\textbf{ Channels and Coroutines}}}
+	
+	The \textit{channe}l serves as a concurrent data pipeline between the BLE data stream and the processing logic. It ensures that the incoming data from the BLE device is processed in a structured, thread-safe manner without blocking the main execution thread. By leveraging coroutines, the channel allows efficient real-time data handling while preventing performance bottlenecks.\\
+	A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows you to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI.
+\begin{figure}[H]
+	\centering
+	\makebox[0pt]{%
+		\includegraphics[width=0.9\paperwidth, height=1.4\textwidth]{/Users/eric/Downloads/connectBLE.png}}
+	\label{fig:ConnectCodeSnipet}
+	\captionof{figure}{Connect  functionality code }
+\end{figure}
 
 
+\subsection{Storewrapper}\mbox{}\\
+The StoreWrapper class serves as a central component for processing and managing electrocardiographic (ECG) data in real-time. It is responsible for converting raw data received from the BLE signal characteristic into a format suitable for visualization. This transformation ensures that the incoming stream of ECG values can be efficiently rendered within the application’s graphical interface.
+A key feature of the StoreWrapper class is its mapping functionality, which translates raw numerical values into drawable data points. This conversion is essential for accurately representing the ECG signal on-screen. Additionally, the class incorporates a ringbuffer, which provides an mechanism for storing and handling continuous data streams. The ringbuffer ensures that only the most recent samples are retained, enabling a sliding window approach for real-time signal visualization and processing.
 
+\subsubsection{Implementation}
+
+\paragraph{Preparing ECG-Data}\mbox{}\\
+{\large
+Mapping Raw Data to Drawable Data for Dynamic Screen Sizes
+The provided code snippet is responsible for transforming raw electrocardiographic (EKG) data into a format suitable for visualization across different screen sizes. This transformation ensures that the signal is correctly scaled and displayed within the graphical interface, regardless of resolution or aspect ratio. The function achieves this with a time complexity of O(n), making it efficient for real-time applications.
+
+
+The function begins by initializing the shiftH parameter and preparing a mutable list (data) for storing processed values. If an external data source is provided, it is converted from a generic format into a list of Double values. Otherwise, an empty list is created.\mbox{}\\
+\mbox{}\\
+\underline{\textbf{Screen Size and Scaling Factors}}\mbox{}\\
+The width and height of the target display area are extracted from the size parameter. Additionally, the function determines the minimum (minV) and maximum (maxV) values within the buffer to establish the dynamic range of the data. If all values are equal, an artificial spread is introduced to prevent division by zero.\mbox{}\\
+\mbox{}\\
+\underline{\textbf{Normalization and Scaling}}\mbox{}\\
+The difference between maxV and minV (dv) is calculated to determine the range of data values. A step size (step) is then computed based on the available screen width and the buffer capacity, ensuring that data points are evenly distributed across the display. The coeff value is derived to scale the signal to fit within the available height while accounting for a vertical shift (shiftH).\mbox{}\\
+\mbox{}\\
+\underline{\textbf{Data Mapping for Graph Rendering}}\mbox{}\\
+ dataSeriesOverlay(buffer\textunderscore)   A temporary list (dataTemp) holds the normalized data, which is then mapped to a new list (data). The mapping follows the formula:\mbox{}\\
+\mbox{}\\
+$data[i]=(maxV \text{-} dataTemp[i]) \times coeff+shiftH$ \mbox{}\\
+\mbox{}\\
+This equation ensures that the data is flipped and scaled appropriately for graphical representation.
+The function iterates over the dataset in a single pass (O(n) complexity), making it highly efficient for real-time applications. This guarantees smooth and responsive rendering, even with large data sets.
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
+		this.SHIFTH = shiftH
+		var data: MutableList<Double>? = null
+		if( dataFromFile != null ){
+			data = dataFromFile.mapNotNull {
+				(it as? String)?.toDouble()
+			}.toMutableList()
+		}else{
+			data = ArrayList()
+		}
+		val width = size.width.toDouble()
+		val height = size.height.toDouble()
+		var minV = min //lowest value in buffer
+		var maxV = max  //highest value in buffer
+		if (minV == maxV) {
+			minV = minV / 2
+			maxV = maxV + minV / 2
+		}
+		val dv = maxV - minV
+		step = width / buffer_.capacity()
+		val coeff = (height - 2 * shiftH) / dv
+		//passing the wrong buffer to dataSeriesOverlay (not updated)
+		val dataTemp =
+		if (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) else utils_.dataSeriesNormal(
+		this
+		)
+		data = ArrayList(Collections.nCopies(dataTemp.size, 0.0))
+		//return data
+		if (data.isEmpty() || dataTemp.isEmpty()) {
+			return data
+		}
+		for (i in dataTemp.indices) {
+			data[i] = (maxV - dataTemp[i]!!) * coeff + shiftH
+		}
+		return data
+	}
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\makebox[0pt]{%
+		\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/prepareECGData.png}}
+	\label{fig: preparing ECG-Data}
+	\captionof{figure}{Mapping ECG-Data code }
+\end{figure}
+\mbox{}\\
+\mbox{}\\
+\paragraph{Preparing the Drawpath}\mbox{}\\
+{\large 
+	To achieve a smooth and natural representation of the ECG waveform, it is essential to create two separate paths: one for the data points before the current write position in the buffer and one for the data points after. This ensures a seamless transition between old and new data, preventing visual gaps and making the waveform appear continuous, just like a real ECG signal.
+	
+	The function \underline{\textbf{preparePathBefore(data: List<Double>)}} constructs the path for the portion of the data preceding the current write index of the buffer. It determines the correct starting index and iterates through the data points up to the write position, generating a Path object that maps the signal to drawable coordinates.
+	
+	Conversely, the function \underline{\textbf{preparePathAfter(data: List<Double>)}} handles the data following the write index. It ensures that the path continues from the last drawn point, maintaining a smooth flow of the signal. By splitting the waveform into these two sections, the transition between old and new data is visually imperceptible, preserving the real-time appearance of the ECG signal.
+	
+	This approach is crucial for maintaining a continuous and realistic ECG display, as it eliminates abrupt jumps or gaps in the graph, ensuring that the visualization remains fluid and accurately represents the ongoing signal dynamics.}
+\begin{figure}[H]
+	\centering
+	\makebox[0pt]{%
+		\includegraphics[width=0.9\paperwidth, height=1.4\textwidth]{/Users/eric/Downloads/preparePath.png}}
+	\label{fig:preparingPath}
+	\captionof{figure}{prepare paths functionality code }
+\end{figure}
+\subsection{GraphEcgWidget}
+\section{Summary}
+This thesis presents the design and implementation of a frontend application for real-time and long-term monitoring of electrocardiographic (ECG) data, utilizing Bluetooth Low Energy (BLE) communication. The primary objective was to develop an efficient and responsive system capable of handling continuous ECG data streams while ensuring smooth visualization and analysis. Key challenges included managing high-frequency data acquisition, real-time signal processing, and rendering an intuitive graphical representation. By leveraging Kotlin and Jetpack Compose, an optimized architecture was established, incorporating coroutines for concurrent data processing and an adaptive buffer for efficient data storage and retrieval.
+\section{Result}
+{\large
+	The developed system successfully processes and visualizes ECG data in real time. Through the implementation of a ring buffer and sliding window approach, the application maintains a continuous and smooth representation of the ECG signal, preserving critical waveform characteristics. The use of the Pan-Tompkins algorithm allows for reliable QRS peak detection, enhancing the accuracy of heartbeat identification. Additionally, BLE communication was optimized to minimize latency and packet loss, ensuring stable data transmission. The performance evaluation indicates that the system meets the requirements for real-time ECG monitoring, achieving both responsiveness and scalability.}
+
+\section{Outlook}
+Future enhancements could focus on integrating machine learning techniques for advanced arrhythmia detection, further improving the diagnostic capabilities of the application. Additionally, expanding compatibility with multiple BLE-enabled ECG devices could increase the system’s versatility. Implementing cloud synchronization for remote monitoring and historical data analysis would further extend the practical applications of this work. Lastly, optimizing power consumption for mobile usage remains a crucial aspect for improving long-term monitoring solutions.
+\section{Appendix}
+\subsubsection{Versions}
+{\large 
+	This section presents fundamental versions of the required development resources used for this work.
+	
+	The tests for this application during the development process, were done on a phone using the \textbf{Android version 13} which implies the usage of \textbf{API level 33}. Utilizing lower Android version than 12 (API Level 31,32) is not possible due to new runtime permissions added in Android 13, making it impossible to start the app\footnote{\url{https://developer.android.com/develop/connectivity/bluetooth/bt-permissions}}. Higher Android versions were not reviewed. More versions of the used ressources, are presented in table \ref{tab:versionTable}.
+	\begin{table}[h!]
+		\begin{center}
+			\caption{Versions of used resources}
+			\label{tab:versionTable}
+			\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\textbf{Ressource} & \textbf{Version used} \\
+				\hline
+				Android version& 13 \\
+				API Level & 33 \\
+				Koltin compiler extension version & 5.15.1 \\
+				minSDK & 30\\
+			\end{tabular}
+		\end{center}
+	\end{table}
+}
+\subsection{Beispielcode zur Erzeugung eines Quelltext-Generators}\label{sec:a1}
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	@SuppressLint("MissingPermission")
+	fun connect(context: Context, device: ServerDevice) {
+		this.viewModelScope.launch {
+			val connection = ClientBleGatt.connect(context, device, this@BLEViewModel.viewModelScope )
+			this@BLEViewModel.connection.value = connection
+			val services = connection.discoverServices()
+			val bleService = services.findService(UUID.fromString("e28e00e9-b79a-479a-a6f1-21e8f73236e1"))
+			val signalCharacteristic = bleService!!.findCharacteristic(UUID.fromString("23b85b26-e7cb-421c-9731-1b4ca2d2a849"))
+			val appCommuncationCharacteristic = bleService!!.findCharacteristic(UUID.fromString("563a2846-1dc7-11ef-9262-0242ac120002"))
+			this@BLEViewModel.appCommuncationCharacteristic = appCommuncationCharacteristic!!
+			
+			signalCharacteristic!!.getNotifications().onEach {
+				val values = byteArrayToIntArray(it.value).toList()
+				startTime = System.currentTimeMillis()
+				channel.send(values)
+				receiveData(viewModelScope){dataList ->
+					StoreWrapper.processDataList(dataList)
+					BPM.currList.value += dataList
+					if(BPM.currList.value.size >= 7500){
+						var qrsPeaks = BPM.panTompkins(BPM.currList.value).size
+						println("PEAK COUNTER: ${qrsPeaks}")
+						println("liste: ${BPM.currList.value}")
+						BPM.currList.value.forEach {
+							println(it)
+						}
+						println("ENDOF PRINTING")
+						BPM.currList.value = BPM.currList.value.subList(750, 7500-1)
+						BPM.countPeak = qrsPeaks
+						qrsPeaks = 0
+					}
+				}
+				paketCounter++
+			}.launchIn(viewModelScope)
+			appCommuncationCharacteristic!!.getNotifications().onEach {
+				ResponseChecker.check(it.value)
+				PacketReassembler.reassemble(it.value)
+				println(it)
+			}.launchIn(viewModelScope)
+			connection.requestMtu(512)
+			fetchCurrentMode()
+			listEKGS()
+			750
+		}
+	}
+\end{lstlisting}

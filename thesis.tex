@@ -4,7 +4,7 @@
 %----------------------------------------------------------------------------------
 
 \documentclass[	a4paper,
-				11pt,
+				12pt,
 				DIV=11,
 				bigheadings,
 				idxtotoc,
@@ -54,7 +54,75 @@
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{colortbl}
+\usepackage{listings}  
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\usepackage{cascadia-code}
+\renewcommand\lstlistingname{Code}      % change name of code listing
+\renewcommand\lstlistlistingname{Code}  % change name of the list of code listings
+\lstdefinestyle{vs2022light}{
+	language= Java,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{grey},
+	backgroundcolor=\color{white},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!50!black},
+	stringstyle=\color{purple},
+	identifierstyle=\color{black},
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	rulecolor=\color{black},
+	captionpos=b,
+	morekeywords={val, get, set, async, await, yield, partial, init, RequiresApi, SuppressLint , this, fun, channel, currList, startTime, BLEViewModel, viewModelScope, record, value, size, connection, var, SHIFTH, shiftH, width, height}, % Ergänzen Sie hier weitere Schlüsselwörter nach Bedarf
+}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{lightblue}{rgb}{0.0,0.0,0.9}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{darkred}{rgb}{0.6,0.0,0.0}
 
+\lstdefinelanguage{XML}
+{
+	morestring=[s][\color{mauve}]{"}{"},
+	morestring=[s][\color{black}]{>}{<},
+	morecomment=[s]{<?}{?>},
+	morecomment=[s][\color{dkgreen}]{<!--}{-->},
+	stringstyle=\color{black},
+	identifierstyle=\color{lightblue},
+	keywordstyle=\color{red},
+	morekeywords={xmlns,xsi,noNamespaceSchemaLocation,type,id,x,y,source,target,version,tool,transRef,roleRef,objective,eventually}% list your attributes here
+}
+
+\lstdefinestyle{XML}{
+	language=XML,
+	basicstyle=\ttfamily\footnotesize,
+	columns=fullflexible,
+	showstringspaces=false,
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+	stepnumber=1,
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,                   % adds a frame around the code
+	rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+	tabsize=2,                      % sets default tabsize to 2 spaces
+	captionpos=b,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	% also try caption instead of title  
+	commentstyle=\color{green!50!black},
+}
+
+\lstset{style=vs2022light, texcl=true}
 %----------------------------------------------------------------------------------
 %----Kopfzeile---------------------------------------------------------------------
 %----------------------------------------------------------------------------------

@@ -2,51 +2,61 @@
 \contentsline {section}{\nonumberline Affidavit}{I}{section*.3}%
 \contentsline {section}{\nonumberline Acknowledgements}{II}{section*.5}%
 \contentsline {section}{\nonumberline Abstract}{III}{section*.7}%
-\contentsline {section}{\nonumberline Confidentialityclause}{IV}{section*.9}%
-\contentsline {section}{Glossary}{V}{section*.10}%
-\contentsline {section}{Acronyms}{V}{section*.12}%
-\contentsline {section}{\nonumberline List of figures}{VI}{section*.14}%
-\contentsline {section}{\nonumberline List of tables}{VII}{section*.15}%
+\contentsline {section}{\nonumberline Confidentialityclause}{V}{section*.9}%
+\contentsline {section}{Glossary}{VI}{section*.10}%
+\contentsline {section}{Acronyms}{VI}{section*.12}%
+\contentsline {section}{\nonumberline List of figures}{VII}{section*.14}%
+\contentsline {section}{\nonumberline List of tables}{VIII}{section*.15}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Motivation}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Scope and Framework}{1}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Procedure}{1}{subsection.1.3}%
-\contentsline {section}{\numberline {2}Technical Fundamentals}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Selected Technologies}{2}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Programming Language and Framework}{2}{subsubsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}Development Enviroment}{2}{subsubsection.2.1.2}%
-\contentsline {subsubsection}{\numberline {2.1.3}Versions}{3}{subsubsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.2}Android architecture}{3}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Java Framework API (Framework Layer)}{6}{subsubsection.2.2.1}%
-\contentsline {paragraph}{\nonumberline Description}{6}{paragraph*.20}%
-\contentsline {paragraph}{\nonumberline Project example}{6}{paragraph*.22}%
-\contentsline {section}{\numberline {3}Functional Requirements}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}ECG-Data}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Drawing ECG-Data in realtime}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Calculating current BPM}{9}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}24-Hour recording}{9}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Connection via Bluetooth Low Energy}{10}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Realization}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Definiton of Entitys}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Inter-Entity Communication Overview}{12}{subsection.4.2}%
-\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{13}{paragraph*.25}%
-\contentsline {subsection}{\numberline {4.3}BLEViewModel}{14}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}BLE Stack}{15}{subsubsection.4.3.1}%
-\contentsline {paragraph}{\nonumberline Application Layer}{16}{paragraph*.27}%
-\contentsline {paragraph}{\nonumberline Host Layer}{16}{paragraph*.29}%
-\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{16}{paragraph*.31}%
-\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{16}{paragraph*.33}%
-\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{16}{paragraph*.35}%
-\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{16}{paragraph*.37}%
-\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{17}{paragraph*.39}%
-\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{17}{paragraph*.41}%
-\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{17}{paragraph*.43}%
-\contentsline {paragraph}{\nonumberline Controller Layer}{17}{paragraph*.45}%
-\contentsline {paragraph}{\nonumberline Link Layer (LL)}{17}{paragraph*.47}%
-\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{17}{paragraph*.49}%
-\contentsline {subsubsection}{\numberline {4.3.2}Implementation}{18}{subsubsection.4.3.2}%
-\contentsline {paragraph}{\nonumberline Dependency versions and Library}{18}{paragraph*.51}%
-\contentsline {paragraph}{\nonumberline Scanning devices}{18}{paragraph*.53}%
-\contentsline {paragraph}{\nonumberline Refreshing}{19}{figure.caption.57}%
-\contentsline {section}{\nonumberline Literature references}{VI}{section*.59}%
+\contentsline {section}{\numberline {2}Technical Fundamentals}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Basics of Android architecture}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Java Framework API (Framework Layer)}{6}{subsubsection.2.1.1}%
+\contentsline {paragraph}{\nonumberline Description}{6}{paragraph*.19}%
+\contentsline {paragraph}{\nonumberline Project example}{6}{paragraph*.21}%
+\contentsline {section}{\numberline {3}Functional Requirements}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}ECG-Data}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Drawing ECG-Data in realtime}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}24-Hour recording}{11}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Connection via Bluetooth Low Energy}{11}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Realization}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Selected Technologies}{12}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Programming Language and Framework}{13}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Development Enviroment}{13}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Definiton of Entitys}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Inter-Entity Communication Overview}{16}{subsection.4.3}%
+\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{17}{paragraph*.24}%
+\contentsline {subsection}{\numberline {4.4}BLEViewModel}{19}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}BLE Stack}{20}{subsubsection.4.4.1}%
+\contentsline {paragraph}{\nonumberline Application Layer}{21}{paragraph*.26}%
+\contentsline {paragraph}{\nonumberline Host Layer}{21}{paragraph*.28}%
+\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{21}{paragraph*.30}%
+\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{21}{paragraph*.32}%
+\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{21}{paragraph*.34}%
+\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{22}{paragraph*.36}%
+\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{22}{paragraph*.38}%
+\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{22}{paragraph*.40}%
+\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{22}{paragraph*.42}%
+\contentsline {paragraph}{\nonumberline Controller Layer}{23}{paragraph*.44}%
+\contentsline {paragraph}{\nonumberline Link Layer (LL)}{23}{paragraph*.46}%
+\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{23}{paragraph*.48}%
+\contentsline {subsubsection}{\numberline {4.4.2}Implementation}{23}{subsubsection.4.4.2}%
+\contentsline {paragraph}{\nonumberline Dependency versions and Library}{23}{paragraph*.50}%
+\contentsline {paragraph}{\nonumberline Scanning devices}{24}{paragraph*.52}%
+\contentsline {paragraph}{\nonumberline Refreshing}{25}{paragraph*.55}%
+\contentsline {paragraph}{\nonumberline Connect}{26}{paragraph*.58}%
+\contentsline {subsection}{\numberline {4.5}Storewrapper}{30}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Implementation}{30}{subsubsection.4.5.1}%
+\contentsline {paragraph}{\nonumberline Preparing ECG-Data}{30}{paragraph*.61}%
+\contentsline {paragraph}{\nonumberline Preparing the Drawpath}{33}{paragraph*.64}%
+\contentsline {subsection}{\numberline {4.6}GraphEcgWidget}{36}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Summary}{36}{section.5}%
+\contentsline {section}{\numberline {6}Result}{36}{section.6}%
+\contentsline {section}{\numberline {7}Outlook}{37}{section.7}%
+\contentsline {section}{\numberline {8}Appendix}{37}{section.8}%
+\contentsline {subsubsection}{\numberline {8.0.1}Versions}{37}{subsubsection.8.0.1}%
+\contentsline {subsection}{\numberline {8.1}Beispielcode zur Erzeugung eines Quelltext-Generators}{38}{subsection.8.1}%
+\contentsline {section}{\nonumberline Literature references}{VI}{section*.68}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

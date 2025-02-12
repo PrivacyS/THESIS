@@ -1,61 +1,10 @@
 % Kapitel 2 - Related Work / Literaturanalyse
 \section{Technical Fundamentals}\label{techfFun}
 
-{\large
-	"The nature of the application and the required functionality of a software system should influence the choice of methods and tools used during development". \cite{clarke}
-	This ensures that the development process is both efficient and tailored to meet the unique demands of the system. Moreover, aligning tools and methods with the application's requirements can help streamline workflows and reduce potential complexities during implementation. Consequently choosing the right programming language, aswell as IDE is essential to enable efficient development.
+
+
 	
-	The following chapter \nameref{techfFun} contains all technical characteristics and requirements, and how they have been fulfilled.
-	
-
-}
-
-
-
-
-%-------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-\subsection{Selected Technologies} \label{sec:rw_dir1}
-\subsubsection{Programming Language and Framework}
-{\large
-	When searching for a suitable programming language to program Android apps, names like Java/Kotlin and Dart often appear. Both languages offer great frameworks, such as Flutter for Dart or Jetpack Compose for Kotlin. One aswell as the other are highly effective because they eliminate the limitations of XML-based UI development, enabling a more streamlined, declarative approach that combines UI and logic in a single language. Thus reduces boilerplate code, and enhances performance aswell as developer productivity. The main differnce between both frameworks lies in ressource manegement. For example Flutter is superior in cpu usage, but Jetpack Compose consumes less memory.\cite{fwComparison} "But since both have their respective advantages and
-	disadvantages, it is impossible to say that one is superior to the other. The choice between Jetpack Compose and Flutter depends on the needs and preferences of the developer. If developers are more familiar with the Kotlin language and want to use new technologies, then Jetpack Compose might be a better choice." \cite{fwComparison} With prior practical experience in Java/Kotlin, Jetpack Compose was chosen as the framework for this work. 
-	
-}
-
-
-%\input{Chapter2/chap2_direction1a}
-%\input{Chapter2/chap2_direction1b}
-
-\subsubsection{Development Enviroment}
-{\large 
-	Integrated development Enviroments play a fundamental role in todays application development, providing developer with tools mandatory to debug, refactor and write code.
-	Making programming more efficient and delightful for programmers. When developing Android Apps with state of the art frameworks like Jetpack Compose, Android Studio stands out as the most suitable option as both Jetpack compose and Android Studio are created by Google. Android Studio is the official IDE for Android Development. With IntelliJ as base it inherits powerful code editor and developer tools, combined with Android specific features. Such as Live Edit (updates running app when code is changed) aswell as Interactive Preview which allows to test functionallity between so called Compose components (Compose will be explained in the later course of this work)\footnote{\url{https://developer.android.com/studio/intro}}, et cetera. 
-	
-	The version of Android Studio used for this thesis is \textbf{Ladybug | 2024.2.1}. Which is the latest version as this was written (13.12.2024).\footnote{\url{https://developer.android.com/studio/releases}}
-	Downloading the right version can be crucial for problem-free debuging. As some versions lead to bugs, causing the screen to freeze.\footnote{\url{https://stackoverflow.com/questions/78125635/processing-classes-for-emulated-method-breakpoints-this-popup-comes-and-loadin}}
-}
-\subsubsection{Versions}
-{\large 
-	This section presents fundamental versions of the required development resources used for this work.
-	
-	The tests for this application during the development process, were done on a phone using the \textbf{Android version 13} which implies the usage of \textbf{API level 33}. Utilizing lower Android version than 12 (API Level 31,32) is not possible due to new runtime permissions added in Android 13, making it impossible to start the app\footnote{\url{https://developer.android.com/develop/connectivity/bluetooth/bt-permissions}}. Higher Android versions were not reviewed. More versions of the used ressources, are presented in table \ref{tab:versionTable}.
-\begin{table}[h!]
-\begin{center}
-	\caption{Versions of used resources}
-	\label{tab:versionTable}
-	\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-		\textbf{Ressource} & \textbf{Version used} \\
-		\hline
-		Android version& 13 \\
-		API Level & 33 \\
-		Koltin compiler extension version & 5.15.1 \\
-		minSDK & 30\\
-	\end{tabular}
-\end{center}
-\end{table}
-	
-\subsection{Android architecture}\label{sec:architecture}
+\subsection{Basics of Android architecture}\label{sec:architecture}
 {\large 
 	To program a platform-specific application, it can be important to understand the basic architecture of the platform, especially when dealing with taks regarding memory or Bluetooth. This section will give a brief insight into the structure of the Android construction. Tasks discussed later in this thesis may reference this chapter to convey a better understanding.
 	
