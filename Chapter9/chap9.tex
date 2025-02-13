@@ -60,13 +60,13 @@
 				Visible to user, contains the complete\\ User Interface. Takes and processes user\\ inputs.
 			}\\
 			\hline
-			\end{tabular}
-		\end{center}
-	\end{table*}
-	\newpage
+		\end{tabular}
+	\end{center}
+\end{table*}
+\newpage
 {\large
 	
-
+	
 }
 
 \subsection{Inter-Entity Communication Overview }
@@ -74,9 +74,9 @@
 	The following diagramm shows the Information flow between all entitys. The unidirectional arrow means that, information is flowing oneside. An informationexchange between two entitys is represented by an bidirectional arrow.
 	
 	\begin{center}
-	\includegraphics[scale = 0.70]{/Users/eric/Downloads/InformationFlow.drawio-3.png}
-	\label{fig:informationFlowDiag}
-	\captionof{figure}{Informationflow Diagramm}
+		\includegraphics[scale = 0.70]{/Users/eric/Downloads/InformationFlow.drawio-3.png}
+		\label{fig:informationFlowDiag}
+		\captionof{figure}{Informationflow Diagramm}
 	\end{center}
 	
 	As already stated in \ref{entityDef} the BLEViewModel entity, serves as an interface between controller and app. Therfore every entity that needs to evaluate recorded data, is dependent on this Instance. Two of the entities listed in \ref{entityDef} are affected. To be more precise, it is the StoreWrapper that makes the data drawable (1) and forwards the data to the GraphECGWidget (4).
@@ -85,71 +85,71 @@
 	MainView integrates both the GraphECGWidget (8) and the VitalMonitorWidget (9) as components and manages their visibility.
 	However, the range of tasks of the BLEViewModel is not limited to exchanging data, but also extends to scanning and connecting with other devices in the vicinity, as well as integrating and managing a 24-hour ECG recording. These functionalities are utilized by the MainView and the MainActivity. As already mentioned in table \ref{tab:entitysDefinition}, MainView serves solely to construct components of functionalities that are later utilized by MainActivity, such as buttons enabling users to start a 24-hour ECG recording (10). The MainActivity entity acts as a bridge between the microcontroller and the user, allowing device scanning, initiating recordings, establishing connections, and displaying ECG information (11).
 	
-\paragraph{Information Flow and Responsibilities of BLEViewModel}
-
-\begin{itemize}
-	\item \textbf{BLEViewModel as an Interface}  
+	\paragraph{Information Flow and Responsibilities of BLEViewModel}
+	
 	\begin{itemize}
-		\item Acts as an interface between the controller and the app (\ref{entityDef}).  
-		\item Any entity that evaluates recorded data depends on this instance.  
+		\item \textbf{BLEViewModel as an Interface}  
+		\begin{itemize}
+			\item Acts as an interface between the controller and the app (\ref{entityDef}).  
+			\item Any entity that evaluates recorded data depends on this instance.  
+		\end{itemize}
+		
+		\item \textbf{Entities Dependent on BLEViewModel}  
+		\begin{itemize}
+			\item \textbf{StoreWrapper}  
+			\begin{itemize}
+				\item Makes the data drawable (1).  
+				\item Forwards the data to the \textbf{GraphECGWidget} (4).  
+			\end{itemize}
+			\item \textbf{BPM Instance}  
+			\begin{itemize}
+				\item Calculates the beat frequency (2).  
+				\item The result is displayed by the \textbf{GraphECGWidget} (5).  
+			\end{itemize}
+		\end{itemize}
+		
+		\item \textbf{Comparison of Information Flows (4) and (6)}  
+		\begin{itemize}
+			\item Both provide drawable data to widgets.  
+			\item \textbf{Difference}:  
+			\begin{itemize}
+				\item \textbf{(4) One-way flow} $\rightarrow$ StoreWrapper receives data directly from the ECG.  
+				\item \textbf{(6) Bidirectional flow} $\rightarrow$ Required for reading recorded data from a local file (7) using the \textbf{StorageHandler} before sending it to the StoreWrapper.  
+			\end{itemize}
+			\item Once mapped by the StoreWrapper, the data is sent back to the \textbf{VitalMonitorWidget} (6).  
+		\end{itemize}
+		
+		\item \textbf{MainView Responsibilities}  
+		\begin{itemize}
+			\item Integrates \textbf{GraphECGWidget} (8) and \textbf{VitalMonitorWidget} (9).  
+			\item Manages the visibility of these components.  
+		\end{itemize}
+		
+		\item \textbf{Extended BLEViewModel Responsibilities}  
+		\begin{itemize}
+			\item Beyond data exchange, BLEViewModel also:  
+			\begin{itemize}
+				\item Scans and connects to other nearby devices.  
+				\item Integrates and manages 24-hour ECG recordings.  
+			\end{itemize}
+			\item These functionalities are used by \textbf{MainView} and \textbf{MainActivity}.  
+		\end{itemize}
+		
+		\item \textbf{MainView vs. MainActivity}  
+		\begin{itemize}
+			\item \textbf{MainView}  
+			\begin{itemize}
+				\item Constructs components and functionalities for \textbf{MainActivity}.  
+				\item Provides UI elements, such as buttons for starting a 24-hour ECG recording (10).  
+			\end{itemize}
+			\item \textbf{MainActivity}  
+			\begin{itemize}
+				\item Acts as a bridge between the \textbf{microcontroller} and the \textbf{user}.  
+				\item Handles device scanning, recording initiation, connection establishment, and ECG data display (11).  
+			\end{itemize}
+		\end{itemize}
 	\end{itemize}
 	
-	\item \textbf{Entities Dependent on BLEViewModel}  
-	\begin{itemize}
-		\item \textbf{StoreWrapper}  
-		\begin{itemize}
-			\item Makes the data drawable (1).  
-			\item Forwards the data to the \textbf{GraphECGWidget} (4).  
-		\end{itemize}
-		\item \textbf{BPM Instance}  
-		\begin{itemize}
-			\item Calculates the beat frequency (2).  
-			\item The result is displayed by the \textbf{GraphECGWidget} (5).  
-		\end{itemize}
-	\end{itemize}
-	
-	\item \textbf{Comparison of Information Flows (4) and (6)}  
-	\begin{itemize}
-		\item Both provide drawable data to widgets.  
-		\item \textbf{Difference}:  
-		\begin{itemize}
-			\item \textbf{(4) One-way flow} $\rightarrow$ StoreWrapper receives data directly from the ECG.  
-			\item \textbf{(6) Bidirectional flow} $\rightarrow$ Required for reading recorded data from a local file (7) using the \textbf{StorageHandler} before sending it to the StoreWrapper.  
-		\end{itemize}
-		\item Once mapped by the StoreWrapper, the data is sent back to the \textbf{VitalMonitorWidget} (6).  
-	\end{itemize}
-	
-	\item \textbf{MainView Responsibilities}  
-	\begin{itemize}
-		\item Integrates \textbf{GraphECGWidget} (8) and \textbf{VitalMonitorWidget} (9).  
-		\item Manages the visibility of these components.  
-	\end{itemize}
-	
-	\item \textbf{Extended BLEViewModel Responsibilities}  
-	\begin{itemize}
-		\item Beyond data exchange, BLEViewModel also:  
-		\begin{itemize}
-			\item Scans and connects to other nearby devices.  
-			\item Integrates and manages 24-hour ECG recordings.  
-		\end{itemize}
-		\item These functionalities are used by \textbf{MainView} and \textbf{MainActivity}.  
-	\end{itemize}
-	
-	\item \textbf{MainView vs. MainActivity}  
-	\begin{itemize}
-		\item \textbf{MainView}  
-		\begin{itemize}
-			\item Constructs components and functionalities for \textbf{MainActivity}.  
-			\item Provides UI elements, such as buttons for starting a 24-hour ECG recording (10).  
-		\end{itemize}
-		\item \textbf{MainActivity}  
-		\begin{itemize}
-			\item Acts as a bridge between the \textbf{microcontroller} and the \textbf{user}.  
-			\item Handles device scanning, recording initiation, connection establishment, and ECG data display (11).  
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-
 	
 }
 
@@ -157,10 +157,10 @@
 
 \subsection{BLEViewModel }
 {\large 
- The following subsections explore the logical implementation and functionality of individual entities, using code snippets and application screenshots for illustration. Each subsection is divided into a section covering the implementation and another focusing on the application's usage, with both sections referring to corresponding screenshots. Framework specific code fragments will be explaing in the course of relevant section.	
-
-Before presenting the implementation of the BLE component, it is essential to establish a fundamental theoretical understanding of BLE.
-This section offers a comprehensive explanation of the Bluetooth Low Energy, shedding light on its core principles, while exploring the architecture of the BLE stack. 
+	The following subsections explore the logical implementation and functionality of individual entities, using code snippets and application screenshots for illustration. Each subsection is divided into a section covering the implementation and another focusing on the application's usage, with both sections referring to corresponding screenshots. Framework specific code fragments will be explaing in the course of relevant section.	
+	
+	Before presenting the implementation of the BLE component, it is essential to establish a fundamental theoretical understanding of BLE.
+	This section offers a comprehensive explanation of the Bluetooth Low Energy, shedding light on its core principles, while exploring the architecture of the BLE stack. 
 }
 
 \subsubsection{BLE Stack}
@@ -193,9 +193,9 @@ This section offers a comprehensive explanation of the Bluetooth Low Energy, she
 	The ATT enables the exchange of attributes (characteristics). Attributes are are composed of four components, the type (128-bit UUID), an handle (16-bit indentifier) to reference attributes, rights of the attribute(reading, writing), and the value of the attribute. The following figure gives a good overview of the structure of the attributes.
 	
 	\begin{center}
-	\includegraphics[scale = 0.90]{/Users/eric/Downloads/ble_att_representation.png}
-	\label{fig:ATTstructure}
-	\captionof{figure}{Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+		\includegraphics[scale = 0.90]{/Users/eric/Downloads/ble_att_representation.png}
+		\label{fig:ATTstructure}
+		\captionof{figure}{Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
 	\end{center}
 	
 	\paragraph{Logical Link Control and Adaption Layer Protocol (L2CAP)}\mbox{}\\
@@ -214,41 +214,41 @@ This section offers a comprehensive explanation of the Bluetooth Low Energy, she
 	The LL functions similarly to the medium access control (MAC) layer in the OSI model. In Bluetooth, it directly interacts with the Bluetooth LE PHY and controls the radio’s link state, determining whether a device operates as a Central, Peripheral, Advertiser, or Scanner.
 	
 	\paragraph{Bluetooth LE PHY}\mbox{}\\
-	 The physical layer (BLE PHY) is a 1 Mbps GFSK-based radio with adaptive frequency hopping, operating in the unlicensed 2.4 GHz ISM (industrial, scientific, and medical) band.
+	The physical layer (BLE PHY) is a 1 Mbps GFSK-based radio with adaptive frequency hopping, operating in the unlicensed 2.4 GHz ISM (industrial, scientific, and medical) band.
 }	
 \subsubsection{Implementation}
 \paragraph{Dependency versions and Library}\mbox{}\\
 {\large Before delving into the implementation, it is essential to note that a library provided by Nordic Semiconductor was employed in the development process.\footnote{\url{https://github.com/NordicSemiconductor/Android-BLE-Library}} The utilized dependency version are shown in the figure below:
 	\begin{center}
-	\includegraphics[scale = 0.90]{/Users/eric/Downloads/NordicSemiconLibVersions.png}
-	\label{fig:NoSemiVersions}
-	\captionof{figure}{Library Versions}
+		\includegraphics[scale = 0.90]{/Users/eric/Downloads/NordicSemiconLibVersions.png}
+		\label{fig:NoSemiVersions}
+		\captionof{figure}{Library Versions}
 	\end{center} 
-
-\paragraph{Scanning devices}\mbox{}\\
-The following code snippet demonstrates the implementation of a BLE scanning method used to detect nearby devices. The \textit{startScan} function initializes the scanning process by setting the \textit{scanState} to \textit{SCANNING} and resetting the list of discovered BLE devices. The scanning operation is performed using \textit{BleScanner}, with results processed by \textit{BleScanResultAggregator}. The detected devices are filtered to include only those with the name \textit{"THI-EKG"} and stored in a MutableState. The scan runs asynchronously within the viewModelScope, and after a delay of 2000 milliseconds, it is terminated by canceling \textit{scanJob} and updating the \textit{scanState} to \textit{DONE}.
-The snippet also contains two annotations above the function definition, which dont add any functionality, but provide robustnes and readability to the code.
-Nevertheless, a brief explanation follows to avoid confusion and ensure clarification:
-
-
-\textbf{\underline{@RequiresApi(Build.VERSION\textunderscore CODES.UPSIDE\textunderscore DOWN\textunderscore CAKE)}}\\  
-This annotation ensures that the \textit{startScan} function is only executed on devices running Android API level \textbf{34 (Android 14, Upside Down Cake)} or higher. If the function is called on a lower API level, the compiler will issue a warning, and runtime execution may fail.  
-
- \textbf{\underline{@SuppressLint("MissingPermission")  }}\\
-This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code. Thus the permissions are check in the Main Acitivity entitiy, this warning can be ignored, and will appear more often. 
-\mbox{}\\
-
-\begin{figure}[H]
-	\centering
-	\makebox[0pt]{%
-	\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/ScanningCodeSnippet.png}}
-	\label{fig:ScanningCodeSnipet}
-	\captionof{figure}{Scanning functionality code }
-\end{figure} 
-
-
-
-
+	
+	\paragraph{Scanning devices}\mbox{}\\
+	The following code snippet demonstrates the implementation of a BLE scanning method used to detect nearby devices. The \textit{startScan} function initializes the scanning process by setting the \textit{scanState} to \textit{SCANNING} and resetting the list of discovered BLE devices. The scanning operation is performed using \textit{BleScanner}, with results processed by \textit{BleScanResultAggregator}. The detected devices are filtered to include only those with the name \textit{"THI-EKG"} and stored in a MutableState. The scan runs asynchronously within the viewModelScope, and after a delay of 2000 milliseconds, it is terminated by canceling \textit{scanJob} and updating the \textit{scanState} to \textit{DONE}.
+	The snippet also contains two annotations above the function definition, which dont add any functionality, but provide robustnes and readability to the code.
+	Nevertheless, a brief explanation follows to avoid confusion and ensure clarification:
+	
+	
+	\textbf{\underline{@RequiresApi(Build.VERSION\textunderscore CODES.UPSIDE\textunderscore DOWN\textunderscore CAKE)}}\\  
+	This annotation ensures that the \textit{startScan} function is only executed on devices running Android API level \textbf{34 (Android 14, Upside Down Cake)} or higher. If the function is called on a lower API level, the compiler will issue a warning, and runtime execution may fail.  
+	
+	\textbf{\underline{@SuppressLint("MissingPermission")  }}\\
+	This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code. Thus the permissions are check in the Main Acitivity entitiy, this warning can be ignored, and will appear more often. 
+	\mbox{}\\
+	
+	\begin{figure}[H]
+		\centering
+		\makebox[0pt]{%
+			\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/ScanningCodeSnippet.png}}
+		\label{fig:ScanningCodeSnipet}
+		\captionof{figure}{Scanning functionality code }
+	\end{figure} 
+	
+	
+	
+	
 }
 \paragraph{Refreshing }\mbox{}\\
 {\large
@@ -262,15 +262,15 @@ This suppresses lint warnings related to missing Bluetooth permissions (such as 
 	Conditional Execution:
 	If both permissions (BLUETOOTH\textunderscore SCAN and BLUETOOTH\textunderscore CONNECT) are granted, the function proceeds to call startScan(context).
 	If the permissions are not granted, the function includes a TODO comment, indicating that additional logic is required to handle this scenario. Typically, this would involve prompting the user to grant the necessary permissions through a permission request dialog.
-
-\begin{figure}[H]
-	\centering
-	\makebox[0pt]{%
-		\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/RefreshingBLE.png}}
-	\label{fig:RefreshingCodeSnipet}
-	\captionof{figure}{Refresh functionality code }
-\end{figure}
- }
+	
+	\begin{figure}[H]
+		\centering
+		\makebox[0pt]{%
+			\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/RefreshingBLE.png}}
+		\label{fig:RefreshingCodeSnipet}
+		\captionof{figure}{Refresh functionality code }
+	\end{figure}
+}
 \paragraph{Connect}\mbox{}\\
 {\large 
 	The provided BLE implementation is responsible for establishing a connection with a BLE-enabled device, receiving real-time data from specific BLE characteristics, and processing the incoming data to extract and analyze electrocardiographic (ECG) information. The functionality can be divided into the following key components:
@@ -299,11 +299,11 @@ This suppresses lint warnings related to missing Bluetooth permissions (such as 
 	
 	Sending an MTU request (requestMtu(512)) to maximize packet size for efficient data transmission.
 	Checking if the application is in live mode or in 24-Hour mode by calling fetchCurrentMode(). Also feteching all recorded ECG's from the microcontroller ListEKGS().}
-	
-	\underline{\textit{\textbf{ Channels and Coroutines}}}
-	
-	The \textit{channe}l serves as a concurrent data pipeline between the BLE data stream and the processing logic. It ensures that the incoming data from the BLE device is processed in a structured, thread-safe manner without blocking the main execution thread. By leveraging coroutines, the channel allows efficient real-time data handling while preventing performance bottlenecks.\\
-	A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows you to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI.
+
+\underline{\textit{\textbf{ Channels and Coroutines}}}
+
+The \textit{channe}l serves as a concurrent data pipeline between the BLE data stream and the processing logic. It ensures that the incoming data from the BLE device is processed in a structured, thread-safe manner without blocking the main execution thread. By leveraging coroutines, the channel allows efficient real-time data handling while preventing performance bottlenecks.\\
+A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows you to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI.
 \begin{figure}[H]
 	\centering
 	\makebox[0pt]{%
@@ -321,163 +321,164 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 
 \paragraph{Preparing ECG-Data}\mbox{}\\
 {\large
-Mapping Raw Data to Drawable Data for Dynamic Screen Sizes
-The provided code snippet is responsible for transforming raw electrocardiographic (EKG) data into a format suitable for visualization across different screen sizes. This transformation ensures that the signal is correctly scaled and displayed within the graphical interface, regardless of resolution or aspect ratio. The function achieves this with a time complexity of O(n), making it efficient for real-time applications.
-
-
-The function begins by initializing the shiftH parameter and preparing a mutable list (data) for storing processed values. If an external data source is provided, it is converted from a generic format into a list of Double values. Otherwise, an empty list is created.\mbox{}\\
-\mbox{}\\
-\underline{\textbf{Screen Size and Scaling Factors}}\mbox{}\\
-The width and height of the target display area are extracted from the size parameter. Additionally, the function determines the minimum (minV) and maximum (maxV) values within the buffer to establish the dynamic range of the data. If all values are equal, an artificial spread is introduced to prevent division by zero.\mbox{}\\
-\mbox{}\\
-\underline{\textbf{Normalization and Scaling}}\mbox{}\\
-The difference between maxV and minV (dv) is calculated to determine the range of data values. A step size (step) is then computed based on the available screen width and the buffer capacity, ensuring that data points are evenly distributed across the display. The coeff value is derived to scale the signal to fit within the available height while accounting for a vertical shift (shiftH).\mbox{}\\
-\mbox{}\\
-\underline{\textbf{Data Mapping for Graph Rendering}}\mbox{}\\
- dataSeriesOverlay(buffer\textunderscore)   A temporary list (dataTemp) holds the normalized data, which is then mapped to a new list (data). The mapping follows the formula:\mbox{}\\
-\mbox{}\\
-$data[i]=(maxV \text{-} dataTemp[i]) \times coeff+shiftH$ \mbox{}\\
-\mbox{}\\
-This equation ensures that the data is flipped and scaled appropriately for graphical representation.
-The function iterates over the dataset in a single pass (O(n) complexity), making it highly efficient for real-time applications. This guarantees smooth and responsive rendering, even with large data sets.
-\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
-	fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
-		this.SHIFTH = shiftH
-		var data: MutableList<Double>? = null
-		if( dataFromFile != null ){
-			data = dataFromFile.mapNotNull {
-				(it as? String)?.toDouble()
-			}.toMutableList()
-		}else{
-			data = ArrayList()
-		}
-		val width = size.width.toDouble()
-		val height = size.height.toDouble()
-		var minV = min //lowest value in buffer
-		var maxV = max  //highest value in buffer
-		if (minV == maxV) {
-			minV = minV / 2
-			maxV = maxV + minV / 2
-		}
-		val dv = maxV - minV
-		step = width / buffer_.capacity()
-		val coeff = (height - 2 * shiftH) / dv
-		//passing the wrong buffer to dataSeriesOverlay (not updated)
-		val dataTemp =
-		if (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) else utils_.dataSeriesNormal(
-		this
-		)
-		data = ArrayList(Collections.nCopies(dataTemp.size, 0.0))
-		//return data
-		if (data.isEmpty() || dataTemp.isEmpty()) {
+	
+	The provided code snippet is responsible for transforming raw electrocardiographic (EKG) data into a format suitable for visualization across different screen sizes. This transformation ensures that the signal is correctly scaled and displayed within the graphical interface, regardless of resolution or aspect ratio. The function achieves this with a time complexity of O(n), making it efficient for real-time applications.
+	
+	
+	The function begins by initializing the shiftH parameter and preparing a mutable list (data) for storing processed values. If an external data source is provided, it is converted from a generic format into a list of Double values. Otherwise, an empty list is created.\mbox{}\\
+	\mbox{}\\
+	\underline{\textbf{Screen Size and Scaling Factors}}\mbox{}\\
+	The width and height of the target display area are extracted from the size parameter. Additionally, the function determines the minimum (minV) and maximum (maxV) values within the buffer to establish the dynamic range of the data. If all values are equal, an artificial spread is introduced to prevent division by zero.\mbox{}\\
+	\mbox{}\\
+	\underline{\textbf{Normalization and Scaling}}\mbox{}\\
+	The difference between maxV and minV (dv) is calculated to determine the range of data values. A step size (step) is then computed based on the available screen width and the buffer capacity, ensuring that data points are evenly distributed across the display. The coeff value is derived to scale the signal to fit within the available height while accounting for a vertical shift (shiftH).\mbox{}\\
+	\mbox{}\\
+	\underline{\textbf{Data Mapping for Graph Rendering}}\mbox{}\\
+	dataSeriesOverlay(buffer\textunderscore)   A temporary list (dataTemp) holds the normalized data, which is then mapped to a new list (data). The mapping follows the formula:\mbox{}\\
+	\mbox{}\\
+	$data[i]=(maxV \text{-} dataTemp[i]) \times coeff+shiftH$ \mbox{}\\
+	\mbox{}\\
+	This equation ensures that the data is flipped and scaled appropriately for graphical representation.
+	The function iterates over the dataset in a single pass (O(n) complexity), making it highly efficient for real-time applications. This guarantees smooth and responsive rendering, even with large data sets.
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
+			this.SHIFTH = shiftH
+			var data: MutableList<Double>? = null
+			if( dataFromFile != null ){
+				data = dataFromFile.mapNotNull {
+					(it as? String)?.toDouble()
+				}.toMutableList()
+			}else{
+				data = ArrayList()
+			}
+			val width = size.width.toDouble()
+			val height = size.height.toDouble()
+			var minV = min //lowest value in buffer
+			var maxV = max  //highest value in buffer
+			if (minV == maxV) {
+				minV = minV / 2
+				maxV = maxV + minV / 2
+			}
+			val dv = maxV - minV
+			step = width / buffer_.capacity()
+			val coeff = (height - 2 * shiftH) / dv
+			//passing the wrong buffer to dataSeriesOverlay (not updated)
+			val dataTemp =
+			if (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) else utils_.dataSeriesNormal(
+			this
+			)
+			data = ArrayList(Collections.nCopies(dataTemp.size, 0.0))
+			//return data
+			if (data.isEmpty() || dataTemp.isEmpty()) {
+				return data
+			}
+			for (i in dataTemp.indices) {
+				data[i] = (maxV - dataTemp[i]!!) * coeff + shiftH
+			}
 			return data
 		}
-		for (i in dataTemp.indices) {
-			data[i] = (maxV - dataTemp[i]!!) * coeff + shiftH
-		}
-		return data
+	\end{lstlisting}
+	
+	\begin{figure}[H]
+		\centering
+		\makebox[0pt]{%
+			\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/prepareECGData.png}}
+		\label{fig: preparing ECG-Data}
+		\captionof{figure}{Mapping ECG-Data code }
+	\end{figure}
+	\mbox{}\\
+	\mbox{}\\
+	\paragraph{Preparing the Drawpath}\mbox{}\\
+	{\large 
+		To achieve a smooth and natural representation of the ECG waveform, it is essential to create two separate paths: one for the data points before the current write position in the buffer and one for the data points after. This ensures a seamless transition between old and new data, preventing visual gaps and making the waveform appear continuous, just like a real ECG signal.
+		
+		The function \underline{\textbf{preparePathBefore(data: List<Double>)}} constructs the path for the portion of the data preceding the current write index of the buffer. It determines the correct starting index and iterates through the data points up to the write position, generating a Path object that maps the signal to drawable coordinates.
+		
+		Conversely, the function \underline{\textbf{preparePathAfter(data: List<Double>)}} handles the data following the write index. It ensures that the path continues from the last drawn point, maintaining a smooth flow of the signal. By splitting the waveform into these two sections, the transition between old and new data is visually imperceptible, preserving the real-time appearance of the ECG signal.
+		
+		This approach is crucial for maintaining a continuous and realistic ECG display, as it eliminates abrupt jumps or gaps in the graph, ensuring that the visualization remains fluid and accurately represents the ongoing signal dynamics.}
+	\begin{figure}[H]
+		\centering
+		\makebox[0pt]{%
+			\includegraphics[width=0.9\paperwidth, height=1.4\textwidth]{/Users/eric/Downloads/preparePath.png}}
+		\label{fig:preparingPath}
+		\captionof{figure}{prepare paths functionality code }
+	\end{figure}
+	\subsection{GraphEcgWidget}
+	\section{Summary}
+	This thesis presents the design and implementation of a frontend application for real-time and long-term monitoring of electrocardiographic (ECG) data, utilizing Bluetooth Low Energy (BLE) communication. The primary objective was to develop an efficient and responsive system capable of handling continuous ECG data streams while ensuring smooth visualization and analysis. Key challenges included managing high-frequency data acquisition, real-time signal processing, and rendering an intuitive graphical representation. By leveraging Kotlin and Jetpack Compose, an optimized architecture was established, incorporating coroutines for concurrent data processing and an adaptive buffer for efficient data storage and retrieval.
+	\section{Result}
+	{\large
+		The developed system successfully processes and visualizes ECG data in real time. Through the implementation of a ring buffer and sliding window approach, the application maintains a continuous and smooth representation of the ECG signal, preserving critical waveform characteristics. The use of the Pan-Tompkins algorithm allows for reliable QRS peak detection, enhancing the accuracy of heartbeat identification. Additionally, BLE communication was optimized to minimize latency and packet loss, ensuring stable data transmission. The performance evaluation indicates that the system meets the requirements for real-time ECG monitoring, achieving both responsiveness and scalability.}
+	
+	\section{Outlook}
+	Future enhancements could focus on integrating machine learning techniques for advanced arrhythmia detection, further improving the diagnostic capabilities of the application. Additionally, expanding compatibility with multiple BLE-enabled ECG devices could increase the system’s versatility. Implementing cloud synchronization for remote monitoring and historical data analysis would further extend the practical applications of this work. Lastly, optimizing power consumption for mobile usage remains a crucial aspect for improving long-term monitoring solutions.
+	\section{Appendix}
+	\subsubsection{Versions}
+	{\large 
+		This section presents fundamental versions of the required development resources used for this work.
+		
+		The tests for this application during the development process, were done on a phone using the \textbf{Android version 13} which implies the usage of \textbf{API level 33}. Utilizing lower Android version than 12 (API Level 31,32) is not possible due to new runtime permissions added in Android 13, making it impossible to start the app\footnote{\url{https://developer.android.com/develop/connectivity/bluetooth/bt-permissions}}. Higher Android versions were not reviewed. More versions of the used ressources, are presented in table \ref{tab:versionTable}.
+		\begin{table}[h!]
+			\begin{center}
+				\caption{Versions of used resources}
+				\label{tab:versionTable}
+				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\textbf{Ressource} & \textbf{Version used} \\
+					\hline
+					Android version& 13 \\
+					API Level & 33 \\
+					Koltin compiler extension version & 5.15.1 \\
+					minSDK & 30\\
+				\end{tabular}
+			\end{center}
+		\end{table}
 	}
-\end{lstlisting}
-
-\begin{figure}[H]
-	\centering
-	\makebox[0pt]{%
-		\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/prepareECGData.png}}
-	\label{fig: preparing ECG-Data}
-	\captionof{figure}{Mapping ECG-Data code }
-\end{figure}
-\mbox{}\\
-\mbox{}\\
-\paragraph{Preparing the Drawpath}\mbox{}\\
-{\large 
-	To achieve a smooth and natural representation of the ECG waveform, it is essential to create two separate paths: one for the data points before the current write position in the buffer and one for the data points after. This ensures a seamless transition between old and new data, preventing visual gaps and making the waveform appear continuous, just like a real ECG signal.
+	\subsection{Beispielcode zur Erzeugung eines Quelltext-Generators}\label{sec:a1}
 	
-	The function \underline{\textbf{preparePathBefore(data: List<Double>)}} constructs the path for the portion of the data preceding the current write index of the buffer. It determines the correct starting index and iterates through the data points up to the write position, generating a Path object that maps the signal to drawable coordinates.
-	
-	Conversely, the function \underline{\textbf{preparePathAfter(data: List<Double>)}} handles the data following the write index. It ensures that the path continues from the last drawn point, maintaining a smooth flow of the signal. By splitting the waveform into these two sections, the transition between old and new data is visually imperceptible, preserving the real-time appearance of the ECG signal.
-	
-	This approach is crucial for maintaining a continuous and realistic ECG display, as it eliminates abrupt jumps or gaps in the graph, ensuring that the visualization remains fluid and accurately represents the ongoing signal dynamics.}
-\begin{figure}[H]
-	\centering
-	\makebox[0pt]{%
-		\includegraphics[width=0.9\paperwidth, height=1.4\textwidth]{/Users/eric/Downloads/preparePath.png}}
-	\label{fig:preparingPath}
-	\captionof{figure}{prepare paths functionality code }
-\end{figure}
-\subsection{GraphEcgWidget}
-\section{Summary}
-This thesis presents the design and implementation of a frontend application for real-time and long-term monitoring of electrocardiographic (ECG) data, utilizing Bluetooth Low Energy (BLE) communication. The primary objective was to develop an efficient and responsive system capable of handling continuous ECG data streams while ensuring smooth visualization and analysis. Key challenges included managing high-frequency data acquisition, real-time signal processing, and rendering an intuitive graphical representation. By leveraging Kotlin and Jetpack Compose, an optimized architecture was established, incorporating coroutines for concurrent data processing and an adaptive buffer for efficient data storage and retrieval.
-\section{Result}
-{\large
-	The developed system successfully processes and visualizes ECG data in real time. Through the implementation of a ring buffer and sliding window approach, the application maintains a continuous and smooth representation of the ECG signal, preserving critical waveform characteristics. The use of the Pan-Tompkins algorithm allows for reliable QRS peak detection, enhancing the accuracy of heartbeat identification. Additionally, BLE communication was optimized to minimize latency and packet loss, ensuring stable data transmission. The performance evaluation indicates that the system meets the requirements for real-time ECG monitoring, achieving both responsiveness and scalability.}
-
-\section{Outlook}
-Future enhancements could focus on integrating machine learning techniques for advanced arrhythmia detection, further improving the diagnostic capabilities of the application. Additionally, expanding compatibility with multiple BLE-enabled ECG devices could increase the system’s versatility. Implementing cloud synchronization for remote monitoring and historical data analysis would further extend the practical applications of this work. Lastly, optimizing power consumption for mobile usage remains a crucial aspect for improving long-term monitoring solutions.
-\section{Appendix}
-\subsubsection{Versions}
-{\large 
-	This section presents fundamental versions of the required development resources used for this work.
-	
-	The tests for this application during the development process, were done on a phone using the \textbf{Android version 13} which implies the usage of \textbf{API level 33}. Utilizing lower Android version than 12 (API Level 31,32) is not possible due to new runtime permissions added in Android 13, making it impossible to start the app\footnote{\url{https://developer.android.com/develop/connectivity/bluetooth/bt-permissions}}. Higher Android versions were not reviewed. More versions of the used ressources, are presented in table \ref{tab:versionTable}.
-	\begin{table}[h!]
-		\begin{center}
-			\caption{Versions of used resources}
-			\label{tab:versionTable}
-			\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-				\textbf{Ressource} & \textbf{Version used} \\
-				\hline
-				Android version& 13 \\
-				API Level & 33 \\
-				Koltin compiler extension version & 5.15.1 \\
-				minSDK & 30\\
-			\end{tabular}
-		\end{center}
-	\end{table}
-}
-\subsection{Beispielcode zur Erzeugung eines Quelltext-Generators}\label{sec:a1}
-\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
-	@SuppressLint("MissingPermission")
-	fun connect(context: Context, device: ServerDevice) {
-		this.viewModelScope.launch {
-			val connection = ClientBleGatt.connect(context, device, this@BLEViewModel.viewModelScope )
-			this@BLEViewModel.connection.value = connection
-			val services = connection.discoverServices()
-			val bleService = services.findService(UUID.fromString("e28e00e9-b79a-479a-a6f1-21e8f73236e1"))
-			val signalCharacteristic = bleService!!.findCharacteristic(UUID.fromString("23b85b26-e7cb-421c-9731-1b4ca2d2a849"))
-			val appCommuncationCharacteristic = bleService!!.findCharacteristic(UUID.fromString("563a2846-1dc7-11ef-9262-0242ac120002"))
-			this@BLEViewModel.appCommuncationCharacteristic = appCommuncationCharacteristic!!
-			
-			signalCharacteristic!!.getNotifications().onEach {
-				val values = byteArrayToIntArray(it.value).toList()
-				startTime = System.currentTimeMillis()
-				channel.send(values)
-				receiveData(viewModelScope){dataList ->
-					StoreWrapper.processDataList(dataList)
-					BPM.currList.value += dataList
-					if(BPM.currList.value.size >= 7500){
-						var qrsPeaks = BPM.panTompkins(BPM.currList.value).size
-						println("PEAK COUNTER: ${qrsPeaks}")
-						println("liste: ${BPM.currList.value}")
-						BPM.currList.value.forEach {
-							println(it)
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		@SuppressLint("MissingPermission")
+		fun connect(context: Context, device: ServerDevice) {
+			this.viewModelScope.launch {
+				val connection = ClientBleGatt.connect(context, device, this@BLEViewModel.viewModelScope )
+				this@BLEViewModel.connection.value = connection
+				val services = connection.discoverServices()
+				val bleService = services.findService(UUID.fromString("e28e00e9-b79a-479a-a6f1-21e8f73236e1"))
+				val signalCharacteristic = bleService!!.findCharacteristic(UUID.fromString("23b85b26-e7cb-421c-9731-1b4ca2d2a849"))
+				val appCommuncationCharacteristic = bleService!!.findCharacteristic(UUID.fromString("563a2846-1dc7-11ef-9262-0242ac120002"))
+				this@BLEViewModel.appCommuncationCharacteristic = appCommuncationCharacteristic!!
+				
+				signalCharacteristic!!.getNotifications().onEach {
+					val values = byteArrayToIntArray(it.value).toList()
+					startTime = System.currentTimeMillis()
+					channel.send(values)
+					receiveData(viewModelScope){dataList ->
+						StoreWrapper.processDataList(dataList)
+						BPM.currList.value += dataList
+						if(BPM.currList.value.size >= 7500){
+							var qrsPeaks = BPM.panTompkins(BPM.currList.value).size
+							println("PEAK COUNTER: ${qrsPeaks}")
+							println("liste: ${BPM.currList.value}")
+							BPM.currList.value.forEach {
+								println(it)
+							}
+							println("ENDOF PRINTING")
+							BPM.currList.value = BPM.currList.value.subList(750, 7500-1)
+							BPM.countPeak = qrsPeaks
+							qrsPeaks = 0
 						}
-						println("ENDOF PRINTING")
-						BPM.currList.value = BPM.currList.value.subList(750, 7500-1)
-						BPM.countPeak = qrsPeaks
-						qrsPeaks = 0
 					}
-				}
-				paketCounter++
-			}.launchIn(viewModelScope)
-			appCommuncationCharacteristic!!.getNotifications().onEach {
-				ResponseChecker.check(it.value)
-				PacketReassembler.reassemble(it.value)
-				println(it)
-			}.launchIn(viewModelScope)
-			connection.requestMtu(512)
-			fetchCurrentMode()
-			listEKGS()
-			750
+					paketCounter++
+				}.launchIn(viewModelScope)
+				appCommuncationCharacteristic!!.getNotifications().onEach {
+					ResponseChecker.check(it.value)
+					PacketReassembler.reassemble(it.value)
+					println(it)
+				}.launchIn(viewModelScope)
+				connection.requestMtu(512)
+				fetchCurrentMode()
+				listEKGS()
+				750
+			}
 		}
-	}
-\end{lstlisting}
+	\end{lstlisting}

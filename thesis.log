@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  12 FEB 2025 15:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  13 FEB 2025 10:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -42,12 +42,12 @@ Package: tocbasic 2023/07/07 v3.41 KOMA-Script package (handling toc-files)
 Package tocbasic Info: omitting babel extension for `toc'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `toc' on input line 133.
-Package scrartcl Info: You've used standard option `12pt'.
+Package scrartcl Info: You've used standard option `11pt'.
 (scrartcl)             This is correct!
-(scrartcl)             Internally I'm using `fontsize=12pt'.
+(scrartcl)             Internally I'm using `fontsize=11pt'.
 (scrartcl)             If you'd like to set the option with \KOMAoptions,
-(scrartcl)             you'd have to use `fontsize=12pt' there
-(scrartcl)             instead of `12pt', too.
+(scrartcl)             you'd have to use `fontsize=11pt' there
+(scrartcl)             instead of `11pt', too.
 
 
 Class scrartcl Warning: You've used deprecated option `bigheadings'.
@@ -226,10 +226,10 @@ Class scrartcl Info: You've used standard option `oneside'.
 (scrartcl)           If you'd like to set the option with \KOMAoptions,
 (scrartcl)           you'd have to use `twoside=false' there
 (scrartcl)           instead of `oneside', too.
-Class scrartcl Info: File `scrsize12pt.clo' used to setup font sizes on input l
+Class scrartcl Info: File `scrsize11pt.clo' used to setup font sizes on input l
 ine 2441.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/koma-script/scrsize12pt.clo
-File: scrsize12pt.clo 2023/07/07 v3.41 KOMA-Script font size class option (12pt
+(/usr/local/texlive/2024/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2023/07/07 v3.41 KOMA-Script font size class option (11pt
 )
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/koma-script/typearea.sty
@@ -257,17 +257,17 @@ Package typearea Info: These are the values describing the layout:
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
 (typearea)              \textwidth      = 434.55125pt
-(typearea)              DIV departure   = -3%
+(typearea)              DIV departure   = -10%
 (typearea)              \evensidemargin = 9.20834pt
 (typearea)              \oddsidemargin  = 9.20834pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 621.0pt
-(typearea)              \topmargin      = -35.32254pt
-(typearea)              \headheight     = 18.125pt
-(typearea)              \headsep        = 21.75pt
-(typearea)              \topskip        = 12.0pt
-(typearea)              \footskip       = 50.75pt
-(typearea)              \baselineskip   = 14.5pt
+(typearea)              \textheight     = 623.00027pt
+(typearea)              \topmargin      = -32.84755pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
 (typearea)              on input line 1799.
 )
 \c@part=\count189
@@ -1282,15 +1282,15 @@ Package caption Info: End \AtBeginDocument code.
 * \textheight=668.63976pt
 * \oddsidemargin=13.08827pt
 * \evensidemargin=13.08827pt
-* \topmargin=-10.73834pt
-* \headheight=18.125pt
+* \topmargin=-8.26335pt
+* \headheight=17.0pt
 * \headsep=28.45274pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=42.67912pt
 * \marginparwidth=54.3189pt
 * \marginparsep=12.8401pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1369,15 +1369,15 @@ Package geometry Warning: Over-specification in `h'-direction.
 * \textheight=760.53699pt
 * \oddsidemargin=13.08827pt
 * \evensidemargin=13.08827pt
-* \topmargin=-85.04381pt
-* \headheight=18.125pt
+* \topmargin=-83.91881pt
+* \headheight=17.0pt
 * \headsep=28.45274pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=42.67912pt
 * \marginparwidth=54.3189pt
 * \marginparsep=12.8401pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1400,15 +1400,7 @@ Package pdftex.def Info: images/thiRGB.jpg  used on input line 9.
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./images/
-thiRGB.jpg>]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 44.
-
-[2])
+thiRGB.jpg>])
 \openout2 = `affidavit.aux'.
 
  (./affidavit.tex
@@ -1446,24 +1438,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--8
 ]
 \openout2 = `abstractEN.aux'.
 
- (./abstractEN.tex [3
+ (./abstractEN.tex) [3
 
 
 
 
 
-])
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 245.
-
-[4]
+]
 \openout2 = `confidentialityClause.aux'.
 
- (./confidentialityClause.tex
+
+(./confidentialityClause.tex
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
@@ -1473,7 +1458,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
  []
 
-) [5
+) [4
 
 
 
@@ -1498,7 +1483,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 260.
 
-[6
+[5
 
 
 
@@ -1512,37 +1497,32 @@ input line 260.
 
 
 ] (./thesis.lof
-Overfull \hbox (26.22946pt too wide) in paragraph at lines 5--5
- [][] [][][]\T1/cmr/m/n/10.95 BLE pro-to-col stack (https://de.mathworks.com/he
-lp/bluetooth/gs/bluetooth-protocol- 
+Overfull \hbox (27.51727pt too wide) in paragraph at lines 5--5
+ [][] [][][]\T1/cmr/m/n/10 BLE pro-to-col stack (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-protocol-stack.html)[][] [][]  
  []
 
 
-Overfull \hbox (28.14005pt too wide) in paragraph at lines 6--6
- [][] [][][]\T1/cmr/m/n/10.95 Attribute Struc-ture (https://de.mathworks.com/he
-lp/bluetooth/gs/bluetooth-protocol- 
+Overfull \hbox (29.32349pt too wide) in paragraph at lines 6--6
+ [][] [][][]\T1/cmr/m/n/10 Attribute Struc-ture (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-protocol-stack.html)[][] [][]  
  []
 
 )
 \tf@lof=\write9
 \openout9 = `thesis.lof'.
 
- [7
+ [6
 
 
 ] (./thesis.lot)
 \tf@lot=\write10
 \openout10 = `thesis.lot'.
 
- [8
+ [7
 
 
-] (./thesis.toc
-Overfull \hbox (2.45354pt too wide) detected at line 9
- []\T1/cmss/bx/n/12 VIII
- []
-
-[9
+] (./thesis.toc [8
 
 
 ])
@@ -1557,7 +1537,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 282.
 
-[10]
+[9]
 \openout2 = `mainpart.aux'.
 
  (./mainpart.tex (./Chapter1/chap1.tex)
@@ -1570,27 +1550,13 @@ l.4 \newpage
 
 
 
-]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 4.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.4 \newpage
-             [2] (./Chapter2/chap2.tex
-Overfull \hbox (70.38051pt too wide) in paragraph at lines 18--33
+] (./Chapter2/chap2.tex
+Overfull \hbox (33.7432pt too wide) in paragraph at lines 18--33
  [] 
  []
 
-[3]
-</Users/eric/Downloads/android-stack_2x.png, id=202, 1389.19pt x 2045.6425pt>
+[2]
+</Users/eric/Downloads/android-stack_2x.png, id=188, 1389.19pt x 2045.6425pt>
 File: /Users/eric/Downloads/android-stack_2x.png Graphic file (type png)
 <use /Users/eric/Downloads/android-stack_2x.png>
 Package pdftex.def Info: /Users/eric/Downloads/android-stack_2x.png  used on in
@@ -1609,7 +1575,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 39.
 
-[4]
+[3]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
@@ -1617,8 +1583,8 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 47.
 
-[5 </Users/eric/Downloads/android-stack_2x.png (PNG copy)>]
-</Users/eric/Downloads/APIexample.jpg, id=212, 1651.16875pt x 1062.97125pt>
+[4 </Users/eric/Downloads/android-stack_2x.png (PNG copy)>]
+</Users/eric/Downloads/APIexample.jpg, id=199, 1651.16875pt x 1062.97125pt>
 File: /Users/eric/Downloads/APIexample.jpg Graphic file (type jpg)
 <use /Users/eric/Downloads/APIexample.jpg>
 Package pdftex.def Info: /Users/eric/Downloads/APIexample.jpg  used on input li
@@ -1640,34 +1606,20 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 52.
+input line 59.
 
-[6]
-! Too many }'s.
-l.62 }
-      
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-) (./Chapter8/chap8.tex [7 </Users/eric/Downloads/APIexample.jpg>]
+[5 </Users/eric/Downloads/APIexample.jpg>]) (./Chapter8/chap8.tex
 Underfull \hbox (badness 10000) in paragraph at lines 12--17
 
  []
 
 
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 20.
-
-[8{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}]
 Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
-
+[6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}]
 Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
@@ -1678,23 +1630,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--34
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 57--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--63
+
+ []
+
+
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 49.
+input line 63.
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 57--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--63
-
- []
-
-
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 67--70
 
  []
@@ -1714,17 +1666,9 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 82.
+input line 105.
 
-[10]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 113.
-
-[11]) (./Chapter9/chap9.tex [12]
+[8]) (./Chapter9/chap9.tex [9]
 LaTeX Font Info:    Trying to load font information for T1+CascadiaCode-TLF on 
 input line 28.
 
@@ -1734,19 +1678,11 @@ File: T1CascadiaCode-TLF.fd 2023/09/26 (autoinst) Font definitions for T1/Casca
 diaCode-TLF.
 )
 LaTeX Font Info:    Font shape `T1/CascadiaCode-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 28.
+(Font)              scaled to size 9.0pt on input line 28.
 
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 29.
-
-[13]
 Underfull \hbox (badness 10000) in paragraph at lines 31--31
-[][][][]$\T1/CascadiaCode-TLF/m/n/10 https : / / stackoverflow . com / question
-s / 78125635 / processing -[] classes -[] for -[]
+[][][][]$\T1/CascadiaCode-TLF/m/n/9 https : / / stackoverflow . com / questions
+ / 78125635 / processing -[] classes -[] for -[] emulated -[] method -[]
  []
 
 
@@ -1756,7 +1692,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 66.
 
-[14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cascadia-code/a_i3ioen.e
+[10{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cascadia-code/a_i3ioen.e
 nc}]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
@@ -1765,8 +1701,8 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 66.
 
-[15]
-</Users/eric/Downloads/InformationFlow.drawio-3.png, id=292, 723.70375pt x 593.
+[11]
+</Users/eric/Downloads/InformationFlow.drawio-3.png, id=266, 723.70375pt x 593.
 21625pt>
 File: /Users/eric/Downloads/InformationFlow.drawio-3.png Graphic file (type png
 )
@@ -1792,32 +1728,24 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 87.
 
-[16 </Users/eric/Downloads/InformationFlow.drawio-3.png>]
+[12 </Users/eric/Downloads/InformationFlow.drawio-3.png>]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 101.
+input line 118.
 
-[17]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 136.
-
-[18]
+[13]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 169.
+input line 166.
 
-[19]
-</Users/eric/Downloads/bluetooth_le_stack.png, id=320, 493.845pt x 412.54124pt>
+[14]
+</Users/eric/Downloads/bluetooth_le_stack.png, id=290, 493.845pt x 412.54124pt>
 
 File: /Users/eric/Downloads/bluetooth_le_stack.png Graphic file (type png)
 <use /Users/eric/Downloads/bluetooth_le_stack.png>
@@ -1831,9 +1759,9 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (1.24152pt too wide) in paragraph at lines 173--173
-[][][]|[]\T1/cmr/m/n/12 BLE pro-to-col stack (https://de.mathworks.com/help/blu
-etooth/gs/bluetooth-
+Underfull \hbox (badness 10000) in paragraph at lines 173--173
+[][][]|[]\T1/cmr/m/n/10.95 BLE pro-to-col stack (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-
  []
 
 
@@ -1843,16 +1771,8 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 179.
 
-[20 </Users/eric/Downloads/bluetooth_le_stack.png>]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 194.
-
-[21]
-</Users/eric/Downloads/ble_att_representation.png, id=341, 534.49687pt x 78.292
+[15 </Users/eric/Downloads/bluetooth_le_stack.png>]
+</Users/eric/Downloads/ble_att_representation.png, id=298, 534.49687pt x 78.292
 5pt>
 File: /Users/eric/Downloads/ble_att_representation.png Graphic file (type png)
 <use /Users/eric/Downloads/ble_att_representation.png>
@@ -1871,9 +1791,16 @@ Overfull \hbox (25.79863pt too wide) in paragraph at lines 196--198
  []
 
 
-Overfull \hbox (3.30072pt too wide) in paragraph at lines 198--198
-[][][]|[]\T1/cmr/m/n/12 Attribute Struc-ture (https://de.mathworks.com/help/blu
-etooth/gs/bluetooth-
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 198.
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+[][][]|[]\T1/cmr/m/n/10.95 Attribute Struc-ture (https://de.mathworks.com/help/
+bluetooth/gs/bluetooth-
  []
 
 
@@ -1881,10 +1808,10 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 213.
+input line 222.
 
-[22 </Users/eric/Downloads/ble_att_representation.png>]
-</Users/eric/Downloads/NordicSemiconLibVersions.png, id=357, 390.45876pt x 136.
+[17 </Users/eric/Downloads/ble_att_representation.png>]
+</Users/eric/Downloads/NordicSemiconLibVersions.png, id=334, 390.45876pt x 136.
 00812pt>
 File: /Users/eric/Downloads/NordicSemiconLibVersions.png Graphic file (type png
 )
@@ -1899,53 +1826,25 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 See the caption package documentation for explanation.
 
 
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 232.
-
-[23 </Users/eric/Downloads/NordicSemiconLibVersions.png>]
-Overfull \hbox (24.64821pt too wide) in paragraph at lines 234--236
-[]$[]$ 
- []
-
-
-Overfull \hbox (8.3553pt too wide) in paragraph at lines 237--240
-\T1/cmr/m/n/14.4 as \T1/cmr/m/it/14.4 BLUE-TOOTH_SCAN \T1/cmr/m/n/14.4 or \T1/c
-mr/m/it/14.4 AC-CESS_FINE_LOCATION\T1/cmr/m/n/14.4 ). Nor-mally, scan-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 237--240
 
  []
 
-</Users/eric/Downloads/ScanningCodeSnippet.png, id=372, 523.9575pt x 386.94562p
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 240.
+
+[18 </Users/eric/Downloads/NordicSemiconLibVersions.png>]
+</Users/eric/Downloads/ScanningCodeSnippet.png, id=345, 523.9575pt x 386.94562p
 t>
 File: /Users/eric/Downloads/ScanningCodeSnippet.png Graphic file (type png)
 <use /Users/eric/Downloads/ScanningCodeSnippet.png>
 Package pdftex.def Info: /Users/eric/Downloads/ScanningCodeSnippet.png  used on
  input line 244.
 (pdftex.def)             Requested size: 537.75343pt x 397.14731pt.
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 248.
-
-[24]
-Overfull \hbox (6.3523pt too wide) in paragraph at lines 261--265
-[]\T1/cmr/m/n/14.4 The func-tion uses Ac-tiv-i-ty-Compat.checkSelfPermission to
- ver-ify whether these
- []
-
-
-Overfull \hbox (41.86015pt too wide) in paragraph at lines 261--265
-\T1/cmr/m/n/14.4 TOOTH_CONNECT) are granted, the func-tion pro-ceeds to call st
-artScan(context).
- []
 
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
@@ -1954,8 +1853,8 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 265.
 
-[25 </Users/eric/Downloads/ScanningCodeSnippet.png>]
-</Users/eric/Downloads/RefreshingBLE.png, id=387, 803.0pt x 377.41pt>
+[19 </Users/eric/Downloads/ScanningCodeSnippet.png>]
+</Users/eric/Downloads/RefreshingBLE.png, id=353, 803.0pt x 377.41pt>
 File: /Users/eric/Downloads/RefreshingBLE.png Graphic file (type png)
 <use /Users/eric/Downloads/RefreshingBLE.png>
 Package pdftex.def Info: /Users/eric/Downloads/RefreshingBLE.png  used on input
@@ -1967,18 +1866,12 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 280.
+input line 285.
 
-[26 </Users/eric/Downloads/RefreshingBLE.png>]
-Overfull \hbox (5.67049pt too wide) in paragraph at lines 281--284
-\T1/cmr/m/it/14.4 appCommunicationCharacteristic: \T1/cmr/m/n/14.4 Used for bid
-i-rec-tional com-mu-ni-ca-tion with
- []
-
-
-Overfull \hbox (3.6477pt too wide) in paragraph at lines 288--292
-\T1/cmr/m/n/14.4 Notifications are also en-abled for the ap-p-Com-mu-ni-ca-tion
--Char-ac-ter-is-tic, which
+[20 </Users/eric/Downloads/RefreshingBLE.png>]
+Overfull \hbox (46.04109pt too wide) in paragraph at lines 293--299
+[]\T1/cmr/m/n/12 Validation us-ing Re-spon-seChecker.check. Packet re-con-struc
+-tion via Pack-e-tRe-assem-bler.reassemble.
  []
 
 
@@ -1986,21 +1879,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--299
 
  []
 
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 299.
-
-[27]
-</Users/eric/Downloads/connectBLE.png, id=399, 798.985pt x 664.98438pt>
+</Users/eric/Downloads/connectBLE.png, id=361, 798.985pt x 664.98438pt>
 File: /Users/eric/Downloads/connectBLE.png Graphic file (type png)
 <use /Users/eric/Downloads/connectBLE.png>
 Package pdftex.def Info: /Users/eric/Downloads/connectBLE.png  used on input li
 ne 310.
 (pdftex.def)             Requested size: 537.77986pt x 637.3732pt.
-
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
@@ -2008,7 +1892,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 314.
 
-[28]
+[21]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
@@ -2016,7 +1900,11 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 319.
 
-[29 </Users/eric/Downloads/connectBLE.png>]
+[22 </Users/eric/Downloads/connectBLE.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 322--324
+
+ []
+
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
@@ -2024,486 +1912,46 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 343.
 
-[30]
+[23]
 LaTeX Font Info:    Font shape `T1/CascadiaCode-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 343.
+(Font)              scaled to size 12.0pt on input line 343.
 LaTeX Font Info:    Font shape `T1/CascadiaCode-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 343.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.344 	fun 
-           prepareData(size: Size, shiftH: Double, dataFromFile: MutableList...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.345 		this.
-             SHIFTH = shiftH
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+(Font)              scaled to size 10.0pt on input line 343.
 
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 346.
+input line 373.
 
-[31]
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.346 		var 
-            data: MutableList<Double>? = null
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.347 		if(
-            dataFromFile != null ){
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.348 			data 
-              = dataFromFile.mapNotNull {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.349 				(i
-            t as? String)?.toDouble()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.350 			}.t
-            oMutableList()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.351 		}e
-          lse{
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.352 			data 
-              = ArrayList()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.353 		}
-         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.354 		val 
-            width = size.width.toDouble()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.355 		val 
-            height = size.height.toDouble()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.356 		var 
-            minV = min //lowest value in buffer
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.357 		var 
-            maxV = max  //highest value in buffer
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.358 		if 
-           (minV == maxV) {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.359 			minV 
-              = minV / 2
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.360 			maxV 
-              = maxV + minV / 2
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.361 		}
-         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.362 		val 
-            dv = maxV - minV
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.363 		step 
-             = width / buffer_.capacity()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.364 		val 
-            coeff = (height - 2 * shiftH) / dv
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.365 		//
-          passing the wrong buffer to dataSeriesOverlay (not updated)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.366 		val 
-            dataTemp =
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.367 		if 
-           (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) el...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.368 		this
-            
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.369 		)
-         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.370 		data 
-             = ArrayList(Collections.nCopies(dataTemp.size, 0.0))
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.371 		//
-          return data
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.372 		if 
-           (data.isEmpty() || dataTemp.isEmpty()) {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.373 			return 
-                data
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.374 		}
-         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.375 		for 
-            (i in dataTemp.indices) {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.376 			data[
-              i] = (maxV - dataTemp[i]!!) * coeff + shiftH
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.377 		}
-         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.378 		return 
-               data
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.379 	}
-        
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+[24]
 LaTeX Font Info:    Font shape `T1/CascadiaCode-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 380.
+(Font)              scaled to size 10.95pt on input line 380.
+
 
 Package natbib Warning: Citation `microsoft_roslyndocsfeaturesincremental-gener
-atorsmd_2024' on page 32 undefined on input line 380.
+atorsmd_2024' on page 25 undefined on input line 380.
 
 
-Package natbib Warning: Citation `carter_introducing_2020' on page 32 undefined
+Package natbib Warning: Citation `carter_introducing_2020' on page 25 undefined
  on input line 380.
 
 
 Package natbib Warning: Citation `microsoft_roslyndocsfeaturesincremental-gener
-atorsmd_2024' on page 32 undefined on input line 380.
+atorsmd_2024' on page 25 undefined on input line 380.
 
 
-Package natbib Warning: Citation `carter_introducing_2020' on page 32 undefined
+Package natbib Warning: Citation `carter_introducing_2020' on page 25 undefined
  on input line 380.
 
-</Users/eric/Downloads/prepareECGData.png, id=425, 873.76437pt x 595.72563pt>
+</Users/eric/Downloads/prepareECGData.png, id=413, 873.76437pt x 595.72563pt>
 File: /Users/eric/Downloads/prepareECGData.png Graphic file (type png)
 <use /Users/eric/Downloads/prepareECGData.png>
 Package pdftex.def Info: /Users/eric/Downloads/prepareECGData.png  used on inpu
 t line 385.
 (pdftex.def)             Requested size: 537.75343pt x 366.63725pt.
 
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 389.
-
-[32]
 Underfull \hbox (badness 10000) in paragraph at lines 389--391
 
  []
@@ -2513,14 +1961,14 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 397.
+input line 394.
 
-[33 </Users/eric/Downloads/prepareECGData.png>]
-</Users/eric/Downloads/preparePath.png, id=472, 648.4225pt x 557.58313pt>
+[25 </Users/eric/Downloads/prepareECGData.png>]
+</Users/eric/Downloads/preparePath.png, id=427, 648.4225pt x 557.58313pt>
 File: /Users/eric/Downloads/preparePath.png Graphic file (type png)
 <use /Users/eric/Downloads/preparePath.png>
 Package pdftex.def Info: /Users/eric/Downloads/preparePath.png  used on input l
-ine 404.
+ine 403.
 (pdftex.def)             Requested size: 537.78488pt x 637.35298pt.
 
 
@@ -2528,588 +1976,52 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 408.
+input line 407.
 
-[34]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 411.
-
-[35 </Users/eric/Downloads/preparePath.png>]
+[26]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 417.
-
-[36]
-
-Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
-(scrartcl)              The command has been renamed because of a
-(scrartcl)              recommendation of The LaTeX Project Team.
-(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 439.
-
-[37]
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.440 	@SuppressLint(
-                     "MissingPermission")
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.441 	fun 
-           connect(context: Context, device: ServerDevice) {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.442 		this.
-             viewModelScope.launch {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.443 			val 
-             connection = ClientBleGatt.connect(context, device, this@BLEVie...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.444 			this@BLEViewModel.
-                           connection.value = connection
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.445 			val 
-             services = connection.discoverServices()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.446 			val 
-             bleService = services.findService(UUID.fromString("e28e00e9-b79...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.447 			val 
-             signalCharacteristic = bleService!!.findCharacteristic(UUID.fro...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.448 			val 
-             appCommuncationCharacteristic = bleService!!.findCharacteristic...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.449 			this@BLEViewModel.
-                           appCommuncationCharacteristic = appCommuncationCh...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.451 			signalCharacteristic!
-                              !.getNotifications().onEach {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.451 			signalCharacteristic!
-                              !.getNotifications().onEach {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.452 				val 
-              values = byteArrayToIntArray(it.value).toList()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.453 				startTime 
-                    = System.currentTimeMillis()
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.454 				channel.
-                  send(values)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.455 				receiveData(
-                      viewModelScope){dataList ->
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.456 					StoreWrapper.
-                        processDataList(dataList)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.457 					BPM.
-               currList.value += dataList
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.458 					if(
-              BPM.currList.value.size >= 7500){
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.459 						var 
-                qrsPeaks = BPM.panTompkins(BPM.currList.value).size
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.460 						println(
-                    "PEAK COUNTER: ${qrsPeaks}")
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.461 						println(
-                    "liste: ${BPM.currList.value}")
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.462 						BPM.
-                currList.value.forEach {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.463 							println(
-                     it)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.464 						}
-             
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.465 						println(
-                    "ENDOF PRINTING")
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.466 						BPM.
-                currList.value = BPM.currList.value.subList(750, 7500-1)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.467 						BPM.
-                countPeak = qrsPeaks
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.468 						qrsPeaks 
-                     = 0
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.469 					}
-            
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+input line 410.
+
+[27 </Users/eric/Downloads/preparePath.png>]
+Overfull \hbox (4.65697pt too wide) in paragraph at lines 412--413
+\T1/cmr/m/n/12 The de-vel-oped sys-tem suc-cess-fully pro-cesses and vi-su-al-i
+zes ECG data in real time. Through
+ []
 
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 470.
+input line 421.
 
-[38]
+[28]
 
-! Package xcolor Error: Undefined color `grey'.
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 453.
 
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.470 				}
-           
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.471 				paketCounter+
-                       +
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.472 			}.l
-            aunchIn(viewModelScope)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.473 			appCommuncationCharacteristic!
-                                       !.getNotifications().onEach {
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.474 				ResponseChecker.
-                          check(it.value)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.475 				PacketReassembler.
-                            reassemble(it.value)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.476 				println(
-                  it)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.477 			}.l
-            aunchIn(viewModelScope)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.478 			connection.
-                    requestMtu(512)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.479 			fetchCurrentMode(
-                          )
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.480 			listEKGS(
-                  )
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.481 			750
-            
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.482 		}
-         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xcolor Error: Undefined color `grey'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.483 	}
-        
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+[29]
 
 Package natbib Warning: Citation `microsoft_roslyndocsfeaturesincremental-gener
-atorsmd_2024' on page 39 undefined on input line 484.
+atorsmd_2024' on page 30 undefined on input line 484.
 
 
-Package natbib Warning: Citation `carter_introducing_2020' on page 39 undefined
+Package natbib Warning: Citation `carter_introducing_2020' on page 30 undefined
  on input line 484.
 
 
 Package natbib Warning: Citation `microsoft_roslyndocsfeaturesincremental-gener
-atorsmd_2024' on page 39 undefined on input line 484.
+atorsmd_2024' on page 30 undefined on input line 484.
 
 
-Package natbib Warning: Citation `carter_introducing_2020' on page 39 undefined
+Package natbib Warning: Citation `carter_introducing_2020' on page 30 undefined
  on input line 484.
 
 )
@@ -3120,7 +2032,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 37.
 
-[39]) (./thesis.bbl)
+[30]) (./thesis.bbl)
 pdfTeX warning (ext4): destination with the same identifier (name{page.VI}) has
  been already used, duplicate ignored
 <to be read again> 
@@ -3153,11 +2065,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 ### simple group (level 1) entered at line 44 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 31140 strings out of 474116
- 605657 string characters out of 5743682
- 2171187 words of memory out of 5000000
- 52732 multiletter control sequences out of 15000+600000
- 584248 words of font info for 86 fonts, out of 8000000 for 9000
+ 31125 strings out of 474116
+ 605561 string characters out of 5743682
+ 2135187 words of memory out of 5000000
+ 52723 multiletter control sequences out of 15000+600000
+ 585152 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,21n,107p,10922b,2457s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -3183,30 +2095,29 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cascadia-code/CascadiaCo
 de-Regular.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbi14
-40.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200
-.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.p
-fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/cm-super/sfsc1000.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/cm-super/sfxc1728.pfb>
-Output written on thesis.pdf (52 pages, 2103241 bytes).
+m/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbi120
+0.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsc0900.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb>
+Output written on thesis.pdf (41 pages, 2097161 bytes).
 PDF statistics:
- 828 PDF objects out of 1000 (max. 8388607)
- 699 compressed objects within 7 object streams
- 247 named destinations out of 1000 (max. 500000)
+ 775 PDF objects out of 1000 (max. 8388607)
+ 659 compressed objects within 7 object streams
+ 237 named destinations out of 1000 (max. 500000)
  373 words of extra memory for PDF output out of 10000 (max. 10000000)
 
