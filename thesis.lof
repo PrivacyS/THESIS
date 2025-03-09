@@ -1,13 +1,11 @@
 \babel@toc {english}{}\relax 
 \contentsline {figure}{\numberline {1}{\ignorespaces Android Platform architecture}}{4}{figure.1}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Android Java API example with androidx}}{5}{figure.2}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Informationflow Diagramm}}{12}{figure.3}%
-\contentsline {figure}{\numberline {4}{\ignorespaces BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{15}{figure.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{17}{figure.5}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Library Versions}}{18}{figure.6}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Scanning functionality code }}{19}{figure.caption.53}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Refresh functionality code }}{20}{figure.caption.56}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Connect functionality code }}{22}{figure.caption.59}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Mapping ECG-Data code }}{25}{figure.caption.62}%
-\contentsline {figure}{\numberline {11}{\ignorespaces prepare paths functionality code }}{27}{figure.caption.65}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Informationtransfer}}{6}{figure.3}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Informationflow Diagramm}}{14}{figure.4}%
+\contentsline {figure}{\numberline {5}{\ignorespaces BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{17}{figure.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{18}{figure.6}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Library Versions}}{20}{figure.7}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Scanning functionality code }}{21}{figure.caption.53}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Refresh functionality code }}{22}{figure.caption.56}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -4,10 +4,17 @@
 	Requirement engineering is essential at the beginning of every project. Formulating and documenting precisely defined requirements is a cornerstone in the course of realization. In this way, mundane mistakes can be avoided and the vision of the final product is clear. Thus this chapter will explain all functional requirements of the finshed product.
 	
 	
+
+
 	
 	
 }
 \subsection{ECG-Data}
+\begin{center}
+	\includegraphics[scale = 1.0]{/Users/eric/Downloads/Patient2Phone.png}
+	\label{fig:Patient2Phone}
+	\captionof{figure}{Informationtransfer}
+\end{center}
 {\large
 The application receives integer values from the microcontroller, which represent the heartbeat of the person connected to the hardware. These values must be mapped onto the screen to provide a clear and accurate visualization of the heart’s activity.
 A key challenge in this process is ensuring that the visualization adapts to different screen sizes. Since the application may run on devices with varying display dimensions and resolutions, a static mapping approach is insufficient. Instead, a dynamic and scalable algorithm is required to transform the received data into a graphical representation that maintains consistent proportions and readability across all screen sizes.
@@ -24,13 +31,72 @@ Therefore many parameters are need to be considerd when transforming the data. \
 	\\
 	\item step = $\frac{width}{bufferCap.}$(Determines horizontal space for each data point)
 \end{itemize}
+
 \mbox{}\\
-After calculating these paremeters, each of the current values in the buffer will by\mbox{}\\
+all data in the buffer will be updated as shown in the following code snippet:\mbox{}\\
 \\
- multiplied by the Scaling coefficient ($\dfrac{\text{height} - 2 \times \text{shiftH} }{\Delta v}$). 
+ \begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+ 	for (i in dataTemp.indices) {
+ 		data[i] = (maxV - dataTemp[i]) * coeff + shiftH
+ 	}
+ \end{lstlisting}
+ The calculation process can be examined in greater detail in the following example, which demonstrates how each data point is transformed and mapped onto the screen.
 \\
+To keep the example simple and concise, we will deal with an array of size 5 and a Coordinate system with a range of (6,6): \mbox{}\\ 
+
+\begin{center}
+\newcommand{\sep}{\hspace*{.5em}}
+\noindent
+$\fbox{951} \sep \fbox{960} \sep \fbox{980} \sep \fbox{1050}\sep \fbox{930}$
 \mbox{}\\
-Resulting in the follwing Complexity Anylysis: 
+\begin{itemize}
+	\item Screen dimensions (6,6)
+	\item minV = 930, maxV = 1050
+	\item BufferCapacity = 5 
+	\item  $\Delta v = 1050-930$
+	\\
+	\item coefficient = $\dfrac{6 - 2 \times 1 }{120}$ (shiftH = 1 )
+	\\
+	\item step = \large{$\frac{6}{5}$}
+\end{itemize}
+\mbox{}\\
+
+\end{center}
+\begin{center}
+The newly evaluated Array contains the following data:
+
+\newcommand{\sep}{\hspace*{.5em}}
+\noindent
+
+$\fbox{4.4} \sep \fbox{4.0} \sep \fbox{3.3} \sep \fbox{1.0}\sep \fbox{5.0}$\mbox{}\\
+\mbox{}\\
+Resulting in the follwing drawing:
+\end{center}
+
+\begin{tikzpicture}
+	% Draw axes
+	\draw[thick,->] (0,0) -- (6,0) node[anchor=north] {Width (6,0)};
+	
+	\draw[thick,->] (0,0) -- (0,-6) node[anchor=east] {Height (0,6)};
+	
+	% Labels
+	\node[anchor=north east] at (0,0) {Origin (0,0)};
+	
+	% Example data points
+	\fill (1.2, -4.3) circle (2pt) node[anchor=north] {P1};
+	\fill (2.4,-4.0) circle (2pt) node[anchor=north] {P2};
+	\fill (3.6,-3.3) circle (2pt) node[anchor=north] {P3};
+	\fill (4.8,-5) circle (2pt) node[anchor=north] {P4};
+	\fill (6.0,-1) circle (2pt) node[anchor=north] {P5};
+	% Connect points (example ECG line)
+	\draw[thick] (1.2,-4.3) -- (2.4,-4.0) -- (3.6,-3.3) -- (4.8,-5) -- (6.0, -1);
+\end{tikzpicture}
+
+
+\mbox{}\\
+
+\mbox{}\\
+Resulting in the follwing Complexity Analysis: 
 \begin{itemize}
 	\item Data Conversion: O(n) (for n data points)
 	\item Scaling \& Mapping: O(n) for n data points)

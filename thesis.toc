@@ -18,45 +18,52 @@
 \contentsline {paragraph}{\nonumberline Project example}{5}{paragraph*.21}%
 \contentsline {section}{\numberline {3}Functional Requirements}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}ECG-Data}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Drawing ECG-Data in realtime}{7}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}24-Hour recording}{8}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Connection via Bluetooth Low Energy}{9}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Realization}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Selected Technologies}{9}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Programming Language and Framework}{10}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Development Enviroment}{10}{subsubsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.2}Definiton of Entitys}{11}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Inter-Entity Communication Overview}{12}{subsection.4.3}%
-\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{13}{paragraph*.24}%
-\contentsline {subsection}{\numberline {4.4}BLEViewModel}{14}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}BLE Stack}{15}{subsubsection.4.4.1}%
-\contentsline {paragraph}{\nonumberline Application Layer}{16}{paragraph*.26}%
-\contentsline {paragraph}{\nonumberline Host Layer}{16}{paragraph*.28}%
-\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{16}{paragraph*.30}%
-\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{16}{paragraph*.32}%
-\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{16}{paragraph*.34}%
-\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{16}{paragraph*.36}%
-\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{17}{paragraph*.38}%
-\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{17}{paragraph*.40}%
-\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{17}{paragraph*.42}%
-\contentsline {paragraph}{\nonumberline Controller Layer}{17}{paragraph*.44}%
-\contentsline {paragraph}{\nonumberline Link Layer (LL)}{17}{paragraph*.46}%
-\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{17}{paragraph*.48}%
-\contentsline {subsubsection}{\numberline {4.4.2}Implementation}{18}{subsubsection.4.4.2}%
-\contentsline {paragraph}{\nonumberline Dependency versions and Library}{18}{paragraph*.50}%
-\contentsline {paragraph}{\nonumberline Scanning devices}{18}{paragraph*.52}%
-\contentsline {paragraph}{\nonumberline Refreshing}{19}{paragraph*.55}%
-\contentsline {paragraph}{\nonumberline Connect}{20}{paragraph*.58}%
-\contentsline {subsection}{\numberline {4.5}Storewrapper}{23}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}Implementation}{23}{subsubsection.4.5.1}%
-\contentsline {paragraph}{\nonumberline Preparing ECG-Data}{23}{paragraph*.61}%
-\contentsline {paragraph}{\nonumberline Preparing the Drawpath}{26}{paragraph*.64}%
-\contentsline {subsection}{\numberline {4.6}GraphEcgWidget}{28}{subsection.4.6}%
-\contentsline {section}{\numberline {5}Summary}{28}{section.5}%
-\contentsline {section}{\numberline {6}Result}{28}{section.6}%
-\contentsline {section}{\numberline {7}Outlook}{28}{section.7}%
-\contentsline {section}{\numberline {8}Appendix}{29}{section.8}%
-\contentsline {subsubsection}{\numberline {8.0.1}Versions}{29}{subsubsection.8.0.1}%
-\contentsline {subsection}{\numberline {8.1}Beispielcode zur Erzeugung eines Quelltext-Generators}{29}{subsection.8.1}%
-\contentsline {section}{\nonumberline Literature references}{VI}{section*.68}%
+\contentsline {subsection}{\numberline {3.2}Drawing ECG-Data in realtime}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}24-Hour recording}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Connection via Bluetooth Low Energy}{10}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Realization}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Selected Technologies}{11}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Programming Language and Framework}{11}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Development Enviroment}{11}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Definiton of Entitys}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Inter-Entity Communication Overview}{14}{subsection.4.3}%
+\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{14}{paragraph*.24}%
+\contentsline {subsection}{\numberline {4.4}BLEViewModel}{16}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}BLE Stack}{16}{subsubsection.4.4.1}%
+\contentsline {paragraph}{\nonumberline Application Layer}{17}{paragraph*.26}%
+\contentsline {paragraph}{\nonumberline Host Layer}{17}{paragraph*.28}%
+\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{17}{paragraph*.30}%
+\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{18}{paragraph*.32}%
+\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{18}{paragraph*.34}%
+\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{18}{paragraph*.36}%
+\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{18}{paragraph*.38}%
+\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{19}{paragraph*.40}%
+\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{19}{paragraph*.42}%
+\contentsline {paragraph}{\nonumberline Controller Layer}{19}{paragraph*.44}%
+\contentsline {paragraph}{\nonumberline Link Layer (LL)}{19}{paragraph*.46}%
+\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{19}{paragraph*.48}%
+\contentsline {subsubsection}{\numberline {4.4.2}Implementation}{19}{subsubsection.4.4.2}%
+\contentsline {paragraph}{\nonumberline Dependency versions and Library}{19}{paragraph*.50}%
+\contentsline {paragraph}{\nonumberline Scanning devices}{20}{paragraph*.52}%
+\contentsline {paragraph}{\nonumberline Refreshing}{21}{paragraph*.55}%
+\contentsline {paragraph}{\nonumberline Connect}{22}{paragraph*.58}%
+\contentsline {subsection}{\numberline {4.5}Storewrapper}{25}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Implementation}{25}{subsubsection.4.5.1}%
+\contentsline {paragraph}{\nonumberline Preparing ECG-Data}{25}{paragraph*.60}%
+\contentsline {paragraph}{\nonumberline Preparing the Drawpath}{27}{paragraph*.62}%
+\contentsline {subsection}{\numberline {4.6}GraphEcgWidget}{29}{subsection.4.6}%
+\contentsline {paragraph}{\nonumberline Displaying Heart Rate}{29}{paragraph*.64}%
+\contentsline {paragraph}{\nonumberline Continous ECG-Graph}{30}{paragraph*.66}%
+\contentsline {paragraph}{\nonumberline Real-time graph update}{31}{paragraph*.68}%
+\contentsline {subsection}{\numberline {4.7}VitalMonitorWidget}{33}{subsection.4.7}%
+\contentsline {paragraph}{\nonumberline Draw recorded BPM}{33}{paragraph*.70}%
+\contentsline {subsection}{\numberline {4.8}BPM}{35}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}StorageHandler}{35}{subsection.4.9}%
+\contentsline {section}{\numberline {5}Summary}{35}{section.5}%
+\contentsline {section}{\numberline {6}Result}{35}{section.6}%
+\contentsline {section}{\numberline {7}Outlook}{36}{section.7}%
+\contentsline {section}{\numberline {8}Appendix}{36}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Versions}{36}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Beispielcode zur Erzeugung eines Quelltext-Generators}{37}{subsection.8.2}%
+\contentsline {section}{\nonumberline Literature references}{VI}{section*.73}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

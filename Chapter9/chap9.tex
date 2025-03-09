@@ -79,11 +79,7 @@
 		\captionof{figure}{Informationflow Diagramm}
 	\end{center}
 	
-	As already stated in \ref{entityDef} the BLEViewModel entity, serves as an interface between controller and app. Therfore every entity that needs to evaluate recorded data, is dependent on this Instance. Two of the entities listed in \ref{entityDef} are affected. To be more precise, it is the StoreWrapper that makes the data drawable (1) and forwards the data to the GraphECGWidget (4).
-	The BPM instance that calculates the beat frequency (2), (which is  then displayed by the GraphECGWidget (5)).
-	When comparing Informationflow (4) and (6) both seem very similiar, because both widgets obtain drawable data. However the Informationflow of (6) is bidirectional.  This is necessary because  the recorded data needs to be read, by the StorageHandler from a local file (7), before being sent to the Storewrapper (6). While in (4) the Storewrapper receives data directly from the ECG. After the data has been mapped by the Storewrapper, it is sent back to the VitalMonitorWidget (6).
-	MainView integrates both the GraphECGWidget (8) and the VitalMonitorWidget (9) as components and manages their visibility.
-	However, the range of tasks of the BLEViewModel is not limited to exchanging data, but also extends to scanning and connecting with other devices in the vicinity, as well as integrating and managing a 24-hour ECG recording. These functionalities are utilized by the MainView and the MainActivity. As already mentioned in table \ref{tab:entitysDefinition}, MainView serves solely to construct components of functionalities that are later utilized by MainActivity, such as buttons enabling users to start a 24-hour ECG recording (10). The MainActivity entity acts as a bridge between the microcontroller and the user, allowing device scanning, initiating recordings, establishing connections, and displaying ECG information (11).
+	
 	
 	\paragraph{Information Flow and Responsibilities of BLEViewModel}
 	
@@ -202,7 +198,7 @@
 	Works as an interface betwenn the HCI and the upper modules of the Host layer, by multiplexing data packets to the corresponding protocols. Also fragments and reassembles large packets.
 	
 	\paragraph{Host-Side Host-Controller-Interface (HCI) }\mbox{}\\
-	Generally said the HCI is the inteface between the host and the controller. The HCI establishes commands and events for packet data transmission and reception. When sending data, it processes raw information into packets, enabling communication between the host and the controller.
+	The HCI is the inteface between the host and the controller. The HCI establishes commands and events for packet data transmission and reception. When sending data, it processes raw information into packets, enabling communication between the host and the controller.
 	
 	\paragraph{Controller-Side Host-Controller-Interface (HCI) }\mbox{}\\
 	As mentioned in the last paragraph, the HCI is the interface between the host and the controller. However, analogous to the host side, the data received from the controller is extracted and forwarded to the host.
@@ -304,13 +300,51 @@
 
 The \textit{channe}l serves as a concurrent data pipeline between the BLE data stream and the processing logic. It ensures that the incoming data from the BLE device is processed in a structured, thread-safe manner without blocking the main execution thread. By leveraging coroutines, the channel allows efficient real-time data handling while preventing performance bottlenecks.\\
 A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows you to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI.
-\begin{figure}[H]
-	\centering
-	\makebox[0pt]{%
-		\includegraphics[width=0.9\paperwidth, height=1.4\textwidth]{/Users/eric/Downloads/connectBLE.png}}
-	\label{fig:ConnectCodeSnipet}
-	\captionof{figure}{Connect  functionality code }
-\end{figure}
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	@SuppressLint("MissingPermission")
+	fun connect(context: Context, device: ServerDevice) {
+		this.viewModelScope.launch {
+			val connection = ClientBleGatt.connect(context, device, this@BLEViewModel.viewModelScope )
+			this@BLEViewModel.connection.value = connection
+			val services = connection.discoverServices()
+			val bleService = services.findService(UUID.fromString("e28e00e9-b79a-479a-a6f1-21e8f73236e1"))
+			val signalCharacteristic = bleService!!.findCharacteristic(UUID.fromString("23b85b26-e7cb-421c-9731-1b4ca2d2a849"))
+			val appCommuncationCharacteristic = bleService!!.findCharacteristic(UUID.fromString("563a2846-1dc7-11ef-9262-0242ac120002"))
+			this@BLEViewModel.appCommuncationCharacteristic = appCommuncationCharacteristic!!
+			
+			signalCharacteristic!!.getNotifications().onEach {
+				val values = byteArrayToIntArray(it.value).toList()
+				startTime = System.currentTimeMillis()
+				channel.send(values)
+				receiveData(viewModelScope){dataList ->
+					StoreWrapper.processDataList(dataList)
+					BPM.currList.value += dataList
+					if(BPM.currList.value.size >= 7500){
+						var qrsPeaks = BPM.panTompkins(BPM.currList.value).size
+						println("PEAK COUNTER: ${qrsPeaks}")
+						println("liste: ${BPM.currList.value}")
+						BPM.currList.value.forEach {
+							println(it)
+						}
+						println("ENDOF PRINTING")
+						BPM.currList.value = BPM.currList.value.subList(750, 7500-1)
+						BPM.countPeak = qrsPeaks
+						qrsPeaks = 0
+					}
+				}
+				paketCounter++
+			}.launchIn(viewModelScope)
+			appCommuncationCharacteristic!!.getNotifications().onEach {
+				ResponseChecker.check(it.value)
+				PacketReassembler.reassemble(it.value)
+				println(it)
+			}.launchIn(viewModelScope)
+			connection.requestMtu(512)
+			fetchCurrentMode()
+			listEKGS()
+		}
+	}
+\end{lstlisting}
 
 
 \subsection{Storewrapper}\mbox{}\\
@@ -334,11 +368,11 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	The difference between maxV and minV (dv) is calculated to determine the range of data values. A step size (step) is then computed based on the available screen width and the buffer capacity, ensuring that data points are evenly distributed across the display. The coeff value is derived to scale the signal to fit within the available height while accounting for a vertical shift (shiftH).\mbox{}\\
 	\mbox{}\\
 	\underline{\textbf{Data Mapping for Graph Rendering}}\mbox{}\\
-	dataSeriesOverlay(buffer\textunderscore)   A temporary list (dataTemp) holds the normalized data, which is then mapped to a new list (data). The mapping follows the formula:\mbox{}\\
+	A temporary list (dataTemp) holds the normalized data, which is then mapped to a new list (data). The mapping follows the formula:\mbox{}\\
 	\mbox{}\\
 	$data[i]=(maxV \text{-} dataTemp[i]) \times coeff+shiftH$ \mbox{}\\
 	\mbox{}\\
-	This equation ensures that the data is flipped and scaled appropriately for graphical representation.
+	This equation ensures that the data is scaled appropriately for graphical representation.
 	The function iterates over the dataset in a single pass (O(n) complexity), making it highly efficient for real-time applications. This guarantees smooth and responsive rendering, even with large data sets.
 	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
 		fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
@@ -379,13 +413,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 		}
 	\end{lstlisting}
 	
-	\begin{figure}[H]
-		\centering
-		\makebox[0pt]{%
-			\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/prepareECGData.png}}
-		\label{fig: preparing ECG-Data}
-		\captionof{figure}{Mapping ECG-Data code }
-	\end{figure}
+	
 	\mbox{}\\
 	\mbox{}\\
 	\paragraph{Preparing the Drawpath}\mbox{}\\
@@ -397,14 +425,243 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 		Conversely, the function \underline{\textbf{preparePathAfter(data: List<Double>)}} handles the data following the write index. It ensures that the path continues from the last drawn point, maintaining a smooth flow of the signal. By splitting the waveform into these two sections, the transition between old and new data is visually imperceptible, preserving the real-time appearance of the ECG signal.
 		
 		This approach is crucial for maintaining a continuous and realistic ECG display, as it eliminates abrupt jumps or gaps in the graph, ensuring that the visualization remains fluid and accurately represents the ongoing signal dynamics.}
-	\begin{figure}[H]
-		\centering
-		\makebox[0pt]{%
-			\includegraphics[width=0.9\paperwidth, height=1.4\textwidth]{/Users/eric/Downloads/preparePath.png}}
-		\label{fig:preparingPath}
-		\captionof{figure}{prepare paths functionality code }
-	\end{figure}
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+			fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
+				this.SHIFTH = shiftH
+				var data: MutableList<Double>? = null
+				if( dataFromFile != null ){
+					data = dataFromFile.mapNotNull {
+						(it as? String)?.toDouble()
+					}.toMutableList()
+				}else{
+					data = ArrayList()
+				}
+				val width = size.width.toDouble()
+				val height = size.height.toDouble()
+				var minV = min //lowest value in buffer
+				var maxV = max  //highest value in buffer
+				if (minV == maxV) {
+					minV = minV / 2
+					maxV = maxV + minV / 2
+				}
+				val dv = maxV - minV
+				step = width / buffer_.capacity()
+				val coeff = (height - 2 * shiftH) / dv
+				//passing the wrong buffer to dataSeriesOverlay (not updated)
+				val dataTemp =
+				if (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) else utils_.dataSeriesNormal(
+				this
+				)
+				data = ArrayList(Collections.nCopies(dataTemp.size, 0.0))
+				//return data
+				if (data.isEmpty() || dataTemp.isEmpty()) {
+					return data
+				}
+				for (i in dataTemp.indices) {
+					data[i] = (maxV - dataTemp[i]!!) * coeff + shiftH
+				}
+				return data
+			}
+		\end{lstlisting}
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		fun preparePathBefore(data: List<Double>): Path {
+			var idx_ = buffer_.writeIndex() - 1
+			if (idx_ >= data.size) {
+				idx_ = data.size - 1
+				
+			}
+			val idx = if (idx_ < 0) 0 else idx_
+			val path = Path()
+			path.moveTo(0f, data[0].toFloat())
+			for (i in 1 until idx - 1) {
+				path.lineTo((i * step).toFloat(), data[i].toFloat())
+			}
+			return path
+		}
+		
+		fun preparePathAfter(data: List<Double>): Path {
+			var idx_ = buffer_.writeIndex()
+			if (idx_ >= data.size) {
+				idx_ = data.size - 1
+			}
+			val idx = if (idx_ < buffer_.capacity() - 1) idx_ else buffer_.capacity() - 1
+			val path = Path()
+			path.moveTo((idx * step).toFloat(), data[idx].toFloat())
+			for (i in idx + 1 until data.size) {
+				path.lineTo((i * step).toFloat(), data[i].toFloat())
+			}
+			return path
+		}
+	\end{lstlisting}
 	\subsection{GraphEcgWidget}
+	This code implements a real-time ECG visualization. The code renders ECG data as a graph, calculates the heart rate (BPM), and classifies it into different heart rate categories. Since the code of this class is very extensive, some code snippets are presented in abbreviated form.
+	\paragraph{Displaying Heart Rate}\mbox{}\\
+	
+	The function \textit{ECGValues(frequency: Int) } displays the current BPM and classifies it into one of three categories: 
+	\begin{itemize}
+		\item \textbf{Bradycardia} (heart rate < 60 BPM)
+		\item \textbf{Normal Frequency} (heart rate 60-99 BPM)
+		\item \textbf{Tachycardia} (heart rate $ \geq$ 100 BPM)
+	\end{itemize}
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+@Composable
+fun ECGValues(frequency: Int){
+	...
+	when {
+		frequency > 0 && frequency < 60 -> { /* 	Bradycardia */ }
+		frequency in 60..99 -> { /* Normal frequency */ }
+		frequency >= 100 -> { /* Tachycardia */ }
+		}
+	...
+}
+	
+\end{lstlisting}
+	\paragraph{Continous ECG-Graph}\mbox{}\\
+	The overlay graph ensures that the ECG waveform remains continuous by storing and displaying previous data points alongside the latest ones, rather than just showing the most recent signal. This prevents data loss and allows a smooth, uninterrupted visualization of the heartbeat over time.
+	The drawOverlayGraph() function is responsible for rendering a continuous ECG graph by maintaining both past and current data. Instead of only displaying the most recent values, it preserves previously recorded data, ensuring that the graph remains complete and does not lose old information.
+	
+	\underline{First, the function retrieves two paths:}
+	
+	pathBefore, which contains the past ECG data, ensuring historical values remain visible.
+	pathAfter, which holds the newest ECG data points, representing the latest heartbeat progression.
+	To ensure a clear visualization, the function checks whether there is a stored point from the latest ECG reading. If a point exists, a transparent rectangle is drawn at its position, keeping the background clean for the rendering process.
+	
+	\underline{Then, both paths are drawn sequentially:}
+	
+	pathBefore is drawn in red with a thin stroke, representing the past ECG signal.
+	pathAfter is drawn with a slightly thicker red stroke, making the latest ECG values more prominent.
+	Finally, the function highlights the most recent ECG data point by drawing a red dot at the latest position, helping users identify the real-time measurement. By continuously displaying both past and new data, the overlay graph creates a seamless ECG visualization, allowing for smooth tracking of the heart’s electrical activity over time.
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		fun drawOverlayGraph() {
+			val pathBefore = if (storeWrapper.pathBefore == null) Path() else storeWrapper.pathBefore!!
+			val pathAfter = if (storeWrapper.pathAfter == null) Path() else storeWrapper.pathAfter!!
+			
+			if (storeWrapper.point != null) {
+				drawRect(
+				color = Color.Transparent,
+				topLeft = Offset(storeWrapper.point!!.x, 0f),
+				size = Size(width, height),
+				style = Fill
+				)
+			}
+			
+			drawPath(
+			path = pathBefore,
+			color = Color.Red,
+			style = Stroke(width = 1f),
+			)
+			
+			drawPath(
+			path = pathAfter,
+			color = Color.Red,
+			style = Stroke(width = 2f),
+			)
+			
+			if (storeWrapper.point == null) return
+			
+			drawCircle(
+			center = Offset(storeWrapper.point!!.x, storeWrapper.point!!.y),
+			radius = 6f,
+			color = Color.Red
+			)
+		}
+	\end{lstlisting}
+	\paragraph{Real-time graph update}\mbox{}\\
+	\mbox{}\\
+	The \textit{doneClick} function is responsible for starting or stopping the ECG data visualization when the user interacts with the graph. It first toggles the \textit{isCoroutineRunning} flag to determine whether the coroutine should be started or stopped. It then calls \textit{toggleCoroutine}, passing the new state along with the coroutine scope and the number of cycles. Within the coroutine, the function updates startTime with the current system time to measure performance and increments currentCounter to recompose the UI. If the counter is greater than zero, it prepares the drawing by calling \textit{storeWrapper.prepareDrawing}, passing the screen width and height along with a fixed scaling factor. This ensures that the visualization area is correctly set up for rendering. Finally, the function updates heartFrequency by retrieving the latest BPM value from BPM.countPeak, ensuring that the displayed heart rate is continuously updated with the latest processed data. This function plays a crucial role in managing real-time ECG visualization, controlling when data processing runs and ensuring the graph updates dynamically as new data arrives.
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		 fun  doneClick(cycles: Int) {
+			val width = screenWidth
+			val height = screenHeight
+			isCoroutineRunning = !isCoroutineRunning
+			toggleCoroutine(isCoroutineRunning, coroutineScope, cycles) {  counter ->
+				currentCounter = counter + 1
+				if(counter > 0){
+					storeWrapper.prepareDrawing(android.util.Size(width.toInt(), height.toInt()), 32.toDouble())
+				}
+				heartFrequency = BPM.countPeak
+			}
+		}
+		
+	\end{lstlisting}
+	The toggleCoroutine function controls the execution of a coroutine that processes ECG data. It takes a boolean isRunning to determine whether the coroutine should start or stop, a coroutineScope to manage coroutine execution, an integer cycles, and a callback function that receives an integer value. When isRunning is true, a new coroutine is launched, and a channel is created to continuously send incremented counter values at an interval of 8 milliseconds. These values are then passed to the callback function, ensuring that the ECG data is updated in real time. If isRunning is false, all active child coroutines within the given scope are canceled, stopping data processing. This function ensures controlled and efficient execution of real-time ECG data handling, starting and stopping dynamically based on user interaction.
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		fun toggleCoroutine( isRunning: Boolean, coroutineScope: CoroutineScope, cycles: Int, callback: (Int) -> Unit) {
+			coroutineScope.launch {
+				if (isRunning) {
+					val channel = Channel<Int>()
+					launch {
+						while (true) {
+							channel.send(counter++)
+							delay(8)
+						}
+					}
+					for(value in channel){
+						callback(value)
+					}
+				} else {
+					coroutineScope.coroutineContext.cancelChildren()
+				}
+			}
+		}
+		
+	\end{lstlisting}
+	\subsection{VitalMonitorWidget}
+	\mbox{}\\
+	The VitalMonitorWidget serves as a comprehensive visualization tool for mapping recorded 24-hour ECG data alongside the corresponding BPM values. It incorporates extensive functionality from the GraphECGWidget, leveraging its graphing capabilities to ensure smooth and accurate data representation. Additionally, it features interactive zooming functionality, allowing users to focus on smaller time windows where BPM values align precisely with the corresponding ECG waveforms. The data displayed within the widget is sourced from the file chooser, which is discussed in detail later in the thesis.
+	\paragraph{Draw recorded BPM}\mbox{}\\
+	\mbox{}\\
+	The drawFlowingGraph function is responsible for rendering the ECG graph dynamically based on real-time data. It first checks if there is available data and ensures the counter is greater than zero before proceeding. It then determines the minimum and maximum values within the data set to establish the graph's vertical range. The function calculates the indices defining the portion of the data to be displayed, ensuring the graph remains within the zoomed-in section while allowing for user interactions such as tapping and zooming. A sublist of the ECG data is extracted, and if all values are equal, adjustments are made to ensure proper scaling.
+	
+	To map the ECG data onto the graph, the function calculates a step size for horizontal placement and applies a transformation coefficient to scale the vertical axis. It then constructs a Path object, iterating through the extracted data points and converting each value into a corresponding position on the graph. The path begins at the first data point and continues connecting subsequent points to form a continuous line, representing the heart rate variation over time. Finally, the path is drawn onto the canvas in red with a defined stroke width, ensuring that the ECG waveform is clearly visible and responsive to real-time changes.
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+fun drawFlowingGraph() {
+	if(currentCounter > 0 && !dataFromFileBPM.isEmpty() && num == 0){
+		var minV = dataFromFileBPM.minOf { it.toString().toFloat() }
+		var maxV = dataFromFileBPM.maxOf{ it.toString().toFloat() }
+		fromIndexBPM =  if (tappedPointerIndexBPM - zoomValue <= 0)   0  else tappedPointerIndexBPM-zoomValue
+		toIndexBPM = if (tappedPointerIndexBPM + zoomValue >= dataFromFileBPM.size) dataFromFileBPM.size else if (tappedPointerIndexBPM == 0)  dataFromFileBPM.size else tappedPointerIndexBPM + zoomValue
+		fromTime = fromIndexBPM
+		toTime = toIndexBPM
+		currentBPMList = dataFromFileBPM.subList(fromIndexBPM, toIndexBPM)
+		
+		
+		
+		if (minV == maxV) {
+			minV = minV / 2
+			maxV = maxV + minV / 2
+		}
+	
+		val dv = maxV-minV
+		step = width / currentBPMList.size
+		val coeff = (convertDpToFloat(density,150.dp) - 2 * shiftH) / dv
+		var path = Path().apply{
+			currentBPMList.forEachIndexed{i, point ->
+				var preparedPoint= 0.0f
+				if (maxV != null) {
+					preparedPoint = ((maxV - point.toString().toFloat()) * coeff + shiftH).toFloat()
+				}
+				
+				if(i == 0 ){
+					moveTo((i*step).toFloat(), preparedPoint.toFloat())
+				}else{
+					lineTo((i*step).toFloat(),preparedPoint.toFloat())
+				}
+				currentCounter++
+			}
+		}
+		drawPath(
+		path = path,
+		color = Color.Red,
+		style = Stroke(width = 2f), // Stroke width
+		)
+	}
+		
+	\end{lstlisting}
+	
+	
+	\subsection{BPM}
+	\subsection{StorageHandler}
 	\section{Summary}
 	This thesis presents the design and implementation of a frontend application for real-time and long-term monitoring of electrocardiographic (ECG) data, utilizing Bluetooth Low Energy (BLE) communication. The primary objective was to develop an efficient and responsive system capable of handling continuous ECG data streams while ensuring smooth visualization and analysis. Key challenges included managing high-frequency data acquisition, real-time signal processing, and rendering an intuitive graphical representation. By leveraging Kotlin and Jetpack Compose, an optimized architecture was established, incorporating coroutines for concurrent data processing and an adaptive buffer for efficient data storage and retrieval.
 	\section{Result}
@@ -414,7 +671,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	\section{Outlook}
 	Future enhancements could focus on integrating machine learning techniques for advanced arrhythmia detection, further improving the diagnostic capabilities of the application. Additionally, expanding compatibility with multiple BLE-enabled ECG devices could increase the system’s versatility. Implementing cloud synchronization for remote monitoring and historical data analysis would further extend the practical applications of this work. Lastly, optimizing power consumption for mobile usage remains a crucial aspect for improving long-term monitoring solutions.
 	\section{Appendix}
-	\subsubsection{Versions}
+	\subsection{Versions}
 	{\large 
 		This section presents fundamental versions of the required development resources used for this work.
 		
@@ -436,49 +693,6 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	}
 	\subsection{Beispielcode zur Erzeugung eines Quelltext-Generators}\label{sec:a1}
 	
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
-		@SuppressLint("MissingPermission")
-		fun connect(context: Context, device: ServerDevice) {
-			this.viewModelScope.launch {
-				val connection = ClientBleGatt.connect(context, device, this@BLEViewModel.viewModelScope )
-				this@BLEViewModel.connection.value = connection
-				val services = connection.discoverServices()
-				val bleService = services.findService(UUID.fromString("e28e00e9-b79a-479a-a6f1-21e8f73236e1"))
-				val signalCharacteristic = bleService!!.findCharacteristic(UUID.fromString("23b85b26-e7cb-421c-9731-1b4ca2d2a849"))
-				val appCommuncationCharacteristic = bleService!!.findCharacteristic(UUID.fromString("563a2846-1dc7-11ef-9262-0242ac120002"))
-				this@BLEViewModel.appCommuncationCharacteristic = appCommuncationCharacteristic!!
-				
-				signalCharacteristic!!.getNotifications().onEach {
-					val values = byteArrayToIntArray(it.value).toList()
-					startTime = System.currentTimeMillis()
-					channel.send(values)
-					receiveData(viewModelScope){dataList ->
-						StoreWrapper.processDataList(dataList)
-						BPM.currList.value += dataList
-						if(BPM.currList.value.size >= 7500){
-							var qrsPeaks = BPM.panTompkins(BPM.currList.value).size
-							println("PEAK COUNTER: ${qrsPeaks}")
-							println("liste: ${BPM.currList.value}")
-							BPM.currList.value.forEach {
-								println(it)
-							}
-							println("ENDOF PRINTING")
-							BPM.currList.value = BPM.currList.value.subList(750, 7500-1)
-							BPM.countPeak = qrsPeaks
-							qrsPeaks = 0
-						}
-					}
-					paketCounter++
-				}.launchIn(viewModelScope)
-				appCommuncationCharacteristic!!.getNotifications().onEach {
-					ResponseChecker.check(it.value)
-					PacketReassembler.reassemble(it.value)
-					println(it)
-				}.launchIn(viewModelScope)
-				connection.requestMtu(512)
-				fetchCurrentMode()
-				listEKGS()
-				750
-			}
-		}
-	\end{lstlisting}
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+
+\end{lstlisting}
