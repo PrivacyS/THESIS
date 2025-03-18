@@ -57,13 +57,15 @@
 \contentsline {paragraph}{\nonumberline Real-time graph update}{31}{paragraph*.68}%
 \contentsline {subsection}{\numberline {4.7}VitalMonitorWidget}{33}{subsection.4.7}%
 \contentsline {paragraph}{\nonumberline Draw recorded BPM}{33}{paragraph*.70}%
-\contentsline {subsection}{\numberline {4.8}BPM}{35}{subsection.4.8}%
-\contentsline {subsection}{\numberline {4.9}StorageHandler}{35}{subsection.4.9}%
-\contentsline {section}{\numberline {5}Summary}{35}{section.5}%
-\contentsline {section}{\numberline {6}Result}{35}{section.6}%
-\contentsline {section}{\numberline {7}Outlook}{36}{section.7}%
-\contentsline {section}{\numberline {8}Appendix}{36}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Versions}{36}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Beispielcode zur Erzeugung eines Quelltext-Generators}{37}{subsection.8.2}%
-\contentsline {section}{\nonumberline Literature references}{VI}{section*.73}%
+\contentsline {paragraph}{\nonumberline Draw recorded EKG-Data}{35}{paragraph*.72}%
+\contentsline {paragraph}{\nonumberline Zooming functionality}{37}{paragraph*.74}%
+\contentsline {subsection}{\numberline {4.8}BPM}{38}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}StorageHandler}{38}{subsection.4.9}%
+\contentsline {section}{\numberline {5}Summary}{38}{section.5}%
+\contentsline {section}{\numberline {6}Result}{38}{section.6}%
+\contentsline {section}{\numberline {7}Outlook}{39}{section.7}%
+\contentsline {section}{\numberline {8}Appendix}{39}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Versions}{39}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Beispielcode zur Erzeugung eines Quelltext-Generators}{40}{subsection.8.2}%
+\contentsline {section}{\nonumberline Literature references}{VI}{section*.77}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

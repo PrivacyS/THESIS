@@ -655,9 +655,101 @@ fun drawFlowingGraph() {
 		color = Color.Red,
 		style = Stroke(width = 2f), // Stroke width
 		)
+		...
 	}
 		
 	\end{lstlisting}
+	
+	\paragraph{Draw recorded EKG-Data}\mbox{}\\
+	\mbox{}\\
+	The second part of the drawFlowingGraph function is responsible for rendering ECG data with zooming functionality,and detailed visualization of the recorded signals. It first ensures that the ECG data is available and that the current counter and tapped pointer values are valid. The function determines the range of data points to be displayed by defining fromIndex and toIndex, ensuring that the graph remains within the available dataset while focusing on a smaller segment around the tapped pointer.
+	
+	To scale the ECG values appropriately for rendering on the screen, the function calculates the minimum and maximum values of the selected data segment. If these values are equal, a small offset is applied to prevent division errors. The difference between these values (dv) is then used to determine a scaling coefficient (coeff), ensuring that the ECG waveform fits proportionally within the available drawing space.
+	
+	The function then constructs a Path object (path2) by iterating through the selected ECG data points and mapping them to screen coordinates. The step variable determines the spacing between each point, ensuring that the waveform is evenly distributed along the horizontal axis. Each data point is transformed using the computed coefficient, adjusting its vertical position relative to the maximum value. The function begins the path with a moveTo operation for the first point and continues with lineTo operations to connect subsequent points, forming a continuous ECG waveform.
+	
+	By dynamically selecting the data range based on user interaction and scaling the values appropriately, this function enables smooth zooming functionality. Users can focus on specific sections of the ECG signal while maintaining accurate and proportional visualization of the waveform.
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		...
+		//POINTS OF EKG
+		if( num == 1 && !dataFromFilePoints.isEmpty() && currentCounter > 0 && tappedPointer> 0){
+			var fromIndex =  if (tappedPointer-500 <= 0)   0  else tappedPointer-500
+			var toIndex = if (tappedPointer+ 500 >= dataFromFilePoints.size) dataFromFilePoints.size else tappedPointer+ 500
+			var minV = dataFromFilePoints.minOf { it.toString().toFloat() }
+			var maxV = dataFromFilePoints.maxOf{ it.toString().toFloat() }
+			if (minV == maxV) {
+				minV = minV / 2
+				maxV = maxV + minV / 2
+			}
+			val dv = maxV-minV
+			step = width / dataFromFilePoints.subList(fromIndex, toIndex).size
+			val coeff = (convertDpToFloat(density,150.dp) - 2 * shiftH) / dv
+			var path2 = Path().apply{
+				dataFromFilePoints.subList(fromIndex, toIndex).forEachIndexed{i, point ->
+					
+					var preparedPoint = 0.0f
+					
+					if (maxV != null) {
+						preparedPoint = ((maxV - point.toString().toFloat()) * coeff + shiftH).toFloat()
+					}
+					if(i == 0 ){
+						moveTo((i*step).toFloat(), preparedPoint.toFloat())
+					}else{
+						lineTo((i*step).toFloat(),preparedPoint.toFloat())
+					}
+					currentCounter++
+				}
+				
+				
+			}
+			
+		\end{lstlisting}
+		
+	\paragraph{Zooming functionality}\mbox{}\\
+	\mbox{}\\
+	This code implements a zooming functionality for the ECG visualization based on user tap interactions. The zooming behavior is controlled through single and double taps, which adjust the zoom level and update the reference point for the displayed data.
+	
+	When a double-tap occurs, the zoom value increases by 150, effectively zooming into a more detailed view of the ECG data. The tappedPointerIndexBPM is then set to the center of the BPM data list, ensuring that the zoom focuses on the middle of the recorded data.
+	
+	When a single tap is detected, the function adjusts the zoom level while updating the tappedPointer position based on the x-coordinate of the tap event. The relativeTap variable normalizes the tap position within the screen width, allowing for accurate mapping between the screen coordinates and the data indices. The currentTappedPointerIndexBPM is then calculated relative to the currently displayed BPM list, and tappedPointerIndexBPM is updated to reflect the corresponding index in the original dataset.
+	
+	The zoom value is dynamically adjusted, decreasing by 30 with each tap until it reaches a minimum of 15, ensuring a smooth and controlled zooming experience. Additionally, the currentCounter is incremented, triggering updates in the visualization. This approach allows users to interactively zoom in and out of the ECG graph by tapping, providing a more detailed or broader view of the data as needed.
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		.pointerInput(Unit) {
+			
+			// This makes the rectangle change color when touched (for touch input)
+			detectTapGestures (onDoubleTap = {
+				zoomValue += 150
+				tappedPointerIndexBPM = dataFromFileBPM.size/2
+				println("zoomVal: ${zoomValue}")
+				
+				
+				
+			}, onTap = {point ->
+				if (zoomValue >= 150){
+					zoomValue = 150
+				}
+				tappedPointer = point.x.toInt()
+				var relativeTap = tappedPointer.toFloat() / 720
+				println("This is where i tapped: "  + tappedPointer)
+				currentTappedPointerIndexBPM = (relativeTap * currentBPMList.size).toInt() //sublist Index
+				tappedPointerIndexBPM =  currentTappedPointerIndexBPM + fromIndexBPM // original List Index
+				
+				println("INDEX IN ARRAY: " + tappedPointerIndexBPM)
+				lastTappedPointerIndexBPM = tappedPointerIndexBPM
+				zoomValue = if (zoomValue <= 30) 15 else zoomValue - 30
+				currentCounter++
+				
+				
+				
+			})
+			
+		\end{lstlisting}
+	
+	
+	
+	
+	
 	
 	
 	\subsection{BPM}
