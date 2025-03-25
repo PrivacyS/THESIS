@@ -234,15 +234,33 @@
 	This suppresses lint warnings related to missing Bluetooth permissions (such as \textit{BLUETOOTH\textunderscore SCAN} or \textit{ACCESS\textunderscore FINE\textunderscore LOCATION}). Normally, scanning for BLE devices requires specific permissions, and Android Studio would generate a warning if they are not explicitly checked. However, this annotation tells the lint tool to ignore such warnings, assuming the necessary permissions are already handled elsewhere in the code. Thus the permissions are check in the Main Acitivity entitiy, this warning can be ignored, and will appear more often. 
 	\mbox{}\\
 	
-	\begin{figure}[H]
-		\centering
-		\makebox[0pt]{%
-			\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/ScanningCodeSnippet.png}}
-		\label{fig:ScanningCodeSnipet}
-		\captionof{figure}{Scanning functionality code }
-	\end{figure} 
 	
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code for scanning functionality}]
+	private var scanJob: Job? = null
 	
+	@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+	@SuppressLint("MissingPermission")
+	private fun startScan(context: Context) {
+		scanState.value = ScanState.SCANNING
+		foundBLEDevices.value = mutableSetOf()
+		
+		val aggregator = BleScanResultAggregator()
+		scanJob = BleScanner(context).scan()
+		.map { aggregator.aggregateDevices(it) }
+		.onEach {
+			foundBLEDevices.value = it.stream()
+			.filter { it.name == "THI-EKG" }
+			.collect(Collectors.toSet())
+		}
+		.launchIn(viewModelScope)
+		
+		viewModelScope.launch {
+			delay(2000)
+			scanJob?.cancel()
+			scanState.value = ScanState.DONE
+		}
+	}
+	\end{lstlisting}
 	
 	
 }
@@ -259,14 +277,23 @@
 	If both permissions (BLUETOOTH\textunderscore SCAN and BLUETOOTH\textunderscore CONNECT) are granted, the function proceeds to call startScan(context).
 	If the permissions are not granted, the function includes a TODO comment, indicating that additional logic is required to handle this scenario. Typically, this would involve prompting the user to grant the necessary permissions through a permission request dialog.
 	
-	\begin{figure}[H]
-		\centering
-		\makebox[0pt]{%
-			\includegraphics[width=0.9\paperwidth]{/Users/eric/Downloads/RefreshingBLE.png}}
-		\label{fig:RefreshingCodeSnipet}
-		\captionof{figure}{Refresh functionality code }
-	\end{figure}
-}
+	
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code for refresh functionality}]
+	@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+	fun refreshBLE(context: Context) {
+		if (ActivityCompat.checkSelfPermission(
+		context,
+		Manifest.permission.BLUETOOTH_SCAN
+		) == PackageManager.PERMISSION_GRANTED &&
+		ActivityCompat.checkSelfPermission(
+		context,
+		Manifest.permission.BLUETOOTH_CONNECT
+		) == PackageManager.PERMISSION_GRANTED
+		) {
+			startScan(context)
+		}
+	}
+\end{lstlisting}
 \paragraph{Connect}\mbox{}\\
 {\large 
 	The provided BLE implementation is responsible for establishing a connection with a BLE-enabled device, receiving real-time data from specific BLE characteristics, and processing the incoming data to extract and analyze electrocardiographic (ECG) information. The functionality can be divided into the following key components:
@@ -321,12 +348,11 @@ A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asyn
 					BPM.currList.value += dataList
 					if(BPM.currList.value.size >= 7500){
 						var qrsPeaks = BPM.panTompkins(BPM.currList.value).size
-						println("PEAK COUNTER: ${qrsPeaks}")
-						println("liste: ${BPM.currList.value}")
+						
 						BPM.currList.value.forEach {
-							println(it)
+							
 						}
-						println("ENDOF PRINTING")
+						
 						BPM.currList.value = BPM.currList.value.subList(750, 7500-1)
 						BPM.countPeak = qrsPeaks
 						qrsPeaks = 0
@@ -337,7 +363,7 @@ A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asyn
 			appCommuncationCharacteristic!!.getNotifications().onEach {
 				ResponseChecker.check(it.value)
 				PacketReassembler.reassemble(it.value)
-				println(it)
+				
 			}.launchIn(viewModelScope)
 			connection.requestMtu(512)
 			fetchCurrentMode()
@@ -374,7 +400,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	\mbox{}\\
 	This equation ensures that the data is scaled appropriately for graphical representation.
 	The function iterates over the dataset in a single pass (O(n) complexity), making it highly efficient for real-time applications. This guarantees smooth and responsive rendering, even with large data sets.
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code for mapping data on the screen}]
 		fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
 			this.SHIFTH = shiftH
 			var data: MutableList<Double>? = null
@@ -396,7 +422,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 			val dv = maxV - minV
 			step = width / buffer_.capacity()
 			val coeff = (height - 2 * shiftH) / dv
-			//passing the wrong buffer to dataSeriesOverlay (not updated)
+		
 			val dataTemp =
 			if (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) else utils_.dataSeriesNormal(
 			this
@@ -753,7 +779,159 @@ fun drawFlowingGraph() {
 	
 	
 	\subsection{BPM}
+	This code implements the Pan-Tompkins algorithm for detecting QRS complexes in an ECG signal. The algorithm processes the raw ECG data through multiple stages of filtering, differentiation, squaring, integration, and peak detection to identify heartbeats accurately.
+	
+	The panTompkins function serves as the main processing pipeline. It first applies a bandpass filter, which is a combination of a low-pass and a high-pass filter, to remove noise and unwanted frequency components from the raw ECG data. The filtered signal then undergoes differentiation, enhancing the slope of the QRS complex.
+	
+	Next, the squared transformation is applied to amplify higher amplitude variations, making QRS peaks more distinguishable. The resulting signal is further processed using moving window integration, which smooths the waveform and highlights the QRS complexes by averaging values over a short period.
+	
+	Finally, peak detection is performed. A dynamic threshold is determined based on the signal’s overall amplitude, and only peaks that exceed this threshold and maintain a minimum interval (to prevent false detections) are identified as QRS complexes.
+	
+	The lowPassFilter and highPassFilter functions implement basic digital filters to isolate the frequency range of interest, while bandpassFilter applies them sequentially. The differentiate function enhances rapid signal changes characteristic of QRS complexes. The movingWindowIntegration function smooths the processed signal by averaging values over a predefined window.
+	
+	The detectPeaks function then scans the processed data for local maxima that exceed a threshold and are sufficiently spaced apart (at least 200 milliseconds), ensuring only valid QRS peaks are detected. The algorithm ultimately returns a list of QRS peak positions, which can be used for heart rate analysis and further ECG interpretation.
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		 fun panTompkins(ecgData: List<Int>): List<Int> {
+		
+			val filteredData = bandpassFilter(ecgData)
+			val derivativeData = differentiate(filteredData)
+			val squaredData = derivativeData.map { it.toDouble().pow(2).toInt() }
+			val integratedData = movingWindowIntegration(squaredData)
+			return detectPeaks(integratedData, SAMPLE_RATE)
+		}
+		fun lowPassFilter(signal: List<Int>): List<Int> {
+			var y = MutableList(signal.size) { 0 }
+			for (n in signal.indices) {
+				if (n >= 12) {
+					y[n] = 2 * y[n - 1] - y[n - 2] + signal[n] - 2 * signal[n - 6] + signal[n - 12]
+				} else {
+					0 
+				}
+			}
+			return y
+		}
+		
+		fun highPassFilter(signal: List<Int>): List<Int> {
+			var y = MutableList(signal.size) { 0 }
+			for (n in signal.indices) {
+				if (n >= 32) {
+					y[n] = y[n - 1] - (signal[n] / 32) + signal[n - 16] - signal[n - 17] + (signal[n - 32] / 32)
+				} else {
+					0
+				}
+			}
+			return y
+		}
+		
+	
+		fun bandpassFilter(ecgData: List<Int>): List<Int> {
+			var lp_filtered = lowPassFilter(ecgData)
+			var hp_filtered = highPassFilter(lp_filtered)
+			return hp_filtered 
+		}
+		
+	
+		fun differentiate(data: List<Int>): List<Int> {
+			var y = MutableList(data.size) { 0 }
+			for (n in data.indices){
+				if (n >= 4) {
+					y[n] = (2 * data[n] + data[n - 1] - data[n - 3] - 2 * data[n - 4]) / 8
+				}
+				else{
+					y[n] = 0
+				}
+				
+			}
+			
+			return y
+			
+		}
+		
+		
+		fun movingWindowIntegration(data: List<Int>): List<Int> {
+			val result = mutableListOf<Int>()
+			for (i in data.indices) {
+				val start = maxOf(0, i - WINDOW_SIZE / 2)
+				val end = minOf(data.size, i + WINDOW_SIZE / 2)
+				val average = data.subList(start, end).average()
+				result.add(average.toInt())
+			}
+			return result
+		}
+		
+		
+		fun detectPeaks(signal: List<Int>, fs: Int): List<Int> {
+			val threshold = signal.sum() / signal.size 
+			val peaks = mutableListOf<Int>()
+			val rrInterval = (0.2 * fs).toInt()  
+			var lastPeak = -rrInterval
+			
+			for (n in 1 until signal.size - 1) {
+				if (signal[n] > threshold && signal[n] > signal[n - 1] && signal[n] > signal[n + 1]) {
+					if (n - lastPeak >= rrInterval) {
+						peaks.add(n)
+						lastPeak = n
+					}
+				}
+			}
+			
+			return peaks
+		}
+			
+		\end{lstlisting}
 	\subsection{StorageHandler}
+	This function provides a file selection mechanism using Jetpack Compose and Android’s Storage Access Framework, allowing users to pick multiple files from their device. It utilizes rememberLauncherForActivityResult to open a file picker and handle the selection result.
+	
+	When a user clicks the “Select doc” button, the launcher is triggered, allowing them to choose files. The selected file URIs are processed, and based on their type, they are categorized into a mutable map:
+	
+	Binary files (.bin) are read using readShort(file \textunderscore) and stored under the "bin" key.
+	Metadata files (if the file contains "start") are split by ";" and stored under "meta".
+	Other text files (e.g., BPM data) are also split by ";" and stored under "bpm".
+	This function returns a map containing the parsed data, which can later be used for further processing, such as visualizing ECG and BPM data.
+	
+	
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+fun PickDocument(): MutableMap<String, Any>{
+		
+...
+
+
+contract= ActivityResultContracts.OpenMultipleDocuments()){
+	
+	result.value = it
+}
+Column{
+	Button(onClick = {
+		launcher.launch(arrayOf("*/*"))
+	}){
+		Text(text="Select doc")
+	}
+	result.value?.forEach(){uri ->
+		
+		uri?.let{
+			val file = saveUriToFile(context, it)
+			if(uri?.let { checkFileType(context, it) } != null && checkFileType(context, uri) == "application/octet-stream" ){
+				dataMap["bin"] = file?.let { file_ -> readShort(file_) }!!
+			}else{
+				if (file != null && file.canRead() && file.readText().contains("start")) {
+					dataMap["meta"] = file.readText().split(";")
+				}else{
+					if (file != null) {
+						dataMap["bpm"] = file.readText().split(";"))}
+					}
+				}
+			}
+			
+		}
+		
+		
+	}
+}
+return dataMap
+	}
+}
+		
+	\end{lstlisting}
 	\section{Summary}
 	This thesis presents the design and implementation of a frontend application for real-time and long-term monitoring of electrocardiographic (ECG) data, utilizing Bluetooth Low Energy (BLE) communication. The primary objective was to develop an efficient and responsive system capable of handling continuous ECG data streams while ensuring smooth visualization and analysis. Key challenges included managing high-frequency data acquisition, real-time signal processing, and rendering an intuitive graphical representation. By leveraging Kotlin and Jetpack Compose, an optimized architecture was established, incorporating coroutines for concurrent data processing and an adaptive buffer for efficient data storage and retrieval.
 	\section{Result}
