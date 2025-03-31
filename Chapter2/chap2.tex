@@ -46,19 +46,107 @@
 			As already mentioned in \ref{sec:architecture}, the Android Java Framework API is a collection of libraries and tools provided by Android to simplify the development of mobile applications. Built on top of Java, it enables developers to create apps with pre-built components, utilities, and services that interact with the Android operating system. The framework abstracts the complexity of low-level operations and provides high-level APIs for features such as UI design, data storage, networking, and hardware access. 
 			\paragraph{Project example}\mbox{}\\
 			To provide an impression, Figure 2 shows a code excerpt in which the Java API was implicitly used by androidx.  To keep this chapter manageable, it can be simplified  said that androidx is a superset of the Java API Framework.
+			\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Android Java API exmaple with androidx}]
+				import androidx.compose.foundation.Image
+				import androidx.compose.foundation.layout.padding
+				import androidx.compose.foundation.layout.size
+				import androidx.compose.material3.Button
+				import androidx.compose.material3.ButtonDefaults
+				import androidx.compose.runtime.Composable
+				import androidx.compose.runtime.getValue
+				import androidx.compose.runtime.mutableStateOf
+				import androidx.compose.runtime.remember
+				import androidx.compose.runtime.setValue
+				import androidx.compose.ui.Modifier
+				import androidx.compose.ui.graphics.Color
+				import androidx.compose.ui.graphics.painter.Painter
+				import androidx.compose.ui.platform.LocalConfiguration
+				import androidx.compose.ui.res.painterResource
+				import androidx.compose.ui.unit.dp
+				
+				import com.example.ble.R
+				import com.example.ble.ui.view.ble.BLEViewModel
+				import com.example.ui.view.graph.GraphEcgWidget
+				import com.example.ble.ui.view.graph.BPMWidget
+				
+				
+				class MainView {
+					@Composable
+					fun BluetoothButton(btButtons: @Composable () -> Unit){
+						val image: Painter = painterResource(id = R.drawable.bluetoothicon)
+						var toggleButtons by remember { mutableStateOf(false) }
+						Button(onClick={toggleButtons = !toggleButtons}){
+							Image(
+							painter = image,
+							contentDescription = "Button Image",
+							modifier = Modifier.size(24.dp) // Größe des Bildes
+							)
+							if(toggleButtons){
+								btButtons()
+							}
+						}
+					}
+			\end{lstlisting}
 			
-			\begin{center}
-				\includegraphics[scale = 0.3]{/Users/eric/Downloads/APIexample.jpg}
-				\captionof{figure}{Android Java API example with androidx}
-				\label{fig:codeExampleAPI} 
-			\end{center}
 			
-			Figure \ref{fig:codeExampleAPI} provids a glimpse of the capabilities of the androidx library. Showing how to draw an image with the Painter class and utilizing the resource manager mentioned in table \ref{tab:stackLayersTable}.
+			Code 1 provids a glimpse of the capabilities of the androidx library. Showing how to draw an image with the Painter class and utilizing the resource manager mentioned in table \ref{tab:stackLayersTable}.
 		
-			To beginn its elementary to import the Painter class aswell as the painterResource class. As shown in 1. and 2. in  Figure \ref{fig:codeExampleAPI}. Then at 3. a Painter object is created, at 4. the Painter object is definied by the painterResource function. The painterResource function gets an id as an argument, to query the file from the res/drawable folder. The res folder contains all additional app resources (files, images, etc.). Finally we can draw the Image by passing the object from 3. to an Image function.
+			To beginn its elementary to import the Painter class aswell as the painterResource class (line 13/15).  Then at line 26 a Painter object is created, aswell as definded by the painterResource function. The painterResource function gets an id as an argument, to query the file from the res/drawable folder. The res folder contains all additional app resources (files, images, etc.). Finally we can draw the Image by passing the Painter object to an Image function.
 			
 	}
-
+\subsection{BLE Stack}
+{\large
+	The BLE protocol stack consists of three main layers: the Controller, the Host, and the Application. The Controller encompasses the Physical Layer and the Link Layer, while the Host manages higher-level functionalities such as the Logical Link Control and Adaptation Protocol (L2CAP), the Attribute Protocol (ATT), the Generic Attribute Profile (GATT), the Security Manager (SM), and the Generic Access Profile (GAP). Communication between the Host and the Controller follows the standardized Host Controller Interface (HCI). At the top of the stack, the Application layer enables program execution. \cite{BLEStack}
+	
+	\begin{center}
+		\includegraphics[scale = 0.90]{/Users/eric/Downloads/bluetooth_le_stack.png}
+		\label{fig:BLEStack}
+		\captionof{figure}{BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+	\end{center}
+	
+	\paragraph{Application Layer}\mbox{}\\
+	The application layer serves as the direct user interface, defining profiles that enable interoperability between various applications.
+	
+	\paragraph{Host Layer}\mbox{}\\
+	Includes the host-sided HCI aswell as L2CAP, ATT, GATT, SMP and GAP. 
+	
+	\paragraph{Generic Acces Profile (GAP)}\mbox{}\\
+	Manages the connection setup aswell as security, interfaces directly with profiles and services of the Application Layer.
+	
+	\paragraph{Security Manager Protocol (SMP)} \mbox{}\\
+	Provides multiple security algorithms for encrypting and decrypting data packets, making the connection secure.
+	
+	\paragraph{Generic Attribute Profile (GATT)}\mbox{}\\
+	Defines services and characteristics provided by the GATT Server. The GATT Server in this case is the microcontroller, which holds the definitions of services and characteristics. These can be requested by the GATT Client (in this case the application).
+	Services organize data into logical entities and contain specific data units known as characteristics. Each service can include one or more characteristics and is uniquely identified by a numeric UUID. This UUID can be either 16-bit for officially adopted BLE services or 128-bit for custom services. Whereas the Characteristic is the lowest level concept in GATT transactions, which defines data. Services aswell as Characterics are main interactions points to work with when working with the BLE periphery, thus it is important to understand these terminologies.
+	
+	\paragraph{ Attribute Protocol (ATT)}\mbox{}\\
+	The ATT enables the exchange of attributes (characteristics). Attributes are are composed of four components, the type (128-bit UUID), an handle (16-bit indentifier) to reference attributes, rights of the attribute(reading, writing), and the value of the attribute. The following figure gives a good overview of the structure of the attributes.
+	
+	\begin{center}
+		\includegraphics[scale = 0.90]{/Users/eric/Downloads/ble_att_representation.png}
+		\label{fig:ATTstructure}
+		\captionof{figure}{Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+	\end{center}
+	
+	\paragraph{Logical Link Control and Adaption Layer Protocol (L2CAP)}\mbox{}\\
+	Works as an interface betwenn the HCI and the upper modules of the Host layer, by multiplexing data packets to the corresponding protocols. Also fragments and reassembles large packets.
+	
+	\paragraph{Host-Side Host-Controller-Interface (HCI) }\mbox{}\\
+	The HCI is the inteface between the host and the controller. The HCI establishes commands and events for packet data transmission and reception. When sending data, it processes raw information into packets, enabling communication between the host and the controller.
+	
+	\paragraph{Controller-Side Host-Controller-Interface (HCI) }\mbox{}\\
+	As mentioned in the last paragraph, the HCI is the interface between the host and the controller. However, analogous to the host side, the data received from the controller is extracted and forwarded to the host.
+	
+	\paragraph{Controller Layer}\mbox{}\\
+	Includes the Bluetooth Le PHY, LL, and controller-side HCI
+	
+	\paragraph{Link Layer (LL)}\mbox{}\\
+	The LL functions similarly to the medium access control (MAC) layer in the OSI model. In Bluetooth, it directly interacts with the Bluetooth LE PHY and controls the radio’s link state, determining whether a device operates as a Central, Peripheral, Advertiser, or Scanner.
+	
+	\paragraph{Bluetooth LE PHY}\mbox{}\\
+	The physical layer (BLE PHY) is a 1 Mbps GFSK-based radio with adaptive frequency hopping, operating in the unlicensed 2.4 GHz ISM (industrial, scientific, and medical) band.
+}	
 
 
 

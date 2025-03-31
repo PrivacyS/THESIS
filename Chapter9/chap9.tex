@@ -155,63 +155,9 @@
 {\large 
 	The following subsections explore the logical implementation and functionality of individual entities, using code snippets and application screenshots for illustration. Each subsection is divided into a section covering the implementation and another focusing on the application's usage, with both sections referring to corresponding screenshots. Framework specific code fragments will be explaing in the course of relevant section.	
 	
-	Before presenting the implementation of the BLE component, it is essential to establish a fundamental theoretical understanding of BLE.
-	This section offers a comprehensive explanation of the Bluetooth Low Energy, shedding light on its core principles, while exploring the architecture of the BLE stack. 
 }
 
-\subsubsection{BLE Stack}
-{\large
-	The BLE protocol stack consists of three main layers: the Controller, the Host, and the Application. The Controller encompasses the Physical Layer and the Link Layer, while the Host manages higher-level functionalities such as the Logical Link Control and Adaptation Protocol (L2CAP), the Attribute Protocol (ATT), the Generic Attribute Profile (GATT), the Security Manager (SM), and the Generic Access Profile (GAP). Communication between the Host and the Controller follows the standardized Host Controller Interface (HCI). At the top of the stack, the Application layer enables program execution. \cite{BLEStack}
-	
-	\begin{center}
-		\includegraphics[scale = 0.90]{/Users/eric/Downloads/bluetooth_le_stack.png}
-		\label{fig:BLEStack}
-		\captionof{figure}{BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
-	\end{center}
-	
-	\paragraph{Application Layer}\mbox{}\\
-	The application layer serves as the direct user interface, defining profiles that enable interoperability between various applications.
-	
-	\paragraph{Host Layer}\mbox{}\\
-	Includes the host-sided HCI aswell as L2CAP, ATT, GATT, SMP and GAP. 
-	
-	\paragraph{Generic Acces Profile (GAP)}\mbox{}\\
-	Manages the connection setup aswell as security, interfaces directly with profiles and services of the Application Layer.
-	
-	\paragraph{Security Manager Protocol (SMP)} \mbox{}\\
-	Provides multiple security algorithms for encrypting and decrypting data packets, making the connection secure.
-	
-	\paragraph{Generic Attribute Profile (GATT)}\mbox{}\\
-	Defines services and characteristics provided by the GATT Server. The GATT Server in this case is the microcontroller, which holds the definitions of services and characteristics. These can be requested by the GATT Client (in this case the application).
-	Services organize data into logical entities and contain specific data units known as characteristics. Each service can include one or more characteristics and is uniquely identified by a numeric UUID. This UUID can be either 16-bit for officially adopted BLE services or 128-bit for custom services. Whereas the Characteristic is the lowest level concept in GATT transactions, which defines data. Services aswell as Characterics are main interactions points to work with when working with the BLE periphery, thus it is important to understand these terminologies.
-	
-	\paragraph{ Attribute Protocol (ATT)}\mbox{}\\
-	The ATT enables the exchange of attributes (characteristics). Attributes are are composed of four components, the type (128-bit UUID), an handle (16-bit indentifier) to reference attributes, rights of the attribute(reading, writing), and the value of the attribute. The following figure gives a good overview of the structure of the attributes.
-	
-	\begin{center}
-		\includegraphics[scale = 0.90]{/Users/eric/Downloads/ble_att_representation.png}
-		\label{fig:ATTstructure}
-		\captionof{figure}{Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
-	\end{center}
-	
-	\paragraph{Logical Link Control and Adaption Layer Protocol (L2CAP)}\mbox{}\\
-	Works as an interface betwenn the HCI and the upper modules of the Host layer, by multiplexing data packets to the corresponding protocols. Also fragments and reassembles large packets.
-	
-	\paragraph{Host-Side Host-Controller-Interface (HCI) }\mbox{}\\
-	The HCI is the inteface between the host and the controller. The HCI establishes commands and events for packet data transmission and reception. When sending data, it processes raw information into packets, enabling communication between the host and the controller.
-	
-	\paragraph{Controller-Side Host-Controller-Interface (HCI) }\mbox{}\\
-	As mentioned in the last paragraph, the HCI is the interface between the host and the controller. However, analogous to the host side, the data received from the controller is extracted and forwarded to the host.
-	
-	\paragraph{Controller Layer}\mbox{}\\
-	Includes the Bluetooth Le PHY, LL, and controller-side HCI
-	
-	\paragraph{Link Layer (LL)}\mbox{}\\
-	The LL functions similarly to the medium access control (MAC) layer in the OSI model. In Bluetooth, it directly interacts with the Bluetooth LE PHY and controls the radio’s link state, determining whether a device operates as a Central, Peripheral, Advertiser, or Scanner.
-	
-	\paragraph{Bluetooth LE PHY}\mbox{}\\
-	The physical layer (BLE PHY) is a 1 Mbps GFSK-based radio with adaptive frequency hopping, operating in the unlicensed 2.4 GHz ISM (industrial, scientific, and medical) band.
-}	
+
 \subsubsection{Implementation}
 \paragraph{Dependency versions and Library}\mbox{}\\
 {\large Before delving into the implementation, it is essential to note that a library provided by Nordic Semiconductor was employed in the development process.\footnote{\url{https://github.com/NordicSemiconductor/Android-BLE-Library}} The utilized dependency version are shown in the figure below:
@@ -298,7 +244,7 @@
 {\large 
 	The provided BLE implementation is responsible for establishing a connection with a BLE-enabled device, receiving real-time data from specific BLE characteristics, and processing the incoming data to extract and analyze electrocardiographic (ECG) information. The functionality can be divided into the following key components:
 	
-	\underline{\textbf{1. BLE Connection Setup (Line 143-149)}}\mbox{}\\
+	\underline{\textbf{1. BLE Connection Setup (Line 4-10)}}\mbox{}\\
 	The function connect initializes the connection with a given BLE device. Using ClientBLEGatt.connect, a GATT connection is established, and the discovered services and characteristics are retrieved. The relevant characteristics include:
 	
 	\textit{signalCharacteristic:} Used for receiving real-time electrocardiographic data.\mbox{}\\
@@ -308,26 +254,92 @@
 	\underline{\textbf{2. Receiving and Processing Data from the Signal Characteristic}}\mbox{}\\
 	The signalCharacteristic, continuously provides data in the form of a ByteArray. Each received data packet undergoes the following procedure:
 	
-	The received byte array is first converted into a list of integers. To enable concurrent processing, the data is then transmitted through a channel (channel.send(values)). A coroutine, executed by receiveData(viewModelScope), retrieves the streamed data from the channel and passes it to StoreWrapper.processDataList(datastream). (Since courotines and channels play a central role in this and other implementations, this chapter is followed by a brief introduction to these Kotlin-specific topics.)  The processed data is also added to the BPM.currList buffer for frequency analysis. Once the buffer exceeds 7500 samples, the QRS peak detection algorithm (Pan-Tompkins) is applied to identify heartbeats. The detected peak count is logged for debugging, and to maintain a sliding window approach, the oldest 750 samples are discarded.
+	The received byte array is first converted into a list of integers. To enable concurrent processing, the data is then transmitted through a channel (channel.send(values) in line 15). A coroutine, executed by receiveData(viewModelScope), retrieves the streamed data from the channel and passes it to StoreWrapper.processDataList(datastream). (Since courotines and channels play a central role in this and other implementations, this chapter is followed by a brief introduction to these Kotlin-specific topics.)  The processed data is also added to the BPM.currList buffer for frequency analysis. Once the buffer exceeds 7500 samples, the QRS peak detection algorithm (Pan-Tompkins) is applied to identify heartbeats. 
 	\\
 	\underline{\textbf{3. Handling Application-Level BLE Communication}}\mbox{}\\
 	Notifications are also enabled for the appCommunicationCharacteristic, which allows bidirectional communication with the BLE device. Each received notification undergoes:
 	
 	Validation using ResponseChecker.check.
-	Packet reconstruction via PacketReassembler.reassemble.
-	Logging of the received data for debugging purposes.\\
+	And packet reconstruction via PacketReassembler.reassemble.
+	
+	\underline{\textbf{4. Validation (ResponseChecker)}}\mbox{}\\
 	\\
+
+	
+	
+	
+	 Function: check(byteArray: ByteArray)
+	This function verifies whether a given byte array corresponds to an expected response from a Bluetooth Low Energy (BLE) communication. The verification consists of multiple steps:
+	
+	\underline{1. Initial Length Check}\mbox{}\\
+	If the byte array is too short ($\leq$ 2 bytes), it cannot be a valid response and is immediately discarded.  
+	
+	\underline{2. Packet Type Validation  }\mbox{}\\
+	- Calls `isResponsePacket(byteArray)`, a function that determines whether the received data is a response packet.  
+	- If the data is not a response packet, the function exits early.  
+	
+	\underline{3. Opcode Verification }\mbox{}\\
+	- Calls `checkForExpectedOPCode(byteArray)`, which checks whether the response contains the expected operation code.  
+	- If the opcode does not match the expected one, the function exits early.  
+	
+	\underline{4. Cancelling the Timeout Mechanism }\mbox{}\\
+	- If the response is valid, the current timeout timer (`currentTimer`) is canceled, ensuring that the system does not time out while waiting for the response.  
+	
+	\underline{5. Extracting and Processing the Response Message}\mbox{}\\
+	- The actual response message is extracted from the byte array starting at index 2. The message is decoded as a UTF-8 string.  
+	
+	\underline{6. Notifying the Listener}\mbox{}\\
+	- If a `responseReceivedListener` is set, it is triggered with the received byte array. The listener is likely responsible for further processing or handling the response.  
+	
+	\underline{7. Resetting the Expected Response }\mbox{}\\
+	- The variable `toCheck`, which presumably stores the expected response for comparison, is reset to `null`, indicating that the response-checking process has completed.  
+	
+	This function ensures that only valid and expected responses are processed in a BLE communication system. By implementing multiple validation checks (length, packet type, opcode), it prevents erroneous or irrelevant data from triggering unintended behavior. 
 	\textbf{\underline{4. Additional Commands}}\mbox{}\\
 	The implementation also includes:
 	
 	Sending an MTU request (requestMtu(512)) to maximize packet size for efficient data transmission.
 	Checking if the application is in live mode or in 24-Hour mode by calling fetchCurrentMode(). Also feteching all recorded ECG's from the microcontroller ListEKGS().}
-
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Connecting functionality code}]
+		
+		fun check(byteArray: ByteArray) {
+			//First check if its a response packet
+			if(byteArray.size <= 2) {
+				
+				return
+			}
+			
+			if(isResponsePacket(byteArray).not()){
+				// Not response packet, so we dont care
+				return
+			}
+			
+			//Its a response packet, now check for the expected opcode
+			if(checkForExpectedOPCode(byteArray).not()){
+				//Not the expected response
+				return
+			}
+			
+			this.currentTimer!!.cancel()
+			
+			//Message starts at index 2
+			val message = String(byteArray.sliceArray(2 until byteArray.size), Charsets.UTF_8)
+			
+			//Its the expected one
+			if(this.responseReceivedListener != null) {
+				this.responseReceivedListener!!(this.toCheck!!, byteArray)
+			}
+			
+			//Reset
+			this.toCheck = null
+		}
+		
+	\end{lstlisting}
 \underline{\textit{\textbf{ Channels and Coroutines}}}
 
 The \textit{channe}l serves as a concurrent data pipeline between the BLE data stream and the processing logic. It ensures that the incoming data from the BLE device is processed in a structured, thread-safe manner without blocking the main execution thread. By leveraging coroutines, the channel allows efficient real-time data handling while preventing performance bottlenecks.\\
 A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows you to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI.
-\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Connecting functionality code}]
 	@SuppressLint("MissingPermission")
 	fun connect(context: Context, device: ServerDevice) {
 		this.viewModelScope.launch {
@@ -451,45 +463,8 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 		Conversely, the function \underline{\textbf{preparePathAfter(data: List<Double>)}} handles the data following the write index. It ensures that the path continues from the last drawn point, maintaining a smooth flow of the signal. By splitting the waveform into these two sections, the transition between old and new data is visually imperceptible, preserving the real-time appearance of the ECG signal.
 		
 		This approach is crucial for maintaining a continuous and realistic ECG display, as it eliminates abrupt jumps or gaps in the graph, ensuring that the visualization remains fluid and accurately represents the ongoing signal dynamics.}
-		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
-			fun prepareData(size: Size, shiftH: Double, dataFromFile: MutableList<Any>? = null): List<Double> {
-				this.SHIFTH = shiftH
-				var data: MutableList<Double>? = null
-				if( dataFromFile != null ){
-					data = dataFromFile.mapNotNull {
-						(it as? String)?.toDouble()
-					}.toMutableList()
-				}else{
-					data = ArrayList()
-				}
-				val width = size.width.toDouble()
-				val height = size.height.toDouble()
-				var minV = min //lowest value in buffer
-				var maxV = max  //highest value in buffer
-				if (minV == maxV) {
-					minV = minV / 2
-					maxV = maxV + minV / 2
-				}
-				val dv = maxV - minV
-				step = width / buffer_.capacity()
-				val coeff = (height - 2 * shiftH) / dv
-				//passing the wrong buffer to dataSeriesOverlay (not updated)
-				val dataTemp =
-				if (_mode == GraphMode.overlay) utils_.dataSeriesOverlay(buffer_) else utils_.dataSeriesNormal(
-				this
-				)
-				data = ArrayList(Collections.nCopies(dataTemp.size, 0.0))
-				//return data
-				if (data.isEmpty() || dataTemp.isEmpty()) {
-					return data
-				}
-				for (i in dataTemp.indices) {
-					data[i] = (maxV - dataTemp[i]!!) * coeff + shiftH
-				}
-				return data
-			}
-		\end{lstlisting}
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to prepare the ECG-Path}]
 		fun preparePathBefore(data: List<Double>): Path {
 			var idx_ = buffer_.writeIndex() - 1
 			if (idx_ >= data.size) {
@@ -529,7 +504,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 		\item \textbf{Normal Frequency} (heart rate 60-99 BPM)
 		\item \textbf{Tachycardia} (heart rate $ \geq$ 100 BPM)
 	\end{itemize}
-\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to classify current heartrate}]
 @Composable
 fun ECGValues(frequency: Int){
 	...
@@ -557,7 +532,7 @@ fun ECGValues(frequency: Int){
 	pathBefore is drawn in red with a thin stroke, representing the past ECG signal.
 	pathAfter is drawn with a slightly thicker red stroke, making the latest ECG values more prominent.
 	Finally, the function highlights the most recent ECG data point by drawing a red dot at the latest position, helping users identify the real-time measurement. By continuously displaying both past and new data, the overlay graph creates a seamless ECG visualization, allowing for smooth tracking of the heart’s electrical activity over time.
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to draw the prepared Overlaygraph}]
 		fun drawOverlayGraph() {
 			val pathBefore = if (storeWrapper.pathBefore == null) Path() else storeWrapper.pathBefore!!
 			val pathAfter = if (storeWrapper.pathAfter == null) Path() else storeWrapper.pathAfter!!
@@ -595,7 +570,7 @@ fun ECGValues(frequency: Int){
 	\paragraph{Real-time graph update}\mbox{}\\
 	\mbox{}\\
 	The \textit{doneClick} function is responsible for starting or stopping the ECG data visualization when the user interacts with the graph. It first toggles the \textit{isCoroutineRunning} flag to determine whether the coroutine should be started or stopped. It then calls \textit{toggleCoroutine}, passing the new state along with the coroutine scope and the number of cycles. Within the coroutine, the function updates startTime with the current system time to measure performance and increments currentCounter to recompose the UI. If the counter is greater than zero, it prepares the drawing by calling \textit{storeWrapper.prepareDrawing}, passing the screen width and height along with a fixed scaling factor. This ensures that the visualization area is correctly set up for rendering. Finally, the function updates heartFrequency by retrieving the latest BPM value from BPM.countPeak, ensuring that the displayed heart rate is continuously updated with the latest processed data. This function plays a crucial role in managing real-time ECG visualization, controlling when data processing runs and ensuring the graph updates dynamically as new data arrives.
-		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to toggle drawing per userinput}]
 		 fun  doneClick(cycles: Int) {
 			val width = screenWidth
 			val height = screenHeight
@@ -611,7 +586,7 @@ fun ECGValues(frequency: Int){
 		
 	\end{lstlisting}
 	The toggleCoroutine function controls the execution of a coroutine that processes ECG data. It takes a boolean isRunning to determine whether the coroutine should start or stop, a coroutineScope to manage coroutine execution, an integer cycles, and a callback function that receives an integer value. When isRunning is true, a new coroutine is launched, and a channel is created to continuously send incremented counter values at an interval of 8 milliseconds. These values are then passed to the callback function, ensuring that the ECG data is updated in real time. If isRunning is false, all active child coroutines within the given scope are canceled, stopping data processing. This function ensures controlled and efficient execution of real-time ECG data handling, starting and stopping dynamically based on user interaction.
-		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to start/stop the drawing routine}]
 		fun toggleCoroutine( isRunning: Boolean, coroutineScope: CoroutineScope, cycles: Int, callback: (Int) -> Unit) {
 			coroutineScope.launch {
 				if (isRunning) {
@@ -640,7 +615,7 @@ fun ECGValues(frequency: Int){
 	The drawFlowingGraph function is responsible for rendering the ECG graph dynamically based on real-time data. It first checks if there is available data and ensures the counter is greater than zero before proceeding. It then determines the minimum and maximum values within the data set to establish the graph's vertical range. The function calculates the indices defining the portion of the data to be displayed, ensuring the graph remains within the zoomed-in section while allowing for user interactions such as tapping and zooming. A sublist of the ECG data is extracted, and if all values are equal, adjustments are made to ensure proper scaling.
 	
 	To map the ECG data onto the graph, the function calculates a step size for horizontal placement and applies a transformation coefficient to scale the vertical axis. It then constructs a Path object, iterating through the extracted data points and converting each value into a corresponding position on the graph. The path begins at the first data point and continues connecting subsequent points to form a continuous line, representing the heart rate variation over time. Finally, the path is drawn onto the canvas in red with a defined stroke width, ensuring that the ECG waveform is clearly visible and responsive to real-time changes.
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to draw the recorded BPM-Data}]
 fun drawFlowingGraph() {
 	if(currentCounter > 0 && !dataFromFileBPM.isEmpty() && num == 0){
 		var minV = dataFromFileBPM.minOf { it.toString().toFloat() }
@@ -686,7 +661,7 @@ fun drawFlowingGraph() {
 		
 	\end{lstlisting}
 	
-	\paragraph{Draw recorded EKG-Data}\mbox{}\\
+	\paragraph{Draw recorded ECG-Data}\mbox{}\\
 	\mbox{}\\
 	The second part of the drawFlowingGraph function is responsible for rendering ECG data with zooming functionality,and detailed visualization of the recorded signals. It first ensures that the ECG data is available and that the current counter and tapped pointer values are valid. The function determines the range of data points to be displayed by defining fromIndex and toIndex, ensuring that the graph remains within the available dataset while focusing on a smaller segment around the tapped pointer.
 	
@@ -695,9 +670,9 @@ fun drawFlowingGraph() {
 	The function then constructs a Path object (path2) by iterating through the selected ECG data points and mapping them to screen coordinates. The step variable determines the spacing between each point, ensuring that the waveform is evenly distributed along the horizontal axis. Each data point is transformed using the computed coefficient, adjusting its vertical position relative to the maximum value. The function begins the path with a moveTo operation for the first point and continues with lineTo operations to connect subsequent points, forming a continuous ECG waveform.
 	
 	By dynamically selecting the data range based on user interaction and scaling the values appropriately, this function enables smooth zooming functionality. Users can focus on specific sections of the ECG signal while maintaining accurate and proportional visualization of the waveform.
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to draw the recorded ECG-Data}]
 		...
-		//POINTS OF EKG
+		
 		if( num == 1 && !dataFromFilePoints.isEmpty() && currentCounter > 0 && tappedPointer> 0){
 			var fromIndex =  if (tappedPointer-500 <= 0)   0  else tappedPointer-500
 			var toIndex = if (tappedPointer+ 500 >= dataFromFilePoints.size) dataFromFilePoints.size else tappedPointer+ 500
@@ -740,15 +715,11 @@ fun drawFlowingGraph() {
 	When a single tap is detected, the function adjusts the zoom level while updating the tappedPointer position based on the x-coordinate of the tap event. The relativeTap variable normalizes the tap position within the screen width, allowing for accurate mapping between the screen coordinates and the data indices. The currentTappedPointerIndexBPM is then calculated relative to the currently displayed BPM list, and tappedPointerIndexBPM is updated to reflect the corresponding index in the original dataset.
 	
 	The zoom value is dynamically adjusted, decreasing by 30 with each tap until it reaches a minimum of 15, ensuring a smooth and controlled zooming experience. Additionally, the currentCounter is incremented, triggering updates in the visualization. This approach allows users to interactively zoom in and out of the ECG graph by tapping, providing a more detailed or broader view of the data as needed.
-	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+	\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code for zooming in and zooming out via tap/double tap}]
 		.pointerInput(Unit) {
-			
-			// This makes the rectangle change color when touched (for touch input)
 			detectTapGestures (onDoubleTap = {
 				zoomValue += 150
 				tappedPointerIndexBPM = dataFromFileBPM.size/2
-				println("zoomVal: ${zoomValue}")
-				
 				
 				
 			}, onTap = {point ->
@@ -757,17 +728,11 @@ fun drawFlowingGraph() {
 				}
 				tappedPointer = point.x.toInt()
 				var relativeTap = tappedPointer.toFloat() / 720
-				println("This is where i tapped: "  + tappedPointer)
-				currentTappedPointerIndexBPM = (relativeTap * currentBPMList.size).toInt() //sublist Index
-				tappedPointerIndexBPM =  currentTappedPointerIndexBPM + fromIndexBPM // original List Index
-				
-				println("INDEX IN ARRAY: " + tappedPointerIndexBPM)
+				currentTappedPointerIndexBPM = (relativeTap * currentBPMList.size).toInt() 
+				tappedPointerIndexBPM =  currentTappedPointerIndexBPM + fromIndexBPM 
 				lastTappedPointerIndexBPM = tappedPointerIndexBPM
 				zoomValue = if (zoomValue <= 30) 15 else zoomValue - 30
 				currentCounter++
-				
-				
-				
 			})
 			
 		\end{lstlisting}
@@ -778,7 +743,7 @@ fun drawFlowingGraph() {
 	
 	
 	
-	\subsection{BPM}
+	\subsection{Calculating BPM (Pan-Tompkins Algorithm)}
 	This code implements the Pan-Tompkins algorithm for detecting QRS complexes in an ECG signal. The algorithm processes the raw ECG data through multiple stages of filtering, differentiation, squaring, integration, and peak detection to identify heartbeats accurately.
 	
 	The panTompkins function serves as the main processing pipeline. It first applies a bandpass filter, which is a combination of a low-pass and a high-pass filter, to remove noise and unwanted frequency components from the raw ECG data. The filtered signal then undergoes differentiation, enhancing the slope of the QRS complex.
@@ -790,7 +755,7 @@ fun drawFlowingGraph() {
 	The lowPassFilter and highPassFilter functions implement basic digital filters to isolate the frequency range of interest, while bandpassFilter applies them sequentially. The differentiate function enhances rapid signal changes characteristic of QRS complexes. The movingWindowIntegration function smooths the processed signal by averaging values over a predefined window.
 	
 	The detectPeaks function then scans the processed data for local maxima that exceed a threshold and are sufficiently spaced apart (at least 200 milliseconds), ensuring only valid QRS peaks are detected. The algorithm ultimately returns a list of QRS peak positions, which can be used for heart rate analysis and further ECG interpretation.
-		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Pan-Tompkins algorithm}]
 		 fun panTompkins(ecgData: List<Int>): List<Int> {
 		
 			val filteredData = bandpassFilter(ecgData)
@@ -822,14 +787,12 @@ fun drawFlowingGraph() {
 			}
 			return y
 		}
-		
 	
 		fun bandpassFilter(ecgData: List<Int>): List<Int> {
 			var lp_filtered = lowPassFilter(ecgData)
 			var hp_filtered = highPassFilter(lp_filtered)
 			return hp_filtered 
 		}
-		
 	
 		fun differentiate(data: List<Int>): List<Int> {
 			var y = MutableList(data.size) { 0 }
@@ -840,13 +803,9 @@ fun drawFlowingGraph() {
 				else{
 					y[n] = 0
 				}
-				
 			}
-			
 			return y
-			
 		}
-		
 		
 		fun movingWindowIntegration(data: List<Int>): List<Int> {
 			val result = mutableListOf<Int>()
@@ -890,7 +849,7 @@ fun drawFlowingGraph() {
 	This function returns a map containing the parsed data, which can later be used for further processing, such as visualizing ECG and BPM data.
 	
 	
-		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Einfaches Beispiel eines Sourcecode-Generators, abgeleitet von \cite{microsoft_roslyndocsfeaturesincremental-generatorsmd_2024, carter_introducing_2020} und eigenen Ergänzungen}]
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code for filechooser functionality}]
 fun PickDocument(): MutableMap<String, Any>{
 		
 ...
@@ -937,7 +896,21 @@ return dataMap
 	\section{Result}
 	{\large
 		The developed system successfully processes and visualizes ECG data in real time. Through the implementation of a ring buffer and sliding window approach, the application maintains a continuous and smooth representation of the ECG signal, preserving critical waveform characteristics. The use of the Pan-Tompkins algorithm allows for reliable QRS peak detection, enhancing the accuracy of heartbeat identification. Additionally, BLE communication was optimized to minimize latency and packet loss, ensuring stable data transmission. The performance evaluation indicates that the system meets the requirements for real-time ECG monitoring, achieving both responsiveness and scalability.}
-	
+		\begin{center}
+		\includegraphics[scale = 0.3]{/Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg}
+		\captionof{figure}{Drawing in ECG-Data in realtime}
+		\label{fig:RealtimeDrawing} 
+	\end{center}
+	\begin{center}
+		\includegraphics[scale = 0.3]{/Users/eric/Desktop/APP Screens/Display24HData.jpg}
+		\captionof{figure}{Displaying recorded ECG-Data and BPM (VitalMonitorWidget)}
+		\label{fig: VitalMonitorWidget} 
+	\end{center}
+		\begin{center}
+		\includegraphics[scale = 0.3]{/Users/eric/Desktop/APP Screens/24HRecordingMode.jpg}
+		\captionof{figure}{Recording Mode ("Stop Recording") }
+		\label{fig: } 
+	\end{center}
 	\section{Outlook}
 	Future enhancements could focus on integrating machine learning techniques for advanced arrhythmia detection, further improving the diagnostic capabilities of the application. Additionally, expanding compatibility with multiple BLE-enabled ECG devices could increase the system’s versatility. Implementing cloud synchronization for remote monitoring and historical data analysis would further extend the practical applications of this work. Lastly, optimizing power consumption for mobile usage remains a crucial aspect for improving long-term monitoring solutions.
 	\section{Appendix}
