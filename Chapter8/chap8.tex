@@ -99,7 +99,7 @@ Resulting in the follwing drawing:
 Resulting in the follwing Complexity Analysis: 
 \begin{itemize}
 	\item Data Conversion: O(n) (for n data points)
-	\item Scaling \& Mapping: O(n) for n data points)
+	\item Scaling \& Mapping: O(n) (for n data points)
 	\item Overall Complexity: O(n) linear (for n data points)
 \end{itemize}
 The resulting linear Complexity of O(n) makes the algorithm efficient for real-time processing. 
@@ -114,8 +114,8 @@ The resulting linear Complexity of O(n) makes the algorithm efficient for real-t
 		\item Consume and process incoming data simultaneously (2)
 		\item Datahandling and Drawing in parallel (3)
 	\end{itemize}
-	These issues must be viewed and solved isolated, and subsequently combine each solved problem with the other. It is important to mention that some issues may create restrictions for other issues. Therefore, it is essential to implement one task at a time and connect them all afterward.
-	
+	These issues must be viewed and solved isolated, and subsequently combine each solved problem with the other. It is important to mention that some issues may create restrictions for other issues. Therefore, it is essential to implement one task at a time and connect them all afterward.\mbox{}\\
+	\mbox{}\\
 	
 	
 	{\textbf{\underline{(1) Handle The Sample rate of the microcontroller}}
@@ -124,7 +124,7 @@ The resulting linear Complexity of O(n) makes the algorithm efficient for real-t
 	\\
 	$\dfrac{1000}{8}$ = $\dfrac{125}{1}$   $\widehat{=}$   $125 Hz$ \\
 	\\
-	Hence we have  to process a sample rate of: $f(t)= 125 \times t $, t in seconds. 
+	Hence the app has to process a sample rate of: $f(t)= 125 \times t $, t in seconds. 
 	If handling this datastream is not possible, data will be lost.
 	
 	
@@ -134,16 +134,16 @@ The resulting linear Complexity of O(n) makes the algorithm efficient for real-t
 	\\
 	To consume and process data at the same time,  spliting up processing and consuming into two indepent tasks by assigning each task to its own thread, is necessary. Making it possible to operate in paralell.
 	
-	Since both threads  have to access the same ressource at the same time, we have to make use of mutual exclusion. 
 	
 	
 	
-	\hfil \break
+
+
 	\hfil \break
  	\textbf{\underline{(3)Datahandling and drawing in parallel }}\\
  	\\
  	Thus the drawing entity has to countiously read data, and the datahandler entity receives a continous data stream.
- 	The suitable data structure must be able to constantly record new data and retain a certain amount of old data. So that a screen-width drawing can be displayed continuously. In addition, it is important that the data structure is not to large, which would lead to visible latencies. 
+ 	The suitable data structure must be able to constantly record new data and retain a certain amount of old data. So that a screen-width drawing can be displayed continuously. In addition, it is important that the data structure is not getting to large, which would lead to visible latencies. 
  	
  	This led to the Ringbuffer beeing the datastructure of choice.
  	Ringbuffers are often used when having to process datastreams. The ringbuffer has a fixed size, thus old data gets overwritten. Therefore, there is no need to worry about the data structure consuming too much memory.
@@ -166,7 +166,7 @@ The functional requirements of the 24-Hour recording are shown in the list below
 		\item Abort a recording 
 		\item Display 24-Hour long recorded ECG-Data
 		\item Show the current time intervalls
-		\item Zoom into the displayed data, zooming out of the displayed data
+		\item Zooming into the displayed data, zooming out of the displayed data
 		\item Plot BPM of the current displayed time intervall
 	\end{itemize}
 

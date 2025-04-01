@@ -6,7 +6,7 @@
 	
 \subsection{Basics of Android architecture}\label{sec:architecture}
 {\large 
-	To program a platform-specific application, it can be important to understand the basic architecture of the platform, especially when dealing with taks regarding memory or Bluetooth. This section will give a brief insight into the structure of the Android construction. Tasks discussed later in this thesis may reference this chapter to convey a better understanding.
+	To program a platform-specific application, it can be important to understand the basic architecture of the platform, especially when dealing with tasks regarding memory or Bluetooth. This section will give a brief insight into the structure of the Android construction. Tasks discussed later in this thesis may reference this chapter to convey a better understanding.
 	
 	The core of the Android Platform is a Linux based kernel. On top of Android's Kernel are four more stack layers, such as the Hardware Abstraction Layer, Native Libraries/Android Runtime, Java API Framework and the uppermost layer,  the System App layer. (also see: Figure \ref{fig:androidOverview}). Going into detail for each stack layer is not necessary for this work, consequently only essential layers like the Java API Framework will be considered in more depth. A short introduction into each layer is given by table \ref{tab:stackLayersTable} and figure \ref{fig:androidOverview} .
 	
@@ -28,15 +28,16 @@
 				\hline
 				Hardware Abstraction Layer (HAL) & \makecell[l]{Provides interfaces to the Java API Framework,\\ hence addresing hardware components\\ like Camera or Bluetooth module is possible.} \\
 				\hline
-				Linux Kernel & \makecell[l]{Foundation of the OS. Administrates system resources, \\ and communicates with hardware.}
+				Linux Kernel & \makecell[l]{The foundation of the OS. Administrates system resources, \\ and communicates with hardware.}
 			\end{tabular}
 		\end{center}
 	\end{table}
-	 A layered archtitecture like the Android OS, ensures modularity, maintainability and security. Each layer is designed with a specific responsibility, and communicates primarly with adjacent layers. Applications interact with the Framework layer via the Android SDK (bridge between Application Layer and Framework Layer ), which provides access to core system services. The Framework, in turn, relies on the Native Libraries and Runtime layers for functionalities like graphics rendering, media playback, and app execution. Hardware communication is abstracted through the Hardware Abstraction Layer (HAL), which interfaces with the Linux Kernel. This structured separation of concerns enhances the system's flexibility, allowing independent evolution and optimization of each layer.
-	
+	\footnote{Portions of this page are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.}
+	 A layered archtitecture like the Android OS, ensures modularity, maintainability and security. Each layer is designed with a specific responsibility, and communicates primarly with adjacent layers. Applications interact with the Framework layer via the Android SDK (bridge between Application Layer and Framework Layer ), which provides access to core system services. The Framework, in turn, relies on the Native Libraries and Runtime layers for functionalities like graphics rendering, media playback, and app execution. Hardware communication is abstracted through the Hardware Abstraction Layer (HAL), which interfaces with the Linux Kernel. This structured separation of concerns enhances the system's flexibility, allowing independent evolution and optimization of each layer. \cite{AndroidStack}
+	\footnote{Portions of this page are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.}
 	\begin{center}
 		\includegraphics[scale = 0.3]{/Users/eric/Downloads/android-stack_2x.png}
-		\captionof{figure}{Android Platform architecture}
+		\captionof{figure}{Android Platform architecture (Source: https://developer.android.com/guide/platform)}
 		\label{fig:androidOverview} 
 	\end{center}
 }
@@ -45,7 +46,7 @@
 			\paragraph{Description} \mbox{}\\
 			As already mentioned in \ref{sec:architecture}, the Android Java Framework API is a collection of libraries and tools provided by Android to simplify the development of mobile applications. Built on top of Java, it enables developers to create apps with pre-built components, utilities, and services that interact with the Android operating system. The framework abstracts the complexity of low-level operations and provides high-level APIs for features such as UI design, data storage, networking, and hardware access. 
 			\paragraph{Project example}\mbox{}\\
-			To provide an impression, Figure 2 shows a code excerpt in which the Java API was implicitly used by androidx.  To keep this chapter manageable, it can be simplified  said that androidx is a superset of the Java API Framework.
+			To provide an impression, Figure 2 shows a code excerpt in which the Java API was implicitly used by androidx.  To keep this chapter manageable, it can be simplified  said that androidx is a superset of the Java API Framework. \cite{androidX}
 			\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Android Java API exmaple with androidx}]
 				import androidx.compose.foundation.Image
 				import androidx.compose.foundation.layout.padding
@@ -94,14 +95,18 @@
 			To beginn its elementary to import the Painter class aswell as the painterResource class (line 13/15).  Then at line 26 a Painter object is created, aswell as definded by the painterResource function. The painterResource function gets an id as an argument, to query the file from the res/drawable folder. The res folder contains all additional app resources (files, images, etc.). Finally we can draw the Image by passing the Painter object to an Image function.
 			
 	}
-\subsection{BLE Stack}
+\subsection{BLE }
 {\large
+	
+	Thus the hardware is a wearable, it is important to manage energy consumption. BLE is designed to minimize energy usage, which is crucial for wearable devices that require extended battery life. A study demonstrated that low-power wearable sensors equipped with BLE could effectively acquire electrophysiological signals like ECG, EMG, and EEG without significant battery drain. \cite{BLEenergy}
+	
+\subsubsection{BLE Stack}
 	The BLE protocol stack consists of three main layers: the Controller, the Host, and the Application. The Controller encompasses the Physical Layer and the Link Layer, while the Host manages higher-level functionalities such as the Logical Link Control and Adaptation Protocol (L2CAP), the Attribute Protocol (ATT), the Generic Attribute Profile (GATT), the Security Manager (SM), and the Generic Access Profile (GAP). Communication between the Host and the Controller follows the standardized Host Controller Interface (HCI). At the top of the stack, the Application layer enables program execution. \cite{BLEStack}
 	
 	\begin{center}
 		\includegraphics[scale = 0.90]{/Users/eric/Downloads/bluetooth_le_stack.png}
 		\label{fig:BLEStack}
-		\captionof{figure}{BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+		\captionof{figure}{BLE protocol stack (Source: https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
 	\end{center}
 	
 	\paragraph{Application Layer}\mbox{}\\
@@ -126,7 +131,7 @@
 	\begin{center}
 		\includegraphics[scale = 0.90]{/Users/eric/Downloads/ble_att_representation.png}
 		\label{fig:ATTstructure}
-		\captionof{figure}{Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
+		\captionof{figure}{Attribute Structure (Source: https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}
 	\end{center}
 	
 	\paragraph{Logical Link Control and Adaption Layer Protocol (L2CAP)}\mbox{}\\
@@ -146,6 +151,7 @@
 	
 	\paragraph{Bluetooth LE PHY}\mbox{}\\
 	The physical layer (BLE PHY) is a 1 Mbps GFSK-based radio with adaptive frequency hopping, operating in the unlicensed 2.4 GHz ISM (industrial, scientific, and medical) band.
+	\cite{BLELayers}
 }	
 
 

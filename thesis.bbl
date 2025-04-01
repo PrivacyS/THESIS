@@ -1,9 +1,21 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Android(2025{\natexlab{a}})]{AndroidStack}
+Android.
+\newblock Android architecture, jan 2025{\natexlab{a}}.
+\newblock URL \url{https://developer.android.com/guide/platform}.
+\newblock Accesed: 05.01.2025.
+
+\bibitem[Android(2025{\natexlab{b}})]{androidX}
+Android.
+\newblock Androix-overview, jan 2025{\natexlab{b}}.
+\newblock URL \url{https://developer.android.com/jetpack/androidx?hl=de}.
+\newblock Accesed: 05.01.2025.
 
 \bibitem[Clarke(1995)]{clarke}
 S.J. Clarke.
@@ -27,5 +39,20 @@ Mandahadi Kusuma, Ahmad~Haris Rifani, and Bambang Sugiantoro.
 \newblock In \emph{2023 Eighth International Conference on Informatics and
   Computing (ICIC)}, pages 3--5, 2023.
 \newblock \doi{10.1109/ICIC60109.2023.10381987}.
+
+\bibitem[Li et~al.(2018)Li, Bhuiyan, Huang, McDonald, Farrell, and
+  Clancy]{BLEenergy}
+J.~Li, M.~Bhuiyan, X.~Huang, B.~McDonald, Todd Farrell, and E.~A. Clancy.
+\newblock Low-power wearable sensors for acquisition of biopotentials.
+\newblock In \emph{2018 IEEE Signal Processing in Medicine and Biology
+  Symposium (SPMB)}, pages 1--6, 2018.
+\newblock \doi{10.1109/SPMB.2018.8615603}.
+
+\bibitem[MathWorks(2025)]{BLELayers}
+The MathWorks.
+\newblock Bluetooth protocol stack, jan 2025.
+\newblock URL
+  \url{https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html}.
+\newblock Accesed: 20.03.2025.
 
 \end{thebibliography}

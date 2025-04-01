@@ -1,11 +1,13 @@
 \babel@toc {english}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Android Platform architecture}}{4}{figure.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces BLE protocol stack (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{7}{figure.2}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Attribute Structure (https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{8}{figure.3}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Informationtransfer}}{10}{figure.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Informationflow Diagramm}}{17}{figure.5}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Library Versions}}{19}{figure.6}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Drawing in ECG-Data in realtime}}{43}{figure.7}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Displaying recorded ECG-Data and BPM (VitalMonitorWidget)}}{44}{figure.8}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Recording Mode ("Stop Recording") }}{45}{figure.9}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Android Platform architecture (Source: https://developer.android.com/guide/platform)}}{5}{figure.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces BLE protocol stack (Source: https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{8}{figure.2}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Attribute Structure (Source: https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{9}{figure.3}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Informationtransfer}}{11}{figure.4}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Informationflow Diagramm}}{18}{figure.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Library Versions}}{20}{figure.6}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Packetstructure with Opcode (Source: Stefan Lindner)}}{24}{figure.7}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Response Packet(Source: Stefan Lindner)}}{24}{figure.8}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Drawing in ECG-Data in realtime}}{50}{figure.9}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Displaying recorded ECG-Data and BPM (VitalMonitorWidget)}}{51}{figure.10}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Recording Mode ("Stop Recording") }}{52}{figure.11}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -11,47 +11,55 @@ A level-1 auxiliary file: glossary.aux
 A level-1 auxiliary file: mainpart.aux
 The style file: plainnat.bst
 Database file #1: literature.bib
+Warning--entry type for "BLELayers" isn't style-file defined
+--line 5 of file literature.bib
+Warning--entry type for "androidX" isn't style-file defined
+--line 31 of file literature.bib
+Warning--entry type for "AndroidStack" isn't style-file defined
+--line 71 of file literature.bib
 Warning--string name "march" is undefined
---line 63 of file literature.bib
-You've used 3 entries,
+--line 155 of file literature.bib
+Warning--I didn't find a database entry for "microsoft_roslyndocsfeaturesincremental-generatorsmd_2024"
+Warning--I didn't find a database entry for "carter_introducing_2020"
+You've used 7 entries,
             2773 wiz_defined-function locations,
-            623 strings with 5733 characters,
-and the built_in function-call counts, 1542 in all, are:
-= -- 134
-> -- 70
-< -- 4
-+ -- 24
-- -- 21
-* -- 106
-:= -- 223
-add.period$ -- 12
-call.type$ -- 3
-change.case$ -- 16
-chr.to.int$ -- 3
-cite$ -- 6
-duplicate$ -- 90
-empty$ -- 138
-format.name$ -- 24
-if$ -- 345
-int.to.chr$ -- 1
+            650 strings with 6435 characters,
+and the built_in function-call counts, 3170 in all, are:
+= -- 275
+> -- 157
+< -- 8
++ -- 56
+- -- 48
+* -- 222
+:= -- 470
+add.period$ -- 28
+call.type$ -- 7
+change.case$ -- 37
+chr.to.int$ -- 6
+cite$ -- 14
+duplicate$ -- 164
+empty$ -- 282
+format.name$ -- 55
+if$ -- 694
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 3
-newline$ -- 26
-num.names$ -- 12
-pop$ -- 41
+missing$ -- 4
+newline$ -- 50
+num.names$ -- 28
+pop$ -- 97
 preamble$ -- 1
-purify$ -- 13
+purify$ -- 30
 quote$ -- 0
-skip$ -- 69
+skip$ -- 127
 stack$ -- 0
-substring$ -- 30
-swap$ -- 25
-text.length$ -- 3
+substring$ -- 50
+swap$ -- 40
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 33
+type$ -- 77
 warning$ -- 0
-while$ -- 13
+while$ -- 27
 width$ -- 0
-write$ -- 52
-(There was 1 warning)
+write$ -- 109
+(There were 6 warnings)
