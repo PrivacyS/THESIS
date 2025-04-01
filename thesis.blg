@@ -12,54 +12,54 @@ A level-1 auxiliary file: mainpart.aux
 The style file: plainnat.bst
 Database file #1: literature.bib
 Warning--entry type for "BLELayers" isn't style-file defined
---line 5 of file literature.bib
+--line 51 of file literature.bib
 Warning--entry type for "androidX" isn't style-file defined
---line 31 of file literature.bib
+--line 77 of file literature.bib
 Warning--entry type for "AndroidStack" isn't style-file defined
---line 71 of file literature.bib
+--line 117 of file literature.bib
 Warning--string name "march" is undefined
---line 155 of file literature.bib
+--line 201 of file literature.bib
 Warning--I didn't find a database entry for "microsoft_roslyndocsfeaturesincremental-generatorsmd_2024"
 Warning--I didn't find a database entry for "carter_introducing_2020"
-You've used 7 entries,
+You've used 10 entries,
             2773 wiz_defined-function locations,
-            650 strings with 6435 characters,
-and the built_in function-call counts, 3170 in all, are:
-= -- 275
-> -- 157
-< -- 8
-+ -- 56
-- -- 48
-* -- 222
-:= -- 470
-add.period$ -- 28
-call.type$ -- 7
-change.case$ -- 37
-chr.to.int$ -- 6
-cite$ -- 14
-duplicate$ -- 164
-empty$ -- 282
-format.name$ -- 55
-if$ -- 694
-int.to.chr$ -- 2
+            666 strings with 6864 characters,
+and the built_in function-call counts, 4121 in all, are:
+= -- 360
+> -- 187
+< -- 11
++ -- 69
+- -- 57
+* -- 269
+:= -- 616
+add.period$ -- 40
+call.type$ -- 10
+change.case$ -- 49
+chr.to.int$ -- 8
+cite$ -- 20
+duplicate$ -- 217
+empty$ -- 386
+format.name$ -- 67
+if$ -- 901
+int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 4
-newline$ -- 50
-num.names$ -- 28
-pop$ -- 97
+missing$ -- 5
+newline$ -- 68
+num.names$ -- 40
+pop$ -- 133
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 39
 quote$ -- 0
-skip$ -- 127
+skip$ -- 161
 stack$ -- 0
-substring$ -- 50
-swap$ -- 40
+substring$ -- 56
+swap$ -- 46
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 77
+type$ -- 110
 warning$ -- 0
-while$ -- 27
+while$ -- 36
 width$ -- 0
-write$ -- 109
+write$ -- 151
 (There were 6 warnings)

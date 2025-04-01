@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -32,6 +32,19 @@ F.~John Dian, Amirhossein Yousefi, and Sungjoon Lim.
   Mobile Communication Conference (IEMCON)}, page 768, 2018.
 \newblock \doi{10.1109/IEMCON.2018.8614763}.
 
+\bibitem[JetBrains(2024{\natexlab{a}})]{kotlin_channels}
+JetBrains.
+\newblock Kotlin coroutines: Channels.
+\newblock \url{https://kotlinlang.org/docs/channels.html}, 2024{\natexlab{a}}.
+\newblock Accessed: 2024-03-01.
+
+\bibitem[JetBrains(2024{\natexlab{b}})]{kotlin_coroutines_basics}
+JetBrains.
+\newblock Kotlin coroutines: Basics.
+\newblock \url{https://kotlinlang.org/docs/coroutines-basics.html},
+  2024{\natexlab{b}}.
+\newblock Accessed: 2024-04-01.
+
 \bibitem[Kusuma et~al.(2023)Kusuma, Rifani, and Sugiantoro]{fwComparison}
 Mandahadi Kusuma, Ahmad~Haris Rifani, and Bambang Sugiantoro.
 \newblock Comparison analysis of jetpack compose and flutter in android-based
@@ -54,5 +67,12 @@ The MathWorks.
 \newblock URL
   \url{https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html}.
 \newblock Accesed: 20.03.2025.
+
+\bibitem[Pingale(2014)]{pingale2014ecg}
+Shital~L. Pingale.
+\newblock Ecg signal processing and diagnose various diseases in matlab using
+  pan tompkins method.
+\newblock In \emph{Proceedings of IRF International Conference}, 2014.
+\newblock ISBN 978-93-84209-04-9.
 
 \end{thebibliography}

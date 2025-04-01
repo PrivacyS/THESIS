@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  1 APR 2025 15:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.30)  1 APR 2025 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1366,7 +1366,7 @@ Package tocbasic Info: setting babel extension for `nls' on input line 188.
 \@nomenclaturefile=\write7
 \openout7 = `thesis.nlo'.
 
-Package nomencl Info: Writing nomenclature file thesis.nlo on input line 187.
+Package nomencl Info: Writing nomenclature file thesis.nlo on input line 186.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tabularray/tabularray.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -1528,33 +1528,33 @@ LaTeX Warning: Label `fig:simpleSourceGen.cs' multiply defined.
 ))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-Package scrbase Info: activating english \abstractname on input line 212.
-Package scrbase Info: activating english \partname on input line 212.
-Package scrbase Info: activating english \figurename on input line 212.
-Package scrbase Info: activating english \tablename on input line 212.
-Package scrbase Info: activating english \contentsname on input line 212.
-Package scrbase Info: activating english \listfigurename on input line 212.
-Package scrbase Info: activating english \listtablename on input line 212.
-Package scrbase Info: activating english \refname on input line 212.
-Package scrbase Info: activating english \indexname on input line 212.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+Package scrbase Info: activating english \abstractname on input line 211.
+Package scrbase Info: activating english \partname on input line 211.
+Package scrbase Info: activating english \figurename on input line 211.
+Package scrbase Info: activating english \tablename on input line 211.
+Package scrbase Info: activating english \contentsname on input line 211.
+Package scrbase Info: activating english \listfigurename on input line 211.
+Package scrbase Info: activating english \listtablename on input line 211.
+Package scrbase Info: activating english \refname on input line 211.
+Package scrbase Info: activating english \indexname on input line 211.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count434
@@ -1624,7 +1624,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 212.
+Package hyperref Info: Link coloring ON on input line 211.
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write8
 \openout8 = `thesis.out'.
@@ -1636,7 +1636,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 212.
+(scrartcl)           before \begin{document} on input line 211.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
@@ -1659,7 +1659,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 \c@lstlisting=\count441
-Package tocbasic Info: setting babel extension for `lol' on input line 212.
+Package tocbasic Info: setting babel extension for `lol' on input line 211.
 \scr@dte@lstlisting@maxnumwidth=\skip92
 \c@mv@tabular=\count442
 \c@mv@boldtabular=\count443
@@ -1799,13 +1799,37 @@ No file thesis.nls.
 \@gls@deffile=\write9
 \openout9 = `thesis.glsdefs'.
 
-) (./thesis.gls) (./thesis.acr)
+) (./thesis.gls) (./thesis.acr
+
+Package glossaries Warning: Glossary entry `d' has not been defined on input li
+ne 15.
+
+
+Package glossaries Warning: Glossary entry `d' has not been defined on input li
+ne 15.
+
+
+Package glossaries Warning: Glossary entry `d' has not been defined on input li
+ne 15.
+
+
+Package glossaries Warning: Glossary entry `rgb' has not been defined on input 
+line 59.
+
+
+Package glossaries Warning: Glossary entry `rgb' has not been defined on input 
+line 59.
+
+
+Package glossaries Warning: Glossary entry `rgb' has not been defined on input 
+line 59.
+
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 260.
+input line 67.
 
 [5
 
@@ -1820,7 +1844,15 @@ input line 260.
 
 
 
-] (./thesis.lof
+])
+
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 259.
+
+[6] (./thesis.lof
 Overfull \hbox (22.49927pt too wide) in paragraph at lines 3--3
  [][] [][][]\T1/cmr/m/n/10 BLE pro-to-col stack (Source: https://de.mathworks.c
 om/help/bluetooth/gs/bluetooth-protocol- 
@@ -1836,17 +1868,22 @@ om/help/bluetooth/gs/bluetooth-protocol-
 \tf@lof=\write10
 \openout10 = `thesis.lof'.
 
- [6
+ [7
 
 
 ] (./thesis.lot)
 \tf@lot=\write11
 \openout11 = `thesis.lot'.
 
- [7
+ [8
 
 
-] (./thesis.toc [8
+] (./thesis.toc
+Overfull \hbox (1.82924pt too wide) detected at line 8
+ []\T1/cmss/bx/n/10.95 VIII
+ []
+
+[9
 
 
 ])
@@ -1859,9 +1896,9 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 282.
+input line 281.
 
-[9]
+[10]
 \openout2 = `mainpart.aux'.
 
  (./mainpart.tex (./Chapter1/chap1.tex)
@@ -1888,7 +1925,7 @@ Overfull \hbox (46.92505pt too wide) in paragraph at lines 18--33
  []
 
 [3]
-</Users/eric/Downloads/android-stack_2x.png, id=212, 1389.19pt x 2045.6425pt>
+</Users/eric/Downloads/android-stack_2x.png, id=243, 1389.19pt x 2045.6425pt>
 File: /Users/eric/Downloads/android-stack_2x.png Graphic file (type png)
 <use /Users/eric/Downloads/android-stack_2x.png>
 Package pdftex.def Info: /Users/eric/Downloads/android-stack_2x.png  used on in
@@ -1954,7 +1991,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 105.
 
 [7]
-</Users/eric/Downloads/bluetooth_le_stack.png, id=286, 493.845pt x 412.54124pt>
+</Users/eric/Downloads/bluetooth_le_stack.png, id=318, 493.845pt x 412.54124pt>
 
 File: /Users/eric/Downloads/bluetooth_le_stack.png Graphic file (type png)
 <use /Users/eric/Downloads/bluetooth_le_stack.png>
@@ -1981,7 +2018,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 121.
 
 [8 </Users/eric/Downloads/bluetooth_le_stack.png>]
-</Users/eric/Downloads/ble_att_representation.png, id=299, 534.49687pt x 78.292
+</Users/eric/Downloads/ble_att_representation.png, id=331, 534.49687pt x 78.292
 5pt>
 File: /Users/eric/Downloads/ble_att_representation.png Graphic file (type png)
 <use /Users/eric/Downloads/ble_att_representation.png>
@@ -2013,7 +2050,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 140.
 
 [9 </Users/eric/Downloads/ble_att_representation.png>]) (./Chapter8/chap8.tex
-</Users/eric/Downloads/Patient2Phone.png, id=318, 392.78745pt x 162.6075pt>
+</Users/eric/Downloads/Patient2Phone.png, id=349, 392.78745pt x 162.6075pt>
 File: /Users/eric/Downloads/Patient2Phone.png Graphic file (type png)
 <use /Users/eric/Downloads/Patient2Phone.png>
 Package pdftex.def Info: /Users/eric/Downloads/Patient2Phone.png  used on input
@@ -2155,7 +2192,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 66.
 
 [17]
-</Users/eric/Downloads/InformationFlow.drawio-3.png, id=396, 723.70375pt x 593.
+</Users/eric/Downloads/InformationFlow.drawio-3.png, id=428, 723.70375pt x 593.
 21625pt>
 File: /Users/eric/Downloads/InformationFlow.drawio-3.png Graphic file (type png
 )
@@ -2190,7 +2227,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 143.
 
 [19]
-</Users/eric/Downloads/NordicSemiconLibVersions.png, id=412, 390.45876pt x 136.
+</Users/eric/Downloads/NordicSemiconLibVersions.png, id=443, 390.45876pt x 136.
 00812pt>
 File: /Users/eric/Downloads/NordicSemiconLibVersions.png Graphic file (type png
 )
@@ -2245,7 +2282,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 279.
 
 [23]
-</Users/eric/Downloads/GenericPacketFinalEnglish.drawio.png, id=480, 302.12875p
+</Users/eric/Downloads/GenericPacketFinalEnglish.drawio.png, id=511, 302.12875p
 t x 76.285pt>
 File: /Users/eric/Downloads/GenericPacketFinalEnglish.drawio.png Graphic file (
 type png)
@@ -2259,7 +2296,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 283.
 See the caption package documentation for explanation.
 
-</Users/eric/Downloads/GenericPacketEnglishResponse.drawio.png, id=481, 362.353
+</Users/eric/Downloads/GenericPacketEnglishResponse.drawio.png, id=512, 362.353
 74pt x 76.285pt>
 File: /Users/eric/Downloads/GenericPacketEnglishResponse.drawio.png Graphic fil
 e (type png)
@@ -2414,7 +2451,12 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 input line 663.
 
 [34]
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
+Underfull \hbox (badness 10000) in paragraph at lines 694--698
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--699
 
  []
 
@@ -2423,7 +2465,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 699.
+input line 700.
 
 [35]
 
@@ -2431,15 +2473,15 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 731.
+input line 734.
 
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 766--768
+Underfull \hbox (badness 10000) in paragraph at lines 769--771
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 768--774
+Underfull \hbox (badness 10000) in paragraph at lines 771--777
 
  []
 
@@ -2448,7 +2490,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 774.
+input line 777.
 
 [37]
 
@@ -2456,10 +2498,10 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 790.
+input line 793.
 
 [38]
-Overfull \hbox (3.20775pt too wide) in paragraph at lines 812--814
+Overfull \hbox (3.20775pt too wide) in paragraph at lines 815--817
 \T1/cmr/m/n/12 The Vi-tal-Moni-tor-Wid-get serves as a com-pre-hen-sive vi-su-a
 l-iza-tion tool for map-ping recorded
  []
@@ -2469,10 +2511,10 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 817.
+input line 820.
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 818--847
+Underfull \hbox (badness 10000) in paragraph at lines 821--854
 
  []
 
@@ -2481,7 +2523,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 847.
+input line 855.
 
 [40]
 
@@ -2489,15 +2531,15 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 887.
+input line 896.
 
 [41]
-Underfull \hbox (badness 10000) in paragraph at lines 901--908
+Underfull \hbox (badness 10000) in paragraph at lines 900--910
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 901--908
+Underfull \hbox (badness 10000) in paragraph at lines 900--910
 
  []
 
@@ -2506,23 +2548,36 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 911.
+input line 925.
 
 [42]
+Underfull \hbox (badness 10000) in paragraph at lines 945--948
+
+ []
+
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 947.
+input line 954.
 
 [43]
+Underfull \hbox (badness 10000) in paragraph at lines 955--965
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 966--967
+
+ []
+
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 983.
+input line 1003.
 
 [44]
 
@@ -2530,7 +2585,7 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1007.
+input line 1021.
 
 [45]
 
@@ -2538,15 +2593,19 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1050.
+input line 1067.
 
 [46]
+Underfull \hbox (badness 10000) in paragraph at lines 1086--1093
+
+ []
+
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1087.
+input line 1102.
 
 [47]
 
@@ -2554,25 +2613,29 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1131.
+input line 1146.
 
 [48]
-Overfull \hbox (4.65697pt too wide) in paragraph at lines 1139--1140
-\T1/cmr/m/n/12 The de-vel-oped sys-tem suc-cess-fully pro-cesses and vi-su-al-i
-zes ECG data in real time. Through
- []
 
-</Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg, id=1083, 722.7pt x 1606.0
+Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
+(scrartcl)              The command has been renamed because of a
+(scrartcl)              recommendation of The LaTeX Project Team.
+(scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
+input line 1164.
+
+[49]
+</Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg, id=1127, 722.7pt x 1606.0
 pt>
 File: /Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg Graphic file (type jp
 g)
 <use /Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg>
 Package pdftex.def Info: /Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg  u
-sed on input line 1141.
+sed on input line 1175.
 (pdftex.def)             Requested size: 216.81166pt x 481.80373pt.
 
+
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1142.
+(caption)                particular \caption on input line 1176.
 See the caption package documentation for explanation.
 
 
@@ -2580,21 +2643,21 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1142.
+input line 1176.
 
-[49]
-</Users/eric/Desktop/APP Screens/Display24HData.jpg, id=1088, 722.7pt x 1606.0p
+[50]
+</Users/eric/Desktop/APP Screens/Display24HData.jpg, id=1133, 722.7pt x 1606.0p
 t>
 File: /Users/eric/Desktop/APP Screens/Display24HData.jpg Graphic file (type jpg
 )
 <use /Users/eric/Desktop/APP Screens/Display24HData.jpg>
 Package pdftex.def Info: /Users/eric/Desktop/APP Screens/Display24HData.jpg  us
-ed on input line 1146.
+ed on input line 1180.
 (pdftex.def)             Requested size: 216.81166pt x 481.80373pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1147.
+(caption)                particular \caption on input line 1181.
 See the caption package documentation for explanation.
 
 
@@ -2602,21 +2665,21 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1147.
+input line 1181.
 
-[50 </Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg>]
-</Users/eric/Desktop/APP Screens/24HRecordingMode.jpg, id=1093, 722.7pt x 1606.
+[51 </Users/eric/Desktop/APP Screens/RealTimeDrawing.jpg>]
+</Users/eric/Desktop/APP Screens/24HRecordingMode.jpg, id=1139, 722.7pt x 1606.
 0pt>
 File: /Users/eric/Desktop/APP Screens/24HRecordingMode.jpg Graphic file (type j
 pg)
 <use /Users/eric/Desktop/APP Screens/24HRecordingMode.jpg>
 Package pdftex.def Info: /Users/eric/Desktop/APP Screens/24HRecordingMode.jpg  
-used on input line 1151.
+used on input line 1185.
 (pdftex.def)             Requested size: 216.81166pt x 481.80373pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1152.
+(caption)                particular \caption on input line 1186.
 See the caption package documentation for explanation.
 
 
@@ -2624,17 +2687,17 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1152.
+input line 1186.
 
-[51 </Users/eric/Desktop/APP Screens/Display24HData.jpg>]
+[52 </Users/eric/Desktop/APP Screens/Display24HData.jpg>]
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
 (scrartcl)              recommendation of The LaTeX Project Team.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
-input line 1157.
+input line 1195.
 
-[52 </Users/eric/Desktop/APP Screens/24HRecordingMode.jpg>])
+[53 </Users/eric/Desktop/APP Screens/24HRecordingMode.jpg>])
 
 Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              The command has been renamed because of a
@@ -2642,8 +2705,20 @@ Class scrartcl Warning: Usage of deprecated command `\ifthispageodd'.
 (scrartcl)              Please replace `\ifthispageodd' by `\Ifthispageodd' on 
 input line 37.
 
-[53]) (./thesis.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 52--57
+[54]) (./thesis.bbl
+Underfull \hbox (badness 2096) in paragraph at lines 36--40
+[]\T1/cmr/m/n/12 JetBrains.  Kotlin corou-tines: Chan-nels.  [][]$\T1/CascadiaC
+ode-TLF/m/n/12 https : / / kotlinlang . org / docs /
+ []
+
+
+Underfull \hbox (badness 4739) in paragraph at lines 42--47
+[]\T1/cmr/m/n/12 JetBrains.  Kotlin corou-tines: Ba-sics.  [][]$\T1/CascadiaCod
+e-TLF/m/n/12 https : / / kotlinlang . org / docs /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--70
 \T1/CascadiaCode-TLF/m/n/12 com / help / bluetooth / gs / bluetooth -[] protoco
 l -[] stack . html$[][]\T1/cmr/m/n/12 .  Ac-cesed:
  []
@@ -2653,7 +2728,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.VI}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.311 	\cleardoublepage
+l.310 	\cleardoublepage
                        	 [6
 
 
@@ -2682,13 +2757,13 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 ### simple group (level 1) entered at line 110 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 41932 strings out of 474116
- 837400 string characters out of 5743682
- 2248187 words of memory out of 5000000
- 62808 multiletter control sequences out of 15000+600000
+ 42637 strings out of 474116
+ 847451 string characters out of 5743682
+ 2234187 words of memory out of 5000000
+ 63482 multiletter control sequences out of 15000+600000
  585453 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,21n,107p,10922b,2605s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,21n,107p,10922b,2607s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
 , replaced by a fixed one
@@ -2741,10 +2816,10 @@ ve/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive
 4/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2024/
 texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb>
-Output written on thesis.pdf (64 pages, 1699730 bytes).
+Output written on thesis.pdf (66 pages, 1707607 bytes).
 PDF statistics:
- 1511 PDF objects out of 1728 (max. 8388607)
- 1363 compressed objects within 14 object streams
- 755 named destinations out of 1000 (max. 500000)
- 409 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1576 PDF objects out of 1728 (max. 8388607)
+ 1425 compressed objects within 15 object streams
+ 786 named destinations out of 1000 (max. 500000)
+ 433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

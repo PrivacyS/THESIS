@@ -1,6 +1,1 @@
-\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
-\begin{theglossary}\glossaryheader
-\glsgroupheading{E}\relax \glsresetentrylist %
-\glossentry{abs}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsignore{V}}}%
-\end{theglossary}\glossarypostamble
+\null

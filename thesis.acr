@@ -1,9 +1,70 @@
 \glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
 \begin{theglossary}\glossaryheader
+\glsgroupheading{A}\relax \glsresetentrylist %
+\glossentry{api}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{att}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{B}\relax \glsresetentrylist %
+\glossentry{ble}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{bpm}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossentry{d}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossentry{ecg}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{eeg}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{emg}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{G}\relax \glsresetentrylist %
+\glossentry{gap}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{gatt}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{gfsk}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{ghz}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{H}\relax \glsresetentrylist %
+\glossentry{hci}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{hz}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{I}\relax \glsresetentrylist %
+\glossentry{ide}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{ism}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{L}\relax \glsresetentrylist %
+\glossentry{l2cap}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{ll}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossentry{mac}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{mbps}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{mtu}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{O}\relax \glsresetentrylist %
+\glossentry{os}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
 \glsgroupheading{R}\relax \glsresetentrylist %
 \glossentry{rgb}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossentry{sdk}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{smp}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}\glsgroupskip
+\glsgroupheading{U}\relax \glsresetentrylist %
+\glossentry{ui}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsignore{V}}}%
+\glossentry{uri}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsignore{V}}}%
 \end{theglossary}\glossarypostamble
