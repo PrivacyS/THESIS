@@ -8,7 +8,7 @@
 {\large 
 	To program a platform-specific application, it can be important to understand the basic architecture of the platform, especially when dealing with tasks regarding memory or Bluetooth. This section will give a brief insight into the structure of the Android construction. Tasks discussed later in this thesis may reference this chapter to convey a better understanding.
 	
-	The core of the Android Platform is a Linux based kernel. On top of Android's Kernel are four more stack layers, such as the Hardware Abstraction Layer, Native Libraries/Android Runtime, Java API Framework and the uppermost layer,  the System App layer. (also see: Figure \ref{fig:androidOverview}). Going into detail for each stack layer is not necessary for this work, consequently only essential layers like the Java API Framework will be considered in more depth. A short introduction into each layer is given by table \ref{tab:stackLayersTable} and figure \ref{fig:androidOverview} .
+	The core of the Android Platform is a Linux based kernel. On top of Android's Kernel are four more stack layers, such as the Hardware Abstraction Layer, Native Libraries/Android Runtime, Java API Framework and the uppermost layer,  the System App layer. (also see: Figure \ref{fig:androidOverview}). Going into detail for each stack layer is not necessary for this work, consequently only essential layers such as the Java API Framework will be considered in more depth. A short introduction into each layer is given by table \ref{tab:stackLayersTable} and figure \ref{fig:androidOverview} .
 	
 	
 	\begin{table}[h!]
@@ -33,7 +33,7 @@
 		\end{center}
 	\end{table}
 	\footnote{Portions of this page are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.}
-	 A layered archtitecture like the Android OS, ensures modularity, maintainability and security. Each layer is designed with a specific responsibility, and communicates primarly with adjacent layers. Applications interact with the Framework layer via the Android SDK (bridge between Application Layer and Framework Layer ), which provides access to core system services. The Framework, in turn, relies on the Native Libraries and Runtime layers for functionalities like graphics rendering, media playback, and app execution. Hardware communication is abstracted through the Hardware Abstraction Layer (HAL), which interfaces with the Linux Kernel. This structured separation of concerns enhances the system's flexibility, allowing independent evolution and optimization of each layer. \cite{AndroidStack}
+	 A layered archtitecture such as the Android OS, ensures modularity, maintainability and security. Each layer is designed with a specific responsibility, and communicates primarly with adjacent layers. Applications interact with the Framework layer via the Android SDK (bridge between Application Layer and Framework Layer ), which provides access to core system services. The Framework, in turn, relies on the Native Libraries and Runtime layers for functionalities like graphics rendering, media playback, and app execution. Hardware communication is abstracted through the Hardware Abstraction Layer (HAL), which interfaces with the Linux Kernel. This structured separation of concerns enhances the system's flexibility, allowing independent evolution and optimization of each layer. \cite{AndroidStack}
 	\footnote{Portions of this page are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.}
 	\begin{center}
 		\includegraphics[scale = 0.3]{/Users/eric/Downloads/android-stack_2x.png}
@@ -80,7 +80,7 @@
 							Image(
 							painter = image,
 							contentDescription = "Button Image",
-							modifier = Modifier.size(24.dp) // Größe des Bildes
+							modifier = Modifier.size(24.dp)
 							)
 							if(toggleButtons){
 								btButtons()
@@ -125,7 +125,7 @@
 	Defines services and characteristics provided by the GATT Server. The GATT Server in this case is the microcontroller, which holds the definitions of services and characteristics. These can be requested by the GATT Client (in this case the application).
 	Services organize data into logical entities and contain specific data units known as characteristics. Each service can include one or more characteristics and is uniquely identified by a numeric UUID. This UUID can be either 16-bit for officially adopted BLE services or 128-bit for custom services. Whereas the Characteristic is the lowest level concept in GATT transactions, which defines data. Services aswell as Characterics are main interactions points to work with when working with the BLE periphery, thus it is important to understand these terminologies.
 	
-	\paragraph{ Attribute Protocol (ATT)}\mbox{}\\
+	\paragraph{Attribute Protocol (ATT)}\mbox{}\\
 	The ATT enables the exchange of attributes (characteristics). Attributes are are composed of four components, the type (128-bit UUID), an handle (16-bit indentifier) to reference attributes, rights of the attribute(reading, writing), and the value of the attribute. The following figure gives a good overview of the structure of the attributes.
 	
 	\begin{center}

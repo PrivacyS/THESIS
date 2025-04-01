@@ -2,10 +2,9 @@
 \contentsline {section}{\nonumberline Affidavit}{I}{section*.3}%
 \contentsline {section}{\nonumberline Acknowledgements}{II}{section*.5}%
 \contentsline {section}{\nonumberline Abstract}{III}{section*.7}%
-\contentsline {section}{\nonumberline Confidentialityclause}{IV}{section*.9}%
-\contentsline {section}{Acronyms}{V}{section*.10}%
-\contentsline {section}{\nonumberline List of figures}{VII}{section*.12}%
-\contentsline {section}{\nonumberline List of tables}{VIII}{section*.13}%
+\contentsline {section}{Acronyms}{IV}{section*.8}%
+\contentsline {section}{\nonumberline List of figures}{VI}{section*.10}%
+\contentsline {section}{\nonumberline List of tables}{VII}{section*.11}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Motivation}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Scope and Framework}{1}{subsection.1.2}%
@@ -13,62 +12,60 @@
 \contentsline {section}{\numberline {2}Technical Fundamentals}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Basics of Android architecture}{3}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Java Framework API (Framework Layer)}{6}{subsubsection.2.1.1}%
-\contentsline {paragraph}{\nonumberline Description}{6}{paragraph*.17}%
-\contentsline {paragraph}{\nonumberline Project example}{6}{paragraph*.19}%
+\contentsline {paragraph}{\nonumberline Description}{6}{paragraph*.15}%
+\contentsline {paragraph}{\nonumberline Project example}{6}{paragraph*.17}%
 \contentsline {subsection}{\numberline {2.2}BLE}{7}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}BLE Stack}{7}{subsubsection.2.2.1}%
-\contentsline {paragraph}{\nonumberline Application Layer}{8}{paragraph*.21}%
-\contentsline {paragraph}{\nonumberline Host Layer}{8}{paragraph*.23}%
-\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{9}{paragraph*.25}%
-\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{9}{paragraph*.27}%
-\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{9}{paragraph*.29}%
-\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{9}{paragraph*.31}%
-\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{9}{paragraph*.33}%
-\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{10}{paragraph*.35}%
-\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{10}{paragraph*.37}%
-\contentsline {paragraph}{\nonumberline Controller Layer}{10}{paragraph*.39}%
-\contentsline {paragraph}{\nonumberline Link Layer (LL)}{10}{paragraph*.41}%
-\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{10}{paragraph*.43}%
+\contentsline {paragraph}{\nonumberline Application Layer}{8}{paragraph*.19}%
+\contentsline {paragraph}{\nonumberline Host Layer}{8}{paragraph*.21}%
+\contentsline {paragraph}{\nonumberline Generic Acces Profile (GAP)}{9}{paragraph*.23}%
+\contentsline {paragraph}{\nonumberline Security Manager Protocol (SMP)}{9}{paragraph*.25}%
+\contentsline {paragraph}{\nonumberline Generic Attribute Profile (GATT)}{9}{paragraph*.27}%
+\contentsline {paragraph}{\nonumberline Attribute Protocol (ATT)}{9}{paragraph*.29}%
+\contentsline {paragraph}{\nonumberline Logical Link Control and Adaption Layer Protocol (L2CAP)}{9}{paragraph*.31}%
+\contentsline {paragraph}{\nonumberline Host-Side Host-Controller-Interface (HCI)}{10}{paragraph*.33}%
+\contentsline {paragraph}{\nonumberline Controller-Side Host-Controller-Interface (HCI)}{10}{paragraph*.35}%
+\contentsline {paragraph}{\nonumberline Controller Layer}{10}{paragraph*.37}%
+\contentsline {paragraph}{\nonumberline Link Layer (LL)}{10}{paragraph*.39}%
+\contentsline {paragraph}{\nonumberline Bluetooth LE PHY}{10}{paragraph*.41}%
 \contentsline {section}{\numberline {3}Functional Requirements}{10}{section.3}%
 \contentsline {subsection}{\numberline {3.1}ECG-Data}{11}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Drawing ECG-Data in realtime}{13}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}24-Hour recording}{14}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Connection via Bluetooth Low Energy}{15}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Realization}{15}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Selected Technologies}{15}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}Selected Technologies}{16}{subsection.4.1}%
 \contentsline {subsubsection}{\numberline {4.1.1}Programming Language and Framework}{16}{subsubsection.4.1.1}%
 \contentsline {subsubsection}{\numberline {4.1.2}Development Enviroment}{16}{subsubsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.2}Definiton of Entitys}{17}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Inter-Entity Communication Overview}{18}{subsection.4.3}%
-\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{18}{paragraph*.46}%
+\contentsline {paragraph}{\nonumberline Information Flow and Responsibilities of BLEViewModel}{18}{paragraph*.44}%
 \contentsline {subsection}{\numberline {4.4}BLEViewModel}{20}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Implementation}{20}{subsubsection.4.4.1}%
-\contentsline {paragraph}{\nonumberline Dependency versions and Library}{20}{paragraph*.48}%
-\contentsline {paragraph}{\nonumberline Scanning devices}{20}{paragraph*.50}%
-\contentsline {paragraph}{\nonumberline Refreshing}{22}{paragraph*.52}%
-\contentsline {paragraph}{\nonumberline Connect}{23}{paragraph*.54}%
+\contentsline {paragraph}{\nonumberline Dependency versions and Library}{20}{paragraph*.46}%
+\contentsline {paragraph}{\nonumberline Scanning devices}{20}{paragraph*.48}%
+\contentsline {paragraph}{\nonumberline Refreshing}{22}{paragraph*.50}%
+\contentsline {paragraph}{\nonumberline Connect}{23}{paragraph*.52}%
 \contentsline {subsection}{\numberline {4.5}Storewrapper}{31}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}Implementation}{31}{subsubsection.4.5.1}%
-\contentsline {paragraph}{\nonumberline Preparing ECG-Data}{31}{paragraph*.56}%
-\contentsline {paragraph}{\nonumberline Preparing the Drawpath}{34}{paragraph*.58}%
+\contentsline {paragraph}{\nonumberline Preparing ECG-Data}{31}{paragraph*.54}%
+\contentsline {paragraph}{\nonumberline Preparing the Drawpath}{33}{paragraph*.56}%
 \contentsline {subsection}{\numberline {4.6}GraphEcgWidget}{35}{subsection.4.6}%
-\contentsline {paragraph}{\nonumberline Displaying Heart Rate}{36}{paragraph*.60}%
-\contentsline {paragraph}{\nonumberline Continous ECG-Graph}{36}{paragraph*.62}%
-\contentsline {paragraph}{\nonumberline Real-time graph update}{38}{paragraph*.64}%
+\contentsline {paragraph}{\nonumberline Displaying Heart Rate}{35}{paragraph*.58}%
+\contentsline {paragraph}{\nonumberline Continous ECG-Graph}{36}{paragraph*.60}%
+\contentsline {paragraph}{\nonumberline Real-time graph update}{37}{paragraph*.62}%
 \contentsline {subsection}{\numberline {4.7}VitalMonitorWidget}{39}{subsection.4.7}%
-\contentsline {paragraph}{\nonumberline Draw recorded BPM}{39}{paragraph*.66}%
-\contentsline {paragraph}{\nonumberline Draw recorded ECG-Data}{42}{paragraph*.68}%
-\contentsline {paragraph}{\nonumberline Zooming functionality}{43}{paragraph*.70}%
-\contentsline {subsection}{\numberline {4.8}Calculating BPM (Pan-Tompkins Algorithm)}{45}{subsection.4.8}%
+\contentsline {paragraph}{\nonumberline Draw recorded BPM}{39}{paragraph*.64}%
+\contentsline {paragraph}{\nonumberline Draw recorded ECG-Data}{41}{paragraph*.66}%
+\contentsline {paragraph}{\nonumberline Zooming functionality}{43}{paragraph*.68}%
+\contentsline {subsection}{\numberline {4.8}Calculating BPM (Pan-Tompkins Algorithm)}{44}{subsection.4.8}%
 \contentsline {subsection}{\numberline {4.9}StorageHandler}{47}{subsection.4.9}%
-\contentsline {section}{\numberline {5}Summary}{49}{section.5}%
+\contentsline {section}{\numberline {5}Summary}{48}{section.5}%
 \contentsline {section}{\numberline {6}Result}{49}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Succesful Real-Time ECG-Data Acquisition}{49}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Efficient Signal Processing and Visualization}{50}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.2}Efficient Signal Processing and Visualization}{49}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}24-Hour ECG Recording Mode}{50}{subsection.6.3}%
 \contentsline {subsection}{\numberline {6.4}User Interface}{51}{subsection.6.4}%
 \contentsline {section}{\numberline {7}Outlook}{53}{section.7}%
-\contentsline {section}{\numberline {8}Appendix}{54}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Versions}{54}{subsection.8.1}%
-\contentsline {section}{\nonumberline Literature references}{VI}{section*.73}%
+\contentsline {section}{\nonumberline Literature references}{VI}{section*.70}%
+\contentsline {section}{\numberline {A}Appendix}{VII}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Versions}{VII}{subsection.A.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

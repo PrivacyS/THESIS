@@ -14,7 +14,7 @@
 
 \subsubsection{Programming Language and Framework}
 {\large
-	When searching for a suitable programming language to program Android apps, names like Java/Kotlin and Dart often appear. Both languages offer great frameworks, such as Flutter for Dart or Jetpack Compose for Kotlin. One aswell as the other are highly effective because they eliminate the limitations of XML-based UI development, enabling a more streamlined, declarative approach that combines UI and logic in a single language. Thus reduces boilerplate code, and enhances performance aswell as developer productivity. The main differnce between both frameworks lies in ressource manegement. For example Flutter is superior in cpu usage, but Jetpack Compose consumes less memory.\cite{fwComparison} "But since both have their respective advantages and
+	When searching for a suitable programming language to program Android apps, names like Java/Kotlin and Dart often appear. Both languages offer great frameworks, such as Flutter for Dart or Jetpack Compose for Kotlin. One aswell as the other are highly effective because they eliminate the limitations of XML-based UI development, enabling a more streamlined, declarative approach that combines UI and logic in a single language. Thus reduces boilerplate code, and enhances performance aswell as developer productivity. The main differnce between both frameworks lies in ressource manegement. For example Flutter is superior in cpu usage, but Jetpack Compose consumes less memory. \cite{fwComparison} "But since both have their respective advantages and
 	disadvantages, it is impossible to say that one is superior to the other. The choice between Jetpack Compose and Flutter depends on the needs and preferences of the developer. If developers are more familiar with the Kotlin language and want to use new technologies, then Jetpack Compose might be a better choice." \cite{fwComparison} With prior practical experience in Java/Kotlin, Jetpack Compose was chosen as the framework for this work. 
 	
 }
@@ -71,12 +71,12 @@
 
 \subsection{Inter-Entity Communication Overview }
 {\large
-	The following diagramm shows the Information flow between all entitys. The unidirectional arrow means that, information is flowing oneside. An informationexchange between two entitys is represented by an bidirectional arrow.
+	The following diagramm shows the Information flow between all entitys. The unidirectional arrow represents, unidirectional information flow. On the contrary bidirectional information flow between two entitys is represented by an bidirectional arrow.
 	
 	\begin{center}
 		\includegraphics[scale = 0.70]{/Users/eric/Downloads/InformationFlow.drawio-3.png}
 		\label{fig:informationFlowDiag}
-		\captionof{figure}{Informationflow Diagramm}
+		\captionof{figure}{Information-Flow-Diagramm}
 	\end{center}
 	
 	
@@ -158,7 +158,7 @@
 }
 
 
-\subsubsection{Implementation}
+
 \paragraph{Dependency versions and Library}\mbox{}\\
 {\large Before delving into the implementation, it is essential to note that a library provided by Nordic Semiconductor was employed in the development process.\footnote{\url{https://github.com/NordicSemiconductor/Android-BLE-Library}} The utilized dependency version are shown in the figure below:
 	\begin{center}
@@ -274,8 +274,9 @@
 	
 	The received byte array is first converted into a list of integers. To enable concurrent processing, the data is then transmitted through a channel (channel.send(values) in line 15). A coroutine, executed by receiveData(viewModelScope), retrieves the streamed data from the channel and passes it to StoreWrapper.processDataList(datastream). (Since courotines and channels play a central role in this and other implementations, this chapter is followed by a brief introduction to these Kotlin-specific topics.)  The processed data is also added to the BPM.currList buffer for frequency analysis. Once the buffer exceeds 7500 samples, the QRS peak detection algorithm (Pan-Tompkins) is applied to identify heartbeats. 
 	\\
+	\mbox{}\\
 	\underline{\textbf{3. Handling Application-Level BLE Communication}}\mbox{}\\
-	Both the microcontroller and the wirelessly connected device act as both senders and receivers during their bidirectional communication. To ensure correct operation, it is essential that the received data is accurately interpreted. This can be achieved by defining an Opcode for every desired behavior, which is contained in every sent packet. This allows incoming data packets to be classified based on their Opcode. As a result, each received packet can be assigned a meaning and subsequently processed accordingly.
+	During their bidirectional communication, both the microcontroller and the wirelessly connected device operate as senders and receivers.To ensure the correct operation, it is essential that the received data is accurately interpreted. This can be achieved by defining an Opcode for every desired behavior, which is contained in every sent packet. This allows incoming data packets to be classified based on their Opcode. As a result, each received packet can be assigned a meaning and subsequently processed accordingly.
 	
 	\begin{center}
 		\includegraphics[scale = 0.90]{/Users/eric/Downloads/GenericPacketFinalEnglish.drawio.png}
@@ -300,11 +301,6 @@
 	
 	
 	\underline{\textbf{4. Validating Packages (ResponseChecker)}}\mbox{}\\
-	\\
-
-	
-	
-	
 	
 	The check() function verifies whether a given packet corresponds to an expected response from the microcontroller. By verifying the expected Opcode.  The verification consists of multiple steps:
 	
@@ -312,24 +308,24 @@
 	If the byte array is too short ($\leq$ 2 bytes), it cannot be a valid response and is immediately discarded.  
 	
 	\underline{2. Packet Type Validation  }\mbox{}\\
-	- Calls `isResponsePacket(byteArray)`, a function that determines whether the received data is a response packet.  
-	- If the data is not a response packet, the function exits early.  
+	Calls `isResponsePacket(byteArray)`, a function that determines whether the received data is a response packet.  
+	 If the data is not a response packet, the function exits early.  
 	
 	\underline{3. Opcode Verification }\mbox{}\\
-	- Calls `checkForExpectedOPCode(byteArray)`, which checks whether the response contains the expected operation code.  
-	- If the opcode does not match the expected one, the function exits early.  
+	Calls `checkForExpectedOPCode(byteArray)`, which checks whether the response contains the expected operation code.  
+	If the opcode does not match the expected one, the function exits early.  
 	
 	\underline{4. Cancelling the Timeout Mechanism }\mbox{}\\
-	- If the response is valid, the current timeout timer (`currentTimer`) is canceled, ensuring that the system does not time out while waiting for the response.  
+	 If the response is valid, the current timeout timer (`currentTimer`) is canceled, ensuring that the system does not time out while waiting for the response.  
 	
 	\underline{5. Extracting and Processing the Response Message}\mbox{}\\
-	- The actual response message is extracted from the byte array starting at index 2. The message is decoded as a UTF-8 string.  
+	The actual response message is extracted from the byte array starting at index 2. The message is decoded as a UTF-8 string.  
 	
 	\underline{6. Notifying the Listener}\mbox{}\\
-	- If a `responseReceivedListener` is set, it is triggered with the received byte array. The listener is likely responsible for further processing or handling the response.  
+	If a `responseReceivedListener` is set, it is triggered with the received byte array. The listener is likely responsible for further processing or handling the response.  
 	
 	\underline{7. Resetting the Expected Response }\mbox{}\\
-	- The variable `toCheck`, which presumably stores the expected response for comparison, is reset to `null`, indicating that the response-checking process has completed.  
+	The variable `toCheck`, which presumably stores the expected response for comparison, is reset to `null`, indicating that the response-checking process has completed.  
 	
 	This function ensures that only valid and expected responses are processed in a BLE communication system. By implementing multiple validation checks (length, packet type, opcode), it prevents erroneous or irrelevant data from triggering unintended behavior. 
 	\mbox{}\\
@@ -476,7 +472,7 @@
 \underline{\textit{\textbf{ Channels and Coroutines}}}
 
 The \textit{channe}l serves as a concurrent data pipeline between the BLE data stream and the processing logic. It ensures that the incoming data from the BLE device is processed in a structured, asynchronous manner without blocking the main execution thread. By leveraging coroutines, the channel allows efficient real-time data handling while preventing performance bottlenecks. \cite{kotlin_channels}\\
-A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows you to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI.\cite{kotlin_coroutines_basics}
+A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asynchronous programming. It allows to write code that can be paused and resumed without blocking the main thread, making it ideal for handling tasks like network requests, BLE communication, or large computations without freezing the UI. \cite{kotlin_coroutines_basics}
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
@@ -549,7 +545,7 @@ A \textit{coroutine} in Kotlin is a lightweight, non-blocking way to handle asyn
 The StoreWrapper class serves as a central component for processing and managing electrocardiographic (ECG) data in real-time. It is responsible for converting raw data received from the BLE signal characteristic into a format suitable for visualization. This transformation ensures that the incoming stream of ECG values can be efficiently rendered within the application’s graphical interface.
 A key feature of the StoreWrapper class is its mapping functionality, which translates raw numerical values into drawable data points. This conversion is essential for accurately representing the ECG signal on-screen. Additionally, the class incorporates a ringbuffer, which provides an mechanism for storing and handling continuous data streams. The ringbuffer ensures that only the most recent samples are retained, enabling a sliding window approach for real-time signal visualization and processing.
 
-\subsubsection{Implementation}
+
 
 \paragraph{Preparing ECG-Data}\mbox{}\\
 {\large
@@ -560,12 +556,15 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	The function begins by initializing the shiftH parameter and preparing a mutable list (data) for storing processed values. If an external data source is provided, it is converted from a generic format into a list of Double values. Otherwise, an empty list is created.\mbox{}\\
 	\mbox{}\\
 	\underline{\textbf{Screen Size and Scaling Factors}}\mbox{}\\
+	\mbox{}\\
 	The width and height of the target display area are extracted from the size parameter. Additionally, the function determines the minimum (minV) and maximum (maxV) values within the buffer to establish the dynamic range of the data. If all values are equal, an artificial spread is introduced to prevent division by zero.\mbox{}\\
 	\mbox{}\\
 	\underline{\textbf{Normalization and Scaling}}\mbox{}\\
+	\mbox{}\\
 	The difference between maxV and minV (dv) is calculated to determine the range of data values. A step size (step) is then computed based on the available screen width and the buffer capacity, ensuring that data points are evenly distributed across the display. The coeff value is derived to scale the signal to fit within the available height while accounting for a vertical shift (shiftH).\mbox{}\\
 	\mbox{}\\
 	\underline{\textbf{Data Mapping for Graph Rendering}}\mbox{}\\
+	\mbox{}\\
 	A temporary list (dataTemp) holds the normalized data, which is then mapped to a new list (data). The mapping follows the formula:\mbox{}\\
 	\mbox{}\\
 	$data[i]=(maxV \text{-} dataTemp[i]) \times coeff+shiftH$ \mbox{}\\
@@ -635,6 +634,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	\mbox{}\\
 	\mbox{}\\
 	\paragraph{Preparing the Drawpath}\mbox{}\\
+	\mbox{}\\
 	{\large 
 		To achieve a smooth and natural representation of the ECG waveform, it is essential to create two separate paths: one for the data points before the current write position in the buffer and one for the data points after. This ensures a seamless transition between old and new data, preventing visual gaps and making the waveform appear continuous, just like a real ECG signal.
 		
@@ -693,8 +693,7 @@ A key feature of the StoreWrapper class is its mapping functionality, which tran
 	\subsection{GraphEcgWidget}
 	This code implements a real-time ECG visualization. The code renders ECG data as a graph, calculates the heart rate (BPM), and classifies it into different heart rate categories. Since the code of this class is very extensive, some code snippets are presented in abbreviated form.
 	\mbox{}\\
-	\mbox{}\\
-	\mbox{}\\
+	
 	\paragraph{Displaying Heart Rate}\mbox{}\\
 	
 	The function \textit{ECGValues(frequency: Int) } displays the current BPM and classifies it into one of three categories: 
@@ -774,7 +773,7 @@ fun ECGValues(frequency: Int){
 	\mbox{}\\
 	\mbox{}\\
 	\mbox{}\\
-		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to toggle drawing per userinput}]
+		\begin{lstlisting}[label={fig:simpleSourceGen.cs}, caption={Code to toggle drawing per user input}]
 		 fun  doneClick(cycles: Int) {
 			val width = screenWidth
 			val height = screenHeight
@@ -995,7 +994,7 @@ fun drawFlowingGraph() {
 	
 	\subsection{Calculating BPM (Pan-Tompkins Algorithm)}
 	This code implements the Pan-Tompkins algorithm for detecting QRS complexes in an ECG signal. The algorithm processes the raw ECG data through multiple stages of filtering, differentiation, squaring, integration, and peak detection to identify heartbeats accurately.
-	The panTompkins function serves as the main processing pipeline. It first applies a bandpass filter, which is a combination of a low-pass and a high-pass filter, to remove noise and unwanted frequency components from the raw ECG data. The filtered signal then undergoes differentiation, enhancing the slope of the QRS complex.
+	The panTompkins function in code 17 serves as the main processing pipeline. It first applies a bandpass filter, which is a combination of a low-pass and a high-pass filter, to remove noise and unwanted frequency components from the raw ECG data. The filtered signal then undergoes differentiation, enhancing the slope of the QRS complex.
 	Next, the squared transformation is applied to amplify higher amplitude variations, making QRS peaks more distinguishable. The resulting signal is further processed using moving window integration, which smooths the waveform and highlights the QRS complexes by averaging values over a short period.
 	Finally, peak detection is performed. A dynamic threshold is determined based on the signal’s overall amplitude, and only peaks that exceed this threshold and maintain a minimum interval (to prevent false detections) are identified as QRS complexes.
 	The lowPassFilter and highPassFilter functions implement basic digital filters to isolate the frequency range of interest, while bandpassFilter applies them sequentially. The differentiate function enhances rapid signal changes characteristic of QRS complexes. The movingWindowIntegration function smooths the processed signal by averaging values over a predefined window.
@@ -1093,7 +1092,7 @@ fun drawFlowingGraph() {
 	\subsection{StorageHandler}
 	This function provides a file selection mechanism using Jetpack Compose and Android’s Storage Access Framework, allowing users to pick multiple files from their device. It utilizes rememberLauncherForActivityResult to open a file picker and handle the selection result.
 	When a user clicks the “Select doc” button, the launcher is triggered, allowing them to choose files. The selected file URIs are processed, and based on their type, they are categorized into a mutable map:
-	Binary files (.bin) are read using readShort(file \textunderscore) and stored under the "bin" key.
+	Binary files (.bin) are read using readShort(file\textunderscore) and stored under the "bin" key.
 	Metadata files (if the file contains "start") are split by ";" and stored under "meta".
 	Other text files (e.g., BPM data) are also split by ";" and stored under "bpm".
 	This function returns a map containing the parsed data, which can later be used for further processing, such as visualizing ECG and BPM data.
@@ -1142,12 +1141,10 @@ return dataMap
 		
 	\end{lstlisting}
 	\section{Summary}
-	This thesis examined the design and implementation of a front-end application for real-time and long-term monitoring of electrocardiographic (ECG) data. The focus was on the processing of sensor data, Bluetooth Low Energy (BLE) communication and the visualization of ECG curves in a mobile application. For this purpose, an application was developed in Jetpack Compose that continuously receives and processes ECG data and displays it in a user-friendly way.
-	
+	This thesis examined the design and implementation of a front-end application for real-time and long-term monitoring of electrocardiographic (ECG) data. The focus was on the processing of ECG-data, Bluetooth Low Energy (BLE) communication and the visualization of ECG curves in a mobile application. For this purpose, an application was developed in Jetpack Compose that continuously receives and processes ECG data and displays it in a user-friendly way.
 	A key challenge  was the efficient processing of data streams that deliver new values every 8 milliseconds. This required optimized algorithms for storing, filtering and displaying the signals to ensure a smooth and delay-free visualization. In addition, mechanisms for recognizing response packets and reassembling fragmented data were implemented to ensure stable and reliable communication with the microcontroller.
-	
 	The developed application enables a reliable and intuitive visualization of ECG data in real time and thus provides a basis for further analysis and medical applications.
-	
+	s
 	
 	\section{Result}
 	{\large
@@ -1192,26 +1189,6 @@ return dataMap
 	Another important area is the integration of artificial intelligence to assist in anomaly detection. Machine learning models can be trained to recognize abnormal ECG patterns and provide early warnings about potential cardiac conditions. Implementing AI-based real-time classification and predictive analytics can enhance the system's capabilities and assist healthcare professionals in decision-making.
 	The accuracy and efficiency of data processing can also be improved. Advanced filtering techniques can help reduce noise in the ECG signals, leading to more accurate readings. Optimizing data rendering and visualization can make the real-time display more fluid, especially when handling long-duration recordings.
 	By addressing these areas, the application can evolve into a more robust and versatile tool, offering enhanced capabilities for medical professionals and patients alike. Future research should focus on improving usability, leveraging AI for anomaly detection, optimizing BLE communication, and ensuring compliance with medical standards.
-	\section{Appendix}
-	\subsection{Versions}
-	{\large 
-		This section presents fundamental versions of the required development resources used for this work.
-		
-		The tests for this application during the development process, were done on a phone using the \textbf{Android version 13} which implies the usage of \textbf{API level 33}. Utilizing lower Android version than 12 (API Level 31,32) is not possible due to new runtime permissions added in Android 13, making it impossible to start the app\footnote{\url{https://developer.android.com/develop/connectivity/bluetooth/bt-permissions}}. Higher Android versions were not reviewed. More versions of the used ressources, are presented in table \ref{tab:versionTable}.
-		\begin{table}[h!]
-			\begin{center}
-				\caption{Versions of used resources}
-				\label{tab:versionTable}
-				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\textbf{Ressource} & \textbf{Version used} \\
-					\hline
-					Android version& 13 \\
-					API Level & 33 \\
-					Koltin compiler extension version & 5.15.1 \\
-					minSDK & 30\\
-				\end{tabular}
-			\end{center}
-		\end{table}
-	}
+	
 	
 	

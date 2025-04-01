@@ -3,11 +3,11 @@
 \contentsline {figure}{\numberline {2}{\ignorespaces BLE protocol stack (Source: https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{8}{figure.2}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Attribute Structure (Source: https://de.mathworks.com/help/bluetooth/gs/bluetooth-protocol-stack.html)}}{9}{figure.3}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Informationtransfer}}{11}{figure.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Informationflow Diagramm}}{18}{figure.5}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Information-Flow-Diagramm}}{18}{figure.5}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Library Versions}}{20}{figure.6}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Packetstructure with Opcode (Source: Stefan Lindner)}}{24}{figure.7}%
 \contentsline {figure}{\numberline {8}{\ignorespaces Response Packet(Source: Stefan Lindner)}}{24}{figure.8}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Drawing in ECG-Data in realtime}}{51}{figure.9}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Drawing ECG-Data in realtime}}{51}{figure.9}%
 \contentsline {figure}{\numberline {10}{\ignorespaces Displaying recorded ECG-Data and BPM (VitalMonitorWidget)}}{52}{figure.10}%
 \contentsline {figure}{\numberline {11}{\ignorespaces Recording Mode ("Stop Recording") }}{53}{figure.11}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

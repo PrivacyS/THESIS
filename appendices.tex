@@ -1,14 +1,26 @@
 %----------Anhang/Appendices--------------------------------------------------------------
 
 \appendix
-\section{Anhang}
 
-\subsection[]{Onlinefragebogen} \label{sec:a1} 
-%\vspace{2em}
-%\includepdf[pages={2-3}]{images/fragebogen/questionnaire2}
 
-\subsection[]{Rohdaten des Onlinefragebogens für die statistische Auswertung}
-
-\subsection[]{Auswertung der Evaluation hinsichtlich...}
-
-\subsection[]{Datenträger/Data carrier}
+\section{Appendix}
+\subsection{Versions}
+{\large 
+	This section presents fundamental versions of the required development resources used for this work.
+	
+	The tests for this application during the development process, were done on a phone using the \textbf{Android version 13} which implies the usage of \textbf{API level 33}. Utilizing lower Android version than 12 (API Level 31,32) is not possible due to new runtime permissions added in Android 13, making it impossible to start the app\footnote{\url{https://developer.android.com/develop/connectivity/bluetooth/bt-permissions}}. Higher Android versions were not reviewed. More versions of the used ressources, are presented in table \ref{tab:versionTable}.
+	\begin{table}[h!]
+		\begin{center}
+			\caption{Versions of used resources}
+			\label{tab:versionTable}
+			\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\textbf{Ressource} & \textbf{Version used} \\
+				\hline
+				Android version& 13 \\
+				API Level & 33 \\
+				Koltin compiler extension version & 5.15.1 \\
+				minSDK & 30\\
+			\end{tabular}
+		\end{center}
+	\end{table}
+}
